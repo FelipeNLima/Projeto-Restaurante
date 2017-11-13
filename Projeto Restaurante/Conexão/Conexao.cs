@@ -11,8 +11,9 @@ namespace Projeto_Restaurante.Conexão
         public SqlCommand cmd;
         public SqlDataReader leitor;
 
-
-        //ASDAD
+        ///ASDSA
+        //    ASD
+        //    ASD
 
 
         public Conexao()
