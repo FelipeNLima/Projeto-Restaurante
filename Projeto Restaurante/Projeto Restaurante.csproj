@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{29DD1A8B-1DCD-4199-96C9-38065714B0B7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Projeto_Restaurante</RootNamespace>
+    <AssemblyName>Sistema Gerenciador de Restaurante</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationIcon>if_chef_45383.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Mesas\MesaItens.cs" />
+    <Compile Include="Modelos\ClasseBandeira.cs" />
+    <Compile Include="Modelos\ClasseCaixa.cs" />
+    <Compile Include="Modelos\ClasseCardapio.cs" />
+    <Compile Include="Modelos\ClasseCategoria_Cardapio.cs" />
+    <Compile Include="Modelos\ClasseCategoria_Produto.cs" />
+    <Compile Include="Modelos\ClasseConsumo.cs" />
+    <Compile Include="Modelos\ClassePagamento.cs" />
+    <Compile Include="Modelos\EnumStatus.cs" />
+    <Compile Include="Modelos\ClasseFormaPagamento.cs" />
+    <Compile Include="Modelos\ClasseGarcom.cs" />
+    <Compile Include="Modelos\ClasseMesa.cs" />
+    <Compile Include="Modelos\ClasseProduto.cs" />
+    <Compile Include="Modelos\ClasseRestaurante.cs" />
+    <Compile Include="Modelos\ClasseVenda.cs" />
+    <Compile Include="Telas\CadastrarCardapio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\CadastrarCardapio.Designer.cs">
+      <DependentUpon>CadastrarCardapio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\CadastrarCategorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\CadastrarCategorias.Designer.cs">
+      <DependentUpon>CadastrarCategorias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\CadastroRestaurante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\CadastroRestaurante.Designer.cs">
+      <DependentUpon>CadastroRestaurante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\CadastrarBandeira.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\CadastrarBandeira.Designer.cs">
+      <DependentUpon>CadastrarBandeira.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\CadastrarFormaPagamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\CadastrarFormaPagamento.Designer.cs">
+      <DependentUpon>CadastrarFormaPagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\CadastroProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\CadastroProduto.Designer.cs">
+      <DependentUpon>CadastroProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Caixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Caixa.Designer.cs">
+      <DependentUpon>Caixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cardapio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cardapio.Designer.cs">
+      <DependentUpon>Cardapio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Cartão.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Cartão.Designer.cs">
+      <DependentUpon>Cartão.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\carregando.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\carregando.Designer.cs">
+      <DependentUpon>carregando.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Conexão\Conexao.cs" />
+    <Compile Include="Telas\Categoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Categoria.Designer.cs">
+      <DependentUpon>Categoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Consumo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Consumo.Designer.cs">
+      <DependentUpon>Consumo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\CouvertArtistico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\CouvertArtistico.Designer.cs">
+      <DependentUpon>CouvertArtistico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\FormaPagamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\FormaPagamento.Designer.cs">
+      <DependentUpon>FormaPagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Garcon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Garcon.Designer.cs">
+      <DependentUpon>Garcon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\IniciarVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\IniciarVenda.Designer.cs">
+      <DependentUpon>IniciarVenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\ClasseLogar.cs" />
+    <Compile Include="Telas\CadastroGarcon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\CadastroGarcon.Designer.cs">
+      <DependentUpon>CadastroGarcon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Mesas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Mesas.Designer.cs">
+      <DependentUpon>Mesas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Pagamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Pagamento.Designer.cs">
+      <DependentUpon>Pagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Principal.Designer.cs">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Produto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Produto.Designer.cs">
+      <DependentUpon>Produto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Telas\Restaurante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Restaurante.Designer.cs">
+      <DependentUpon>Restaurante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\TransferirMesa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\TransferirMesa.Designer.cs">
+      <DependentUpon>TransferirMesa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Venda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Venda.Designer.cs">
+      <DependentUpon>Venda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Verificações\criptografia.cs" />
+    <Compile Include="Verificações\Entradas.cs" />
+    <Compile Include="Verificações\ValidadorCNPJ.cs" />
+    <EmbeddedResource Include="Telas\CadastrarCardapio.resx">
+      <DependentUpon>CadastrarCardapio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\CadastrarCategorias.resx">
+      <DependentUpon>CadastrarCategorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\CadastroRestaurante.resx">
+      <DependentUpon>CadastroRestaurante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\CadastrarBandeira.resx">
+      <DependentUpon>CadastrarBandeira.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\CadastrarFormaPagamento.resx">
+      <DependentUpon>CadastrarFormaPagamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\CadastroProduto.resx">
+      <DependentUpon>CadastroProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Caixa.resx">
+      <DependentUpon>Caixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cardapio.resx">
+      <DependentUpon>Cardapio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Cartão.resx">
+      <DependentUpon>Cartão.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\carregando.resx">
+      <DependentUpon>carregando.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Categoria.resx">
+      <DependentUpon>Categoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Consumo.resx">
+      <DependentUpon>Consumo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\CouvertArtistico.resx">
+      <DependentUpon>CouvertArtistico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\FormaPagamento.resx">
+      <DependentUpon>FormaPagamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Garcon.resx">
+      <DependentUpon>Garcon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\IniciarVenda.resx">
+      <DependentUpon>IniciarVenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\CadastroGarcon.resx">
+      <DependentUpon>CadastroGarcon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Mesas.resx">
+      <DependentUpon>Mesas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Pagamento.resx">
+      <DependentUpon>Pagamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Principal.resx">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Produto.resx">
+      <DependentUpon>Produto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Telas\Restaurante.resx">
+      <DependentUpon>Restaurante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\TransferirMesa.resx">
+      <DependentUpon>TransferirMesa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Venda.resx">
+      <DependentUpon>Venda.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fundo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\fundo.jpg" />
+    <Content Include="if_chef_45383.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
