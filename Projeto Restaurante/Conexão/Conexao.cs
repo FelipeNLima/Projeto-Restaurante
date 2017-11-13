@@ -11,11 +11,6 @@ namespace Projeto_Restaurante.Conexão
         public SqlCommand cmd;
         public SqlDataReader leitor;
 
-        ///ASDSA
-        //    ASD
-        //    ASD
-
-
         public Conexao()
         {
             objCon = new SqlConnection(stringConexao); 
