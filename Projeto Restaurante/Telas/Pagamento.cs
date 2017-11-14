@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Projeto_Restaurante.Conexão;
+using Projeto_Restaurante.Modelos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,11 +15,95 @@ namespace Projeto_Restaurante.Telas
 {
     public partial class Pagamento : Form
     {
-        List<Modelos.ClasseBandeira> listabandeira = new List<Modelos.ClasseBandeira>();
-        public Pagamento(float valortotal)
+        ClasseVenda venda = new ClasseVenda();
+        ClasseMesa mesa = new ClasseMesa();
+        List<ClasseFormaPagamento> listaformapagamento = new List<ClasseFormaPagamento>();
+        public Pagamento(float valortotal, int id_mesa)
         {
             InitializeComponent();
             TBvalortotal.Text = valortotal.ToString();
+            venda.CarregarVendaPorMesa(id_mesa);
+            mesa.CarregarMesaPorID(id_mesa);
+        }
+
+        public void EfetuarPagamento()
+        {
+            Modelos.ClassePagamento pagamento = new Modelos.ClassePagamento();
+
+            pagamento.Valor = float.Parse(TBvalortotal.Text);
+            pagamento.data = DateTime.Now;
+            pagamento.troco = float.Parse(TBtroco.Text);
+            pagamento.apagado = false;
+            pagamento.venda = venda;
+            pagamento.formaPagamento = listaformapagamento[CBformapagamento.SelectedIndex];
+            ClasseBandeira bandeira = new ClasseBandeira();
+            bandeira.CarregarPorID(int.Parse(TBopcao.Text));
+            pagamento.bandeiras = bandeira;
+            ClasseCaixa caixa = new ClasseCaixa();
+            caixa.CarregarCaixa();
+            pagamento.caixa = caixa;
+
+            bool certo = pagamento.CadastrarPagamento();
+            try
+            {
+                if (certo)
+                {
+                    MessageBox.Show("Bandeira do Cartão Cadastrada com Sucesso! ", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao Cadastrar Bandeira do Cartão! ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro + "Erro Ocorrido");
+            }
+        }
+
+        public void CarregarListViewBandeira(int opcao)
+        {
+            Conexao obj = new Conexao();
+            LVbandeiracartao.Items.Clear();
+            try
+            {
+                string sql = $@"SELECT 
+                                id_bandeiras,
+                                nome_bandeiras   
+                                FROM BANDEIRA_CARTAO 
+								INNER JOIN FORMA_PAGAMENTO ON FORMA_PAGAMENTO.id_formaPagamento = BANDEIRA_CARTAO.id_formaPagamento 
+                                WHERE FORMA_PAGAMENTO.id_formaPagamento = '{opcao}'";
+                
+                obj.conectar();
+
+
+                SqlCommand cmd = new SqlCommand(sql, obj.objCon);
+                SqlDataReader dr = cmd.ExecuteReader();
+
+
+                while (dr.Read())
+                {
+                    ListViewItem id = new ListViewItem();
+                    ListViewItem.ListViewSubItem nome = new ListViewItem.ListViewSubItem();
+
+                    id.Text = dr[0].ToString();
+                    nome.Text = dr[1].ToString();
+                    
+                    id.SubItems.Add(nome);
+
+                    LVbandeiracartao.Items.Add(id);
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally { obj.desconectar(); }
         }
 
         private void BTsair_Click(object sender, EventArgs e)
@@ -26,11 +113,58 @@ namespace Projeto_Restaurante.Telas
 
         private void Pagamento_Load(object sender, EventArgs e)
         {
-            listabandeira = Modelos.ClasseBandeira.CarregarBandeira();
+            listaformapagamento = ClasseFormaPagamento.CarregarFormadePagamento();
 
-            foreach (var item in listabandeira)
+            foreach (var item in listaformapagamento)
             {
-                CBformapagamento.Items.Add(item.nome_bandeira);
+                CBformapagamento.Items.Add(item.tipo_pagamento);
+            }
+
+            int valor = CBformapagamento.SelectedIndex;
+            CarregarListViewBandeira(valor);
+        }
+
+        private void CBformapagamento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CarregarListViewBandeira(listaformapagamento[CBformapagamento.SelectedIndex].id_formaPagamento);
+        }
+
+        private void BTok_Click(object sender, EventArgs e)
+        {
+            ClasseMesa mesa = new ClasseMesa();
+            mesa.status = StatusMesa.Disponivel;
+            mesa.AtualizarMesa();
+            venda.Status_Venda = StatusVenda.Disponivel;
+            venda.AtualizarVenda();
+            EfetuarPagamento();
+        }
+
+        public void preencherLabel()
+        {
+            TBsubtotal.Text = calcularSubTotal().ToString("N2");
+            TBtroco.Text = CalcularTroco().ToString("N2");
+        }
+        public float calcularSubTotal()
+        {
+            float valortotal;
+            valortotal = float.Parse(TBvalorRecebido.Text) - float.Parse(TBvalortotal.Text);
+            return valortotal;
+        }
+
+        public float CalcularTroco()
+        {
+
+            if (float.Parse(TBvalorRecebido.Text) > float.Parse(TBvalortotal.Text))
+                float valortroco = float.Parse(TBvalortotal.Text) - float.Parse(TBsubtotal.Text);
+                return valortroco;
+            
+        }
+
+        private void TBvalorRecebido_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                calcularSubTotal();
             }
         }
     }

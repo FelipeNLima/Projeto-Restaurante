@@ -101,7 +101,6 @@ namespace Projeto_Restaurante.Modelos
                 {
                     id_caixa = int.Parse(Leitor["id_caixa"].ToString()); 
                     valor_inicial = float.Parse(Leitor["valor_inicial"].ToString());
-                    data_abertura = DateTime.Parse(Leitor["data_abertura"].ToString());
                     StatusCaixa = (StatusCaixa)Enum.Parse(typeof(StatusCaixa), Leitor["StatusCaixa"].ToString());
                 }
 

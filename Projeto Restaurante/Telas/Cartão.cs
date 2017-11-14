@@ -19,12 +19,14 @@ namespace Projeto_Restaurante
             LVbandeira.Items.Clear();
             try
             {
-                string sql = $@"SELECT 
+                string sql = $@"SELECT
                                 id_bandeiras,
                                 nome_bandeiras,   
-                                taxa 
-                                FROM BANDEIRA_CARTAO  
-                                WHERE apagado = 0 AND nome_bandeiras LIKE '%{TBpesquisa.Text}%'";
+                                taxa,
+                                FORMA_PAGAMENTO.tipo_pagamento 
+                                FROM BANDEIRA_CARTAO 
+								INNER JOIN FORMA_PAGAMENTO ON FORMA_PAGAMENTO.id_formaPagamento = BANDEIRA_CARTAO.id_formaPagamento 
+                                WHERE BANDEIRA_CARTAO.apagado = 0 AND nome_bandeiras LIKE '%{TBpesquisa.Text}%'";
                 obj.conectar();
 
                 SqlCommand cmd = new SqlCommand(sql, obj.objCon);
@@ -36,14 +38,17 @@ namespace Projeto_Restaurante
                     ListViewItem id = new ListViewItem();
                     ListViewItem.ListViewSubItem nome = new ListViewItem.ListViewSubItem();
                     ListViewItem.ListViewSubItem taxa = new ListViewItem.ListViewSubItem();
+                    ListViewItem.ListViewSubItem formaPagamento = new ListViewItem.ListViewSubItem();
 
 
                     id.Text = dr[0].ToString();
                     nome.Text = dr[1].ToString();
                     taxa.Text = dr[2].ToString();
+                    formaPagamento.Text = dr[3].ToString();
 
                     id.SubItems.Add(nome);
                     id.SubItems.Add(taxa);
+                    id.SubItems.Add(formaPagamento);
 
                     LVbandeira.Items.Add(id);
 

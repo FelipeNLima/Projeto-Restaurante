@@ -43,6 +43,8 @@
             this.LVbandeiracartao = new System.Windows.Forms.ListView();
             this.label5 = new System.Windows.Forms.Label();
             this.CBformapagamento = new System.Windows.Forms.ComboBox();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // label1
@@ -57,16 +59,19 @@
             // 
             // TBvalortotal
             // 
+            this.TBvalortotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TBvalortotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TBvalortotal.Location = new System.Drawing.Point(16, 30);
             this.TBvalortotal.Name = "TBvalortotal";
-            this.TBvalortotal.Size = new System.Drawing.Size(189, 20);
+            this.TBvalortotal.Size = new System.Drawing.Size(198, 23);
             this.TBvalortotal.TabIndex = 1;
             // 
             // TBsubtotal
             // 
+            this.TBsubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TBsubtotal.Location = new System.Drawing.Point(265, 30);
             this.TBsubtotal.Name = "TBsubtotal";
-            this.TBsubtotal.Size = new System.Drawing.Size(166, 20);
+            this.TBsubtotal.Size = new System.Drawing.Size(166, 23);
             this.TBsubtotal.TabIndex = 3;
             // 
             // label2
@@ -81,10 +86,12 @@
             // 
             // TBvalorRecebido
             // 
+            this.TBvalorRecebido.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TBvalorRecebido.Location = new System.Drawing.Point(85, 140);
             this.TBvalorRecebido.Name = "TBvalorRecebido";
-            this.TBvalorRecebido.Size = new System.Drawing.Size(120, 20);
+            this.TBvalorRecebido.Size = new System.Drawing.Size(129, 23);
             this.TBvalorRecebido.TabIndex = 5;
+            this.TBvalorRecebido.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TBvalorRecebido_KeyDown);
             // 
             // label3
             // 
@@ -98,9 +105,10 @@
             // 
             // TBopcao
             // 
+            this.TBopcao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TBopcao.Location = new System.Drawing.Point(16, 140);
             this.TBopcao.Name = "TBopcao";
-            this.TBopcao.Size = new System.Drawing.Size(66, 20);
+            this.TBopcao.Size = new System.Drawing.Size(66, 23);
             this.TBopcao.TabIndex = 7;
             // 
             // label4
@@ -115,16 +123,17 @@
             // 
             // TBtroco
             // 
-            this.TBtroco.Location = new System.Drawing.Point(265, 95);
+            this.TBtroco.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TBtroco.Location = new System.Drawing.Point(265, 84);
             this.TBtroco.Name = "TBtroco";
-            this.TBtroco.Size = new System.Drawing.Size(166, 20);
+            this.TBtroco.Size = new System.Drawing.Size(166, 23);
             this.TBtroco.TabIndex = 10;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(262, 78);
+            this.label6.Location = new System.Drawing.Point(262, 67);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(40, 13);
             this.label6.TabIndex = 9;
@@ -132,16 +141,17 @@
             // 
             // BTok
             // 
-            this.BTok.Location = new System.Drawing.Point(265, 123);
+            this.BTok.Location = new System.Drawing.Point(265, 112);
             this.BTok.Name = "BTok";
             this.BTok.Size = new System.Drawing.Size(75, 23);
             this.BTok.TabIndex = 11;
             this.BTok.Text = "OK";
             this.BTok.UseVisualStyleBackColor = true;
+            this.BTok.Click += new System.EventHandler(this.BTok_Click);
             // 
             // BTsair
             // 
-            this.BTsair.Location = new System.Drawing.Point(356, 123);
+            this.BTsair.Location = new System.Drawing.Point(356, 112);
             this.BTsair.Name = "BTsair";
             this.BTsair.Size = new System.Drawing.Size(75, 23);
             this.BTsair.TabIndex = 12;
@@ -151,11 +161,17 @@
             // 
             // LVbandeiracartao
             // 
-            this.LVbandeiracartao.Location = new System.Drawing.Point(16, 166);
+            this.LVbandeiracartao.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.LVbandeiracartao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LVbandeiracartao.GridLines = true;
+            this.LVbandeiracartao.Location = new System.Drawing.Point(16, 169);
             this.LVbandeiracartao.Name = "LVbandeiracartao";
-            this.LVbandeiracartao.Size = new System.Drawing.Size(189, 177);
+            this.LVbandeiracartao.Size = new System.Drawing.Size(198, 177);
             this.LVbandeiracartao.TabIndex = 13;
             this.LVbandeiracartao.UseCompatibleStateImageBehavior = false;
+            this.LVbandeiracartao.View = System.Windows.Forms.View.Details;
             // 
             // label5
             // 
@@ -169,17 +185,28 @@
             // 
             // CBformapagamento
             // 
+            this.CBformapagamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBformapagamento.FormattingEnabled = true;
             this.CBformapagamento.Location = new System.Drawing.Point(16, 83);
             this.CBformapagamento.Name = "CBformapagamento";
-            this.CBformapagamento.Size = new System.Drawing.Size(189, 21);
+            this.CBformapagamento.Size = new System.Drawing.Size(198, 24);
             this.CBformapagamento.TabIndex = 15;
+            this.CBformapagamento.SelectedIndexChanged += new System.EventHandler(this.CBformapagamento_SelectedIndexChanged);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Código";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Bandeira do Cartão";
+            this.columnHeader2.Width = 134;
             // 
             // Pagamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(444, 355);
+            this.ClientSize = new System.Drawing.Size(440, 351);
             this.ControlBox = false;
             this.Controls.Add(this.CBformapagamento);
             this.Controls.Add(this.label5);
@@ -224,5 +251,7 @@
         private System.Windows.Forms.ListView LVbandeiracartao;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox CBformapagamento;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
     }
 }

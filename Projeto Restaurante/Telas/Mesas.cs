@@ -78,7 +78,6 @@ namespace Projeto_Restaurante.Telas
 				WordWrap = false,
 			};
 
-            //tb.GotFocus += (o, a) => pn.Focus();
             tb.Click += PnClick;
             pn.Controls.Add(tb);
 
@@ -105,10 +104,14 @@ namespace Projeto_Restaurante.Telas
 				abrir.ShowDialog();
 				CarregarMesas();
 			}
-			else
+			else  
 			{
 				Venda x = new Venda(mesaClicada);
 				x.ShowDialog();
+                if(x.alteracao)
+                {
+                    CarregarMesas();
+                }
 			}
 		}
 

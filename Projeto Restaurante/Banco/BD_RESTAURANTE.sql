@@ -8,7 +8,6 @@ CREATE TABLE FORMA_PAGAMENTO (
 id_formaPagamento			int		PRIMARY KEY		IDENTITY,
 tipo_pagamento				varchar(50),
 apagado						bit,
-id_bandeiras				int
 )
 go
 
@@ -16,7 +15,8 @@ CREATE TABLE BANDEIRA_CARTAO (
 id_bandeiras				int		PRIMARY KEY		IDENTITY,
 nome_bandeiras				varchar(50),
 taxa						decimal (9,2),
-apagado						bit
+apagado						bit,
+id_formaPagamento			int
 )
 go
 
@@ -144,7 +144,7 @@ go
 
 
 --chaves estrangeiras 
-ALTER TABLE FORMA_PAGAMENTO	 ADD FOREIGN KEY(id_bandeiras)			REFERENCES BANDEIRA_CARTAO (id_bandeiras)
+ALTER TABLE BANDEIRA_CARTAO	 ADD FOREIGN KEY(id_formaPagamento)		REFERENCES FORMA_PAGAMENTO (id_formaPagamento)
 ALTER TABLE PAGAMENTO		 ADD FOREIGN KEY(id_venda)				REFERENCES VENDA (id_venda)
 ALTER TABLE PAGAMENTO		 ADD FOREIGN KEY(id_caixa)				REFERENCES CAIXA (id_caixa)
 ALTER TABLE PAGAMENTO		 ADD FOREIGN KEY(id_formaPagamento)		REFERENCES FORMA_PAGAMENTO (id_formaPagamento)
@@ -185,11 +185,12 @@ GO
 --update mesa set Status = 0
 --go
 
-SELECT * FROM CAIXA 
-GO
-
-delete CAIXA
-go
-
-SELECT top 1 id_caixa,valor_inicial,data_abertura, StatusCaixa FROM CAIXA ORDER BY id_caixa DESC
+SELECT 
+                                id_bandeiras,
+                                nome_bandeiras,   
+                                taxa,
+                                FORMA_PAGAMENTO.tipo_pagamento 
+                                FROM BANDEIRA_CARTAO 
+								INNER JOIN FORMA_PAGAMENTO ON FORMA_PAGAMENTO.id_formaPagamento = BANDEIRA_CARTAO.id_formaPagamento 
+                                WHERE BANDEIRA_CARTAO.apagado = 0
 go

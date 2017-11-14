@@ -28,12 +28,10 @@ namespace Projeto_Restaurante.Modelos
             {
                 obj.conectar();
 
-                string sql = "INSERT INTO PAGAMENTO (id_pagamento, Valor, data, troco, apagado, id_venda, id_formaPagamento, id_bandeiras, id_caixa)  VALUES (@IDPAGAMENTO, @VALOR, @DATA, @TROCO, @APAGADO, @IDVENDA, @IDFORMAPAGAMENTO, @IDBANDEIRA, @IDCAIXA)";
+                string sql = "INSERT INTO PAGAMENTO (Valor, data, troco, apagado, id_venda, id_formaPagamento, id_bandeiras, id_caixa)  VALUES (@VALOR, @DATA, @TROCO, @APAGADO, @IDVENDA, @IDFORMAPAGAMENTO, @IDBANDEIRA, @IDCAIXA)";
 
                 obj.cmd = new System.Data.SqlClient.SqlCommand(sql, obj.objCon);
 
-
-                obj.cmd.Parameters.AddWithValue("@IDPAGAMENTO", id_pagamento);
                 obj.cmd.Parameters.AddWithValue("@VALOR", Valor);
                 obj.cmd.Parameters.AddWithValue("@DATA", data);
                 obj.cmd.Parameters.AddWithValue("@TROCO", troco);
@@ -57,10 +55,6 @@ namespace Projeto_Restaurante.Modelos
             return correto;
         }
 
-        //public bool AtualizarPagamento()
-        //{
-
-        //}
 
     }
 }

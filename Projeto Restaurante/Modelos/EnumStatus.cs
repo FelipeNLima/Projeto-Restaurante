@@ -13,6 +13,6 @@ namespace Projeto_Restaurante.Modelos
 
     public enum StatusCaixa
     {
-        Fechado = 0, Aberto = 1
+       Aberto = 0, Fechado = 1
     }
 }

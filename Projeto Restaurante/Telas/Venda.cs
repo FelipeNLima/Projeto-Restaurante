@@ -11,6 +11,7 @@ namespace Projeto_Restaurante.Telas
 
     public partial class Venda : Form
     {
+        public bool alteracao;
         private ClasseGarcom usargarcom = new ClasseGarcom();
         private ClasseVenda venda = new ClasseVenda();
         private ClasseConsumo consumo = new ClasseConsumo();
@@ -76,10 +77,6 @@ namespace Projeto_Restaurante.Telas
             venda.id_venda = venda.id_venda;
             venda.Numero_pessoa = int.Parse(TBnumeropessoas.Text);
             venda.Desconto = CalculaDesconto();
-            if (statusdamesa == 1)
-                venda.Status_Venda = StatusVenda.Ocupado;
-            else
-                venda.Status_Venda = StatusVenda.ReceberPagamento;
             venda.Data_saida = DateTime.Now;
             venda.Couvert_artistico = CalculaCouvert_Artistico();
             mesa.CarregarMesaPorID(int.Parse(TBtelanumerovenda.Text));
@@ -87,8 +84,18 @@ namespace Projeto_Restaurante.Telas
             ClasseGarcom carregar = new ClasseGarcom();
             carregar.CarregarGarcom(int.Parse(TBcodigogarcom.Text));
             venda.garcom = carregar;
+            if (statusdamesa == 1)
+            {
+                venda.Status_Venda = StatusVenda.Ocupado;
+            }
+            else
+            {
+                venda.Status_Venda = StatusVenda.ReceberPagamento;  
+            }
 
             venda.AtualizarVenda();
+            Close();
+
         }
 
         public void carregarVenda(int id)
@@ -346,7 +353,8 @@ namespace Projeto_Restaurante.Telas
                 if (venda.Status_Venda == StatusVenda.ReceberPagamento)
                 {
                     float valor = float.Parse(textvalortotal.Text);
-                    Pagamento abrir = new Pagamento(valor);
+                    int idmesa = int.Parse(TBtelanumerovenda.Text);
+                    Pagamento abrir = new Pagamento(valor,idmesa);
                     abrir.ShowDialog();
                 }
                 else
@@ -408,12 +416,6 @@ namespace Projeto_Restaurante.Telas
 
             }
         }
-
-        private void BTfecharMesa_Click(object sender, EventArgs e)
-        {
-            AtualizarVenda(2);
-        }
-
         private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)
@@ -424,6 +426,32 @@ namespace Projeto_Restaurante.Telas
                     dataGridView1.Rows.RemoveAt(dataGridView1.CurrentRow.Index);
                     preencher_Label();
                 }
+            }
+        }
+
+        private void BTfecharMesa_Click_1(object sender, EventArgs e)
+        {
+            mesa.CarregarMesaPorID(mesa.id_mesa);
+            mesa.status = StatusMesa.Ausente;
+            mesa.AtualizarMesa();
+            alteracao = true;
+            AtualizarVenda(2);
+            
+        }
+
+        private void BTpagamento_Click(object sender, EventArgs e)
+        {
+            
+            if (venda.Status_Venda == StatusVenda.ReceberPagamento)
+            {
+                float valor = float.Parse(textvalortotal.Text);
+                int idmesa = int.Parse(TBtelanumerovenda.Text);
+                Pagamento abrir = new Pagamento(valor, idmesa);
+                abrir.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Não foi possivel efetuar o Recebimento da Mesa");
             }
         }
     }

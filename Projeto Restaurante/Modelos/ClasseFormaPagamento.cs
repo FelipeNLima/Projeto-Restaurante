@@ -1,6 +1,7 @@
 ﻿using System;
 using Projeto_Restaurante.Conexão;
 using System.Data.SqlClient;
+using System.Collections.Generic;
 
 namespace Projeto_Restaurante.Modelos
 {
@@ -101,6 +102,42 @@ namespace Projeto_Restaurante.Modelos
                 throw;
             }
             finally { obj.desconectar(); }
+        }
+
+        public static List<ClasseFormaPagamento> CarregarFormadePagamento()
+        {
+
+            {
+                Conexao obj = new Conexao();
+                List<ClasseFormaPagamento> lista = new List<ClasseFormaPagamento>();
+
+                try
+                {
+                    obj.conectar();
+
+                    SqlDataReader Leitor = null;
+                    SqlCommand cmd = new SqlCommand("SELECT id_formaPagamento,tipo_pagamento, apagado FROM FORMA_PAGAMENTO WHERE apagado = 0", obj.objCon);
+                    Leitor = cmd.ExecuteReader();
+
+                    while (Leitor.Read())
+                    {
+                        ClasseFormaPagamento pagamento = new ClasseFormaPagamento();
+                        pagamento.id_formaPagamento = int.Parse(Leitor["id_formaPagamento"].ToString());
+                        pagamento.tipo_pagamento = (Leitor["tipo_pagamento"].ToString());
+                        pagamento.apagado = bool.Parse(Leitor["apagado"].ToString());
+
+                        lista.Add(pagamento);
+                    }
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+                finally { obj.desconectar(); }
+                return lista;
+            }
         }
 
         public bool TemFormaPagamento(string nome, int id_formaPagamento)

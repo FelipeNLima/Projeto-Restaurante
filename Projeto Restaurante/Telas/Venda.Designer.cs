@@ -73,8 +73,8 @@
             this.textdesconto = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.BTvoltarMenu = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.BTpagamento = new System.Windows.Forms.Button();
+            this.BTfecharMesa = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.TBnumeropessoas = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -522,8 +522,8 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.Controls.Add(this.BTvoltarMenu);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.BTpagamento);
+            this.panel1.Controls.Add(this.BTfecharMesa);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 701);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -545,29 +545,31 @@
             this.BTvoltarMenu.Click += new System.EventHandler(this.BTvoltarMenu_Click);
             this.BTvoltarMenu.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BTvoltarMenu_KeyPress);
             // 
-            // button5
+            // BTpagamento
             // 
-            this.button5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(682, 4);
-            this.button5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(107, 47);
-            this.button5.TabIndex = 11;
-            this.button5.Text = "Efetuar Pagamento (F6) ";
-            this.button5.UseVisualStyleBackColor = true;
+            this.BTpagamento.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BTpagamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTpagamento.Location = new System.Drawing.Point(682, 4);
+            this.BTpagamento.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.BTpagamento.Name = "BTpagamento";
+            this.BTpagamento.Size = new System.Drawing.Size(107, 47);
+            this.BTpagamento.TabIndex = 11;
+            this.BTpagamento.Text = "Efetuar Pagamento (F6) ";
+            this.BTpagamento.UseVisualStyleBackColor = true;
+            this.BTpagamento.Click += new System.EventHandler(this.BTpagamento_Click);
             // 
-            // button2
+            // BTfecharMesa
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(559, 4);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(107, 47);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Fechamento de Mesa (F5) ";
-            this.button2.UseVisualStyleBackColor = true;
+            this.BTfecharMesa.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BTfecharMesa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTfecharMesa.Location = new System.Drawing.Point(559, 4);
+            this.BTfecharMesa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.BTfecharMesa.Name = "BTfecharMesa";
+            this.BTfecharMesa.Size = new System.Drawing.Size(107, 47);
+            this.BTfecharMesa.TabIndex = 8;
+            this.BTfecharMesa.Text = "Fechamento de Mesa (F5) ";
+            this.BTfecharMesa.UseVisualStyleBackColor = true;
+            this.BTfecharMesa.Click += new System.EventHandler(this.BTfecharMesa_Click_1);
             // 
             // timer1
             // 
@@ -760,8 +762,8 @@
         private System.Windows.Forms.Label textdesconto;
         private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Button BTvoltarMenu;
-		private System.Windows.Forms.Button button5;
-		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.Button BTpagamento;
+		private System.Windows.Forms.Button BTfecharMesa;
 		private System.Windows.Forms.Timer timer1;
 		private System.Windows.Forms.TextBox TBnumeropessoas;
 		private System.Windows.Forms.Label label5;

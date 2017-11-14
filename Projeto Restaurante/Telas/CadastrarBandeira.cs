@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projeto_Restaurante.Modelos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,9 @@ namespace Projeto_Restaurante
     {
         bool cadastrar;
         int id;
+
+        List<ClasseFormaPagamento> listaformapagamento = new List<ClasseFormaPagamento>();
+
         public CadastrarBandeira()
         {
             InitializeComponent();
@@ -36,6 +40,7 @@ namespace Projeto_Restaurante
             bandeira.nome_bandeira = TBnomeBandeira.Text;
             bandeira.taxa = float.Parse(TBtaxa.Text);
             bandeira.apagado = false;
+            bandeira.formapagamento = listaformapagamento[CBformaPagamento.SelectedIndex];
 
 
             bool certo = bandeira.CadastrarBandeira();
@@ -67,6 +72,7 @@ namespace Projeto_Restaurante
             bandeira.nome_bandeira = TBnomeBandeira.Text;
             bandeira.taxa = float.Parse(TBtaxa.Text);
             bandeira.apagado = false;
+            bandeira.formapagamento = listaformapagamento[CBformaPagamento.SelectedIndex];
 
 
             bool certo = bandeira.AtualizarBandeira();
@@ -95,6 +101,8 @@ namespace Projeto_Restaurante
             bandeira.CarregarPorID(id);
             TBnomeBandeira.Text = bandeira.nome_bandeira;
             TBtaxa.Text = bandeira.taxa.ToString();
+            CBformaPagamento.SelectedItem = ClasseFormaPagamento.CarregarFormadePagamento();
+
         }
 
         private void TSBsair_Click(object sender, EventArgs e)
@@ -147,5 +155,15 @@ namespace Projeto_Restaurante
 			Verificações.Entradas usar = new Verificações.Entradas();
 			usar.VerificaNumero(e);
 		}
-	}
+
+        private void CadastrarBandeira_Load(object sender, EventArgs e)
+        {
+            listaformapagamento = ClasseFormaPagamento.CarregarFormadePagamento();
+
+            foreach (var item in listaformapagamento)
+            {
+                CBformaPagamento.Items.Add(item.tipo_pagamento);
+            }
+        }
+    }
 }
