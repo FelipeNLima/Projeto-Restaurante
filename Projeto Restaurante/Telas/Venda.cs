@@ -422,6 +422,7 @@ namespace Projeto_Restaurante.Telas
                 {
                     DeletarConsumo(dataGridView1.CurrentRow.Index);
                     dataGridView1.Rows.RemoveAt(dataGridView1.CurrentRow.Index);
+                    preencher_Label();
                 }
             }
         }

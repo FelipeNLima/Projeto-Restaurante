@@ -119,6 +119,7 @@ CREATE TABLE CAIXA (
 id_caixa					int		PRIMARY KEY		IDENTITY,
 data_fechamento				datetime,
 valor_inicial				decimal(9,2),
+valor_final					decimal(9,2),
 data_abertura				datetime,
 diferença					decimal(9,2)				
 )
