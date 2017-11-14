@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Projeto_Restaurante.Conexão;
+using Projeto_Restaurante.Modelos;
+using System;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Projeto_Restaurante
@@ -34,12 +37,12 @@ namespace Projeto_Restaurante
             abrir.ShowDialog();
         }
 
-
         private void Timer1_Tick(object sender, EventArgs e)
         {
             DateTime datahora = DateTime.Now;
             Data.Text = " " +datahora.ToLocalTime();
         }
+
         private void Principal_Load(object sender, EventArgs e)
         {
             Timer1_Tick(e, e);
@@ -71,8 +74,24 @@ namespace Projeto_Restaurante
 
         private void TSBcaixa_Click(object sender, EventArgs e)
         {
-            Telas.Caixa abrir = new Telas.Caixa();
-            abrir.ShowDialog();
+            Modelos.ClasseCaixa caixa = new Modelos.ClasseCaixa();
+            caixa.CarregarCaixa();
+            if (caixa.StatusCaixa == StatusCaixa.Aberto)
+            {
+                Telas.Caixa abrir = new Telas.Caixa(StatusCaixa.Aberto);
+                abrir.ShowDialog();
+                if (abrir.FecharCaixa())
+                {
+                    TSBmesas.Enabled = false;
+                }
+            }
+            else
+            {
+                Telas.Caixa abrir1 = new Telas.Caixa();
+                abrir1.ShowDialog();
+                if (abrir1.AbrirCaixa())
+                    TSBmesas.Enabled = true;
+            }
         }
 
         private void TSBmesas_Click(object sender, EventArgs e)
@@ -80,5 +99,6 @@ namespace Projeto_Restaurante
             Telas.Mesas abrir = new Telas.Mesas();
             abrir.ShowDialog();
         }
+
     }
 }

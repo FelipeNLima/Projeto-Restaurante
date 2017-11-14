@@ -11,4 +11,8 @@ namespace Projeto_Restaurante.Modelos
 		Disponivel = 0, Ocupado = 1, ReceberPagamento = 2
 	}
 
+    public enum StatusCaixa
+    {
+        Fechado = 0, Aberto = 1
+    }
 }

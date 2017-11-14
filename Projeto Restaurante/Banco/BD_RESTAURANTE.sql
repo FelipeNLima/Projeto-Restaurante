@@ -121,7 +121,8 @@ data_fechamento				datetime,
 valor_inicial				decimal(9,2),
 valor_final					decimal(9,2),
 data_abertura				datetime,
-diferença					decimal(9,2)				
+diferença					decimal(9,2),
+StatusCaixa					tinyint				
 )
 go
 
@@ -175,18 +176,20 @@ begin
 	set @i = @i+1
 end
 
+INSERT INTO CAIXA (valor_inicial, StatusCaixa)
+VALUES
+	(0,1)
+
+GO
+
 --update mesa set Status = 0
 --go
 
---select * FROM CARDAPIO
---GO
+SELECT * FROM CAIXA 
+GO
 
-SELECT	id_consumo, CARDAPIO.id_cardapio, CARDAPIO.nome_item, CARDAPIO.preco_item, quantidade, valor_total 
-                FROM CONSUMO 
-                INNER JOIN CARDAPIO ON CARDAPIO.id_cardapio = CONSUMO.id_cardapio 
-                INNER JOIN VENDA  ON VENDA.id_venda = CONSUMO.id_venda 
-                WHERE VENDA.id_venda = 1
+delete CAIXA
 go
 
-select * from consumo
-select * from venda
+SELECT top 1 id_caixa,valor_inicial,data_abertura, StatusCaixa FROM CAIXA ORDER BY id_caixa DESC
+go

@@ -95,7 +95,6 @@ namespace Projeto_Restaurante.Modelos
             return correto;
         }
 
-
         public void CarregarVendaPorID(int id)
         {
             Conexao obj = new Conexao();

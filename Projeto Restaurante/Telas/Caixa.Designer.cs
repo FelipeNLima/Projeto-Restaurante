@@ -35,7 +35,7 @@
             this.TSBsair = new System.Windows.Forms.ToolStripButton();
             this.data = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TBvalor = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -60,7 +60,8 @@
             this.TSBcaixa.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TSBcaixa.Name = "TSBcaixa";
             this.TSBcaixa.Size = new System.Drawing.Size(52, 52);
-            this.TSBcaixa.Text = "Abrir";
+            this.TSBcaixa.Text = "OK";
+            this.TSBcaixa.Click += new System.EventHandler(this.TSBcaixa_Click);
             // 
             // TSBsair
             // 
@@ -94,12 +95,12 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Valor";
             // 
-            // textBox1
+            // TBvalor
             // 
-            this.textBox1.Location = new System.Drawing.Point(65, 49);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(161, 20);
-            this.textBox1.TabIndex = 3;
+            this.TBvalor.Location = new System.Drawing.Point(65, 49);
+            this.TBvalor.Name = "TBvalor";
+            this.TBvalor.Size = new System.Drawing.Size(161, 20);
+            this.TBvalor.TabIndex = 3;
             // 
             // Caixa
             // 
@@ -107,7 +108,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(238, 151);
             this.ControlBox = false;
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.TBvalor);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.data);
             this.Controls.Add(this.toolStrip1);
@@ -115,7 +116,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Caixa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Caixa";
+            this.Text = "Abrir Caixa";
             this.Load += new System.EventHandler(this.Caixa_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -131,7 +132,7 @@
         private System.Windows.Forms.ToolStripButton TSBsair;
         private System.Windows.Forms.Label data;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TBvalor;
         private System.Windows.Forms.Timer timer1;
     }
 }
