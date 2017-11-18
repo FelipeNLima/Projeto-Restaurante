@@ -99,7 +99,8 @@ namespace Projeto_Restaurante.Modelos
                 obj.conectar();
                 int Codigo = ID;
                 SqlDataReader Leitor = null;
-                SqlCommand cmd = new SqlCommand("SELECT  nome_produto, preco_custo, estoque_atual, estoque_minimo, id_categoriaproduto  FROM PRODUTO WHERE id_produto = '" + Codigo + "'", obj.objCon);
+                SqlCommand cmd = new SqlCommand("SELECT  nome_produto, preco_custo, estoque_atual, estoque_minimo, id_categoriaproduto  FROM PRODUTO WHERE id_produto = @ID", obj.objCon);
+                cmd.Parameters.AddWithValue("@ID", ID);
                 Leitor = cmd.ExecuteReader();
 
                 if (Leitor.Read())

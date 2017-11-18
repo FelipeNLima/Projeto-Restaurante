@@ -38,10 +38,10 @@
             this.TSBproduto = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.TSBcardapio = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.TSBcartão = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.TSBformapagamento = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.TSBcartão = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.TSBrestaurante = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -169,25 +169,6 @@
             this.TSBcardapio.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             this.TSBcardapio.Click += new System.EventHandler(this.TSBcardapio_Click);
             // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 86);
-            // 
-            // TSBcartão
-            // 
-            this.TSBcartão.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.TSBcartão.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.TSBcartão.Image = ((System.Drawing.Image)(resources.GetObject("TSBcartão.Image")));
-            this.TSBcartão.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.TSBcartão.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.TSBcartão.Name = "TSBcartão";
-            this.TSBcartão.Size = new System.Drawing.Size(116, 83);
-            this.TSBcartão.Text = "Bandeira do Cartão";
-            this.TSBcartão.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.TSBcartão.Click += new System.EventHandler(this.TSBcartão_Click);
-            // 
             // toolStripSeparator11
             // 
             this.toolStripSeparator11.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -208,6 +189,25 @@
             this.TSBformapagamento.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.TSBformapagamento.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             this.TSBformapagamento.Click += new System.EventHandler(this.TSBformapagamento_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 86);
+            // 
+            // TSBcartão
+            // 
+            this.TSBcartão.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.TSBcartão.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.TSBcartão.Image = ((System.Drawing.Image)(resources.GetObject("TSBcartão.Image")));
+            this.TSBcartão.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TSBcartão.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TSBcartão.Name = "TSBcartão";
+            this.TSBcartão.Size = new System.Drawing.Size(116, 83);
+            this.TSBcartão.Text = "Bandeira do Cartão";
+            this.TSBcartão.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.TSBcartão.Click += new System.EventHandler(this.TSBcartão_Click);
             // 
             // toolStripSeparator1
             // 
@@ -277,7 +277,6 @@
             // TSBmesas
             // 
             this.TSBmesas.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.TSBmesas.Enabled = false;
             this.TSBmesas.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.TSBmesas.Image = ((System.Drawing.Image)(resources.GetObject("TSBmesas.Image")));
             this.TSBmesas.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;

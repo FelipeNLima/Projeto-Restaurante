@@ -85,8 +85,8 @@ namespace Projeto_Restaurante.Modelos
             {
                 obj.conectar();
                 SqlDataReader Leitor = null;
-                SqlCommand cmd = new SqlCommand("SELECT tipo_pagamento FROM FORMA_PAGAMENTO WHERE id_formaPagamento = '" +id+ "'", obj.objCon );
-
+                SqlCommand cmd = new SqlCommand("SELECT tipo_pagamento FROM FORMA_PAGAMENTO WHERE id_formaPagamento = @ID", obj.objCon );
+                cmd.Parameters.AddWithValue("@ID", id);
                 Leitor = cmd.ExecuteReader();
 
                 if(Leitor.Read())
@@ -149,7 +149,9 @@ namespace Projeto_Restaurante.Modelos
                 obj.conectar();
 
                 SqlDataReader Leitor = null;
-                SqlCommand cmd = new SqlCommand("SELECT  COUNT (*) FROM FORMA_PAGAMENTO WHERE id_formaPagamento != '" + id_formaPagamento + "' AND tipo_pagamento = '" + nome + "' AND apagado = 0", obj.objCon);
+                SqlCommand cmd = new SqlCommand("SELECT  COUNT (*) FROM FORMA_PAGAMENTO WHERE id_formaPagamento != @ID AND tipo_pagamento = @NOME AND apagado = 0", obj.objCon);
+                cmd.Parameters.AddWithValue("@ID", id_formaPagamento);
+                cmd.Parameters.AddWithValue("@NOME", nome);
                 Leitor = cmd.ExecuteReader();
 
                 

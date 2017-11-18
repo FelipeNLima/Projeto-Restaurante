@@ -122,7 +122,9 @@ namespace Projeto_Restaurante.Modelos
                 obj.conectar();
 
                 SqlDataReader Leitor = null;
-                SqlCommand cmd = new SqlCommand("SELECT  COUNT (*) FROM GARCOM WHERE id_garcom != '" + id_garcom + "' AND Codigo= '" + codigo + "' AND apagado = 0", obj.objCon);
+                SqlCommand cmd = new SqlCommand("SELECT  COUNT (*) FROM GARCOM WHERE id_garcom != @ID AND Codigo= @CODIGO AND apagado = 0", obj.objCon);
+                cmd.Parameters.AddWithValue("@ID", id_garcom);
+                cmd.Parameters.AddWithValue("@CODIGO", codigo);
                 Leitor = cmd.ExecuteReader();
 
                 if (Leitor.Read())

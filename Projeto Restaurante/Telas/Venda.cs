@@ -446,6 +446,7 @@ namespace Projeto_Restaurante.Telas
             {
                 float valor = float.Parse(textvalortotal.Text);
                 int idmesa = int.Parse(TBtelanumerovenda.Text);
+
                 Pagamento abrir = new Pagamento(valor, idmesa);
                 abrir.ShowDialog();
             }

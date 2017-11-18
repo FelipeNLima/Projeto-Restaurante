@@ -21,7 +21,7 @@ namespace Projeto_Restaurante.Telas
         public Pagamento(float valortotal, int id_mesa)
         {
             InitializeComponent();
-            TBvalortotal.Text = valortotal.ToString();
+            TBvalortotal.Text = valortotal.ToString("N2");
             venda.CarregarVendaPorMesa(id_mesa);
             mesa.CarregarMesaPorID(id_mesa);
         }
@@ -146,18 +146,32 @@ namespace Projeto_Restaurante.Telas
         }
         public float calcularSubTotal()
         {
-            float valortotal;
-            valortotal = float.Parse(TBvalorRecebido.Text) - float.Parse(TBvalortotal.Text);
+            float valortotal =0;
+            valortotal += valortotal;
+            valortotal = float.Parse(TBvalorRecebido.Text);
             return valortotal;
         }
 
         public float CalcularTroco()
         {
+            float valor1 = 0, valor2 = 0, troco = 0;
+            valor1 = float.Parse(TBsubtotal.Text);
+            valor2 = float.Parse(TBvalortotal.Text);
+            if(valor1 > valor2)
+                troco = (valor1 - valor2);
+            return troco; 
+        }
 
-            if (float.Parse(TBvalorRecebido.Text) > float.Parse(TBvalortotal.Text))
-                float valortroco = float.Parse(TBvalortotal.Text) - float.Parse(TBsubtotal.Text);
-                return valortroco;
-            
+        public void calcularSeAbateuValor()
+        {
+            float valor1 = 0, valor2 = 0;
+            valor1 = float.Parse(TBvalortotal.Text);
+            valor2 = float.Parse(TBsubtotal.Text);
+            if (valor1 <= valor2)
+            {
+                TBvalorRecebido.Text = (" ");
+                TBopcao.Text = (" ");
+            }
         }
 
         private void TBvalorRecebido_KeyDown(object sender, KeyEventArgs e)
@@ -165,6 +179,9 @@ namespace Projeto_Restaurante.Telas
             if (e.KeyCode == Keys.Enter)
             {
                 calcularSubTotal();
+                preencherLabel();
+                calcularSeAbateuValor();
+                preencherLabel();
             }
         }
     }

@@ -185,12 +185,5 @@ GO
 --update mesa set Status = 0
 --go
 
-SELECT 
-                                id_bandeiras,
-                                nome_bandeiras,   
-                                taxa,
-                                FORMA_PAGAMENTO.tipo_pagamento 
-                                FROM BANDEIRA_CARTAO 
-								INNER JOIN FORMA_PAGAMENTO ON FORMA_PAGAMENTO.id_formaPagamento = BANDEIRA_CARTAO.id_formaPagamento 
-                                WHERE BANDEIRA_CARTAO.apagado = 0
+SELECT * from VENDA
 go

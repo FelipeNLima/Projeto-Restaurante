@@ -107,6 +107,7 @@ namespace Projeto_Restaurante.Modelos
             bool correto = false;
 
             string sql = "DELETE FROM RESTAURANTE WHERE id_restaurante = '" + id + "'";
+
             obj.cmd = new System.Data.SqlClient.SqlCommand(sql, obj.objCon);
             try
             {
@@ -134,8 +135,8 @@ namespace Projeto_Restaurante.Modelos
             {
                 obj.conectar();
                 SqlDataReader Leitor = null;
-                SqlCommand cmd = new SqlCommand("SELECT Nome_restaurante,IE,CNPJ,Nome_fantasia,email,Telefone,Endereco,numero,Cidade,Estado,cep  FROM RESTAURANTE WHERE id_restaurante = '" + id + "'", obj.objCon);
-
+                SqlCommand cmd = new SqlCommand("SELECT Nome_restaurante,IE,CNPJ,Nome_fantasia,email,Telefone,Endereco,numero,Cidade,Estado,cep  FROM RESTAURANTE WHERE id_restaurante = @ID", obj.objCon);
+                cmd.Parameters.AddWithValue("@ID", id);
                 Leitor = cmd.ExecuteReader();
 
                 if (Leitor.Read())

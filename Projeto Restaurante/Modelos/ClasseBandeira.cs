@@ -152,7 +152,6 @@ namespace Projeto_Restaurante.Modelos
 
         }
 
-
         public static List<ClasseBandeira> CarregarBandeira()
         {
 

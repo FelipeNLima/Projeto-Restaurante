@@ -90,8 +90,9 @@ namespace Projeto_Restaurante.Modelos
 				obj.conectar();
 				int Codigo = ID;
 				SqlDataReader Leitor = null;
-				SqlCommand cmd = new SqlCommand("SELECT descricao FROM CATEGORIACARDAPIO WHERE id_categoriacardapio = '" + Codigo + "'", obj.objCon);
-				Leitor = cmd.ExecuteReader();
+				SqlCommand cmd = new SqlCommand("SELECT descricao FROM CATEGORIACARDAPIO WHERE id_categoriacardapio = @CODIGO", obj.objCon);
+                cmd.Parameters.AddWithValue("@CODIGO", ID);
+                Leitor = cmd.ExecuteReader();
 
 				if (Leitor.Read())
 				{
