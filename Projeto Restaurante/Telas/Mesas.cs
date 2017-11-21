@@ -140,5 +140,11 @@ namespace Projeto_Restaurante.Telas
             abrir.ShowDialog();
             CarregarMesas();
         }
+
+        private void BTmenuprincipal_Click(object sender, EventArgs e)
+        {
+            Principal abrir = new Principal();
+            abrir.ShowDialog();
+        }
     }
 }

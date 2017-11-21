@@ -113,11 +113,6 @@ namespace Projeto_Restaurante.Modelos
             AtualizarMesa();
         }
 
-        public void MudarParaAusente()
-        {
-            status = StatusMesa.Ausente;
-            AtualizarMesa();
-        }
 
 
 

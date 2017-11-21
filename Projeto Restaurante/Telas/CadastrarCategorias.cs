@@ -179,33 +179,40 @@ namespace Projeto_Restaurante.Telas
 
 		private void TSBcadastrar_Click(object sender, EventArgs e)
 		{
-			if (cardapio)
-			{
+            try
+            {
+                Verificações.VerificarCampos.Validar(Controls);
+                if (cardapio)
+                {
 
-				if (cadastrar)
-				{
-                    
-					cadastrarCategoriaCardapio();
-				}
-				else
-				{
-                    
-                    AtualizarCategoriaCardapio();
+                    if (cadastrar)
+                    {
 
-				}
-			}
-			else 
-			{
-				if (cadastrar)
-				{
-					
-					cadastrarCategoriaProduto();
-				}
-				else
-				{
-					AtualizarCategoriaProduto();
-				}
-			}
+                        cadastrarCategoriaCardapio();
+                    }
+                    else
+                    {
+
+                        AtualizarCategoriaCardapio();
+
+                    }
+                }
+                else
+                {
+                    if (cadastrar)
+                    {
+
+                        cadastrarCategoriaProduto();
+                    }
+                    else
+                    {
+                        AtualizarCategoriaProduto();
+                    }
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 		}
 
 		private void TBdescricao_KeyPress(object sender, KeyPressEventArgs e)

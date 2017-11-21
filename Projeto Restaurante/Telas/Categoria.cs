@@ -216,31 +216,38 @@ namespace Projeto_Restaurante.Telas
 
 		private void BTpesquisa_Click(object sender, EventArgs e)
 		{
+            try
+            {
+                Verificações.VerificarCampos.Validar(Controls);
 
-			if (radioButton1.Checked)
-			{
-				if (TBpesquisa.Text == string.Empty)
-				{
-					MessageBox.Show("Escreva o nome da Categoria para pesquisar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (radioButton1.Checked)
+                {
+                    if (TBpesquisa.Text == string.Empty)
+                    {
+                        MessageBox.Show("Escreva o nome da Categoria para pesquisar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-				}
-				else
-				{
-					CarregarListViewCardapio();
-				}
-			}
-			else
-			{
-				if (TBpesquisa.Text == string.Empty)
-				{
-					MessageBox.Show("Escreva o nome da Categoria para pesquisar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        CarregarListViewCardapio();
+                    }
+                }
+                else
+                {
+                    if (TBpesquisa.Text == string.Empty)
+                    {
+                        MessageBox.Show("Escreva o nome da Categoria para pesquisar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-				}
-				else
-				{
-					CarregarListViewProduto();
-				}
-			}
+                    }
+                    else
+                    {
+                        CarregarListViewProduto();
+                    }
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 		}
 
 		private void radioButton1_Click(object sender, EventArgs e)

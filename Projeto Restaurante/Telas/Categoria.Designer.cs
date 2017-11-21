@@ -61,7 +61,7 @@
             this.TSBdeletar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 284);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(643, 55);
+            this.toolStrip1.Size = new System.Drawing.Size(649, 55);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -163,7 +163,7 @@
             this.LVcategoria.GridLines = true;
             this.LVcategoria.Location = new System.Drawing.Point(0, 88);
             this.LVcategoria.Name = "LVcategoria";
-            this.LVcategoria.Size = new System.Drawing.Size(643, 193);
+            this.LVcategoria.Size = new System.Drawing.Size(649, 193);
             this.LVcategoria.TabIndex = 17;
             this.LVcategoria.UseCompatibleStateImageBehavior = false;
             this.LVcategoria.View = System.Windows.Forms.View.Details;
@@ -182,7 +182,7 @@
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(10, 7);
+            this.groupBox1.Location = new System.Drawing.Point(12, 7);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(174, 75);
             this.groupBox1.TabIndex = 18;
@@ -217,7 +217,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(643, 339);
+            this.ClientSize = new System.Drawing.Size(649, 339);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.LVcategoria);

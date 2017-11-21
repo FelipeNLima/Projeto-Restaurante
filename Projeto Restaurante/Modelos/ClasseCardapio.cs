@@ -163,34 +163,6 @@ namespace Projeto_Restaurante.Modelos
             }
             return listadecardapio;
         }
-
-        public void CarregarIDCardapio(string nome)
-        {
-            Conexao obj = new Conexao();
-            try
-            {
-                obj.conectar();
-                
-                SqlDataReader Leitor = null;
-                SqlCommand cmd = new SqlCommand("SELECT  id_cardapio FROM CARDAPIO WHERE nome_item = @CODIGO", obj.objCon);
-                cmd.Parameters.AddWithValue("@CODIGO", nome);
-
-                Leitor = cmd.ExecuteReader();
-
-                if (Leitor.Read())
-                {
-                    this.nome_item = nome;
-                    id_cardapio = int.Parse((Leitor["id_cardapio"].ToString()));
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.ToString());
-            }
-            finally
-            {
-                obj.desconectar();
-            }
-        }
+        
 	}
 }

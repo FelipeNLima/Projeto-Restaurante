@@ -118,14 +118,21 @@ namespace Projeto_Restaurante
 
         private void BTpesquisa_Click(object sender, EventArgs e)
         {
-            if (TBpesquisa.Text == string.Empty)
+            try
             {
-                MessageBox.Show("Escreva o nome da Bandeira de Cartão para pesquisar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Verificações.VerificarCampos.Validar(Controls);
+                if (TBpesquisa.Text == string.Empty)
+                {
+                    MessageBox.Show("Escreva o nome da Bandeira de Cartão para pesquisar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            }
-            else
+                }
+                else
+                {
+                    CarregarListView();
+                }
+            }catch(Exception ex)
             {
-                CarregarListView();
+                MessageBox.Show(ex.Message);
             }
         }
 

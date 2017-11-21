@@ -113,17 +113,24 @@ namespace Projeto_Restaurante
 
         private void TSBcadastrar_Click(object sender, EventArgs e)
         {
-            if (VerificaBandeira())
+            try
             {
+                Verificações.VerificarCampos.Validar(Controls);
+                if (VerificaBandeira())
+                {
 
-                if (cadastrar)
-                {
-                    cadastrarBandeira();
+                    if (cadastrar)
+                    {
+                        cadastrarBandeira();
+                    }
+                    else
+                    {
+                        AtualizarBandeira();
+                    }
                 }
-                else
-                {
-                    AtualizarBandeira();
-                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

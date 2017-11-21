@@ -48,7 +48,15 @@ namespace Projeto_Restaurante
 
         private void BT_logar_Click(object sender, EventArgs e)
         {
-            logar();
+            try
+            {
+                Verificações.VerificarCampos.Validar(Controls);
+
+                logar();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BT_sair_Click(object sender, EventArgs e)

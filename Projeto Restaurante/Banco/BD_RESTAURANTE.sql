@@ -22,9 +22,9 @@ go
 
 CREATE TABLE PAGAMENTO (
 id_pagamento				int		PRIMARY KEY		IDENTITY,
-Valor						decimal(9,2),
+Valor_total					decimal(9,2),
+Valor_recebido				decimal(9,2),
 data						date,
-apagado						bit,
 troco						decimal(9,2), 
 id_venda					int,
 id_formaPagamento			int,
@@ -186,4 +186,11 @@ GO
 --go
 
 SELECT * from VENDA
+go
+
+SELECT * FROM PAGAMENTO
+GO
+
+SELECT SUM (Valor_recebido) AS 'Valor SubTotal'
+from PAGAMENTO
 go

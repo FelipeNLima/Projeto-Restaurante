@@ -138,12 +138,6 @@
     <Compile Include="Telas\Categoria.Designer.cs">
       <DependentUpon>Categoria.cs</DependentUpon>
     </Compile>
-    <Compile Include="Telas\Consumo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Telas\Consumo.Designer.cs">
-      <DependentUpon>Consumo.cs</DependentUpon>
-    </Compile>
     <Compile Include="Telas\CouvertArtistico.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,6 +222,7 @@
     <Compile Include="Verificações\criptografia.cs" />
     <Compile Include="Verificações\Entradas.cs" />
     <Compile Include="Verificações\ValidadorCNPJ.cs" />
+    <Compile Include="Verificações\VerificarCampos.cs" />
     <EmbeddedResource Include="Telas\CadastrarCardapio.resx">
       <DependentUpon>CadastrarCardapio.cs</DependentUpon>
     </EmbeddedResource>
@@ -260,9 +255,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Categoria.resx">
       <DependentUpon>Categoria.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Telas\Consumo.resx">
-      <DependentUpon>Consumo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\CouvertArtistico.resx">
       <DependentUpon>CouvertArtistico.cs</DependentUpon>

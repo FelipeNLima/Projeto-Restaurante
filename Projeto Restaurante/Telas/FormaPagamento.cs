@@ -64,14 +64,21 @@ namespace Projeto_Restaurante.Telas
 
         private void BTpesquisa_Click(object sender, EventArgs e)
         {
-            if (TBpesquisa.Text == string.Empty)
+            try
             {
-                MessageBox.Show("Escreva o nome da Forma de Pagamento para pesquisar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Verificações.VerificarCampos.Validar(Controls);
+                if (TBpesquisa.Text == string.Empty)
+                {
+                    MessageBox.Show("Escreva o nome da Forma de Pagamento para pesquisar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            }
-            else
+                }
+                else
+                {
+                    CarregarListView();
+                }
+            }catch(Exception ex)
             {
-                CarregarListView();
+                MessageBox.Show(ex.Message);
             }
         }
 

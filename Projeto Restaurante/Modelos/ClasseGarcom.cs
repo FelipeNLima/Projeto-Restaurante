@@ -79,6 +79,42 @@ namespace Projeto_Restaurante.Modelos
 
         }
 
+        public bool AtualizarGarcom(int codigo)
+        {
+            Conexao obj = new Conexao();
+
+            bool correto = false;
+
+            try
+            {
+                obj.conectar();
+
+                string sql = "UPDATE GARCOM SET nome_garcom=@NOME_GARCOM, codigo=@CODIGO, taxa_servico=@TAXA, apagado=@APAGADO  WHERE codigo = @ID";
+
+                obj.cmd = new System.Data.SqlClient.SqlCommand(sql, obj.objCon);
+                obj.cmd.Parameters.AddWithValue("@ID", codigo);
+
+                obj.cmd.Parameters.AddWithValue("@NOME_GARCOM", nome_garcom);
+                obj.cmd.Parameters.AddWithValue("@CODIGO", codigo);
+                obj.cmd.Parameters.AddWithValue("@TAXA",taxa_serviço);
+                obj.cmd.Parameters.AddWithValue("@APAGADO", apagado);
+                obj.cmd.Parameters.AddWithValue("@ID_GARCOM", id_garcom);
+
+
+                obj.cmd.ExecuteNonQuery();
+
+                correto = true;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+                throw;
+            }
+            finally { obj.desconectar(); }
+            return correto;
+
+        }
+
         public void Deletargarcom()
         {
             this.apagado = true;

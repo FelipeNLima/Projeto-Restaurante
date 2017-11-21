@@ -27,20 +27,27 @@ namespace Projeto_Restaurante.Telas
 
         private void BTsalvar_Click(object sender, EventArgs e)
         {
-            mesa.CarregarMesaPorID(int.Parse(TBmesaatual.Text));
-            mesa.status = Modelos.StatusMesa.Disponivel;
-            mesa.AtualizarMesa();
+            try
+            {
+                Verificações.VerificarCampos.Validar(Controls);
 
-            mesa.CarregarMesaPorID(int.Parse(TBmesanova.Text));
-            mesa.status = Modelos.StatusMesa.Ocupado;
-            mesa.AtualizarMesa();
+                mesa.CarregarMesaPorID(int.Parse(TBmesaatual.Text));
+                mesa.status = Modelos.StatusMesa.Disponivel;
+                mesa.AtualizarMesa();
 
-            venda.CarregarVendaPorMesa(int.Parse(TBmesaatual.Text));
-            venda.mesa.id_mesa = int.Parse(TBmesanova.Text);
+                mesa.CarregarMesaPorID(int.Parse(TBmesanova.Text));
+                mesa.status = Modelos.StatusMesa.Ocupado;
+                mesa.AtualizarMesa();
 
-            venda.Data_saida = DateTime.Now;
-            venda.AtualizarVenda();
+                venda.CarregarVendaPorMesa(int.Parse(TBmesaatual.Text));
+                venda.mesa.id_mesa = int.Parse(TBmesanova.Text);
 
+                venda.Data_saida = DateTime.Now;
+                venda.AtualizarVenda();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             Close();
         }
     }

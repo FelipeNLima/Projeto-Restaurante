@@ -66,6 +66,7 @@
             this.BTmenuprincipal.TabIndex = 2;
             this.BTmenuprincipal.Text = "Menu Principal   (F7) ";
             this.BTmenuprincipal.UseVisualStyleBackColor = true;
+            this.BTmenuprincipal.Click += new System.EventHandler(this.BTmenuprincipal_Click);
             // 
             // panel2
             // 

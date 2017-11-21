@@ -31,14 +31,21 @@ namespace Projeto_Restaurante
 
         private void TSBadicionar_Click(object sender, EventArgs e)
         {
-            if (cadastrar)
+            try
             {
-                cadastrarProduto();
+                Verificações.VerificarCampos.Validar(Controls);
+                if (cadastrar)
+                {
+                    cadastrarProduto();
 
-            }
-            else
+                }
+                else
+                {
+                    AtualizarProduto();
+                }
+            }catch(Exception ex)
             {
-                AtualizarProduto();
+                MessageBox.Show(ex.Message);
             }
         }
 

@@ -104,16 +104,24 @@ namespace Projeto_Restaurante.Telas
 
         private void TSBcadastrar_Click(object sender, EventArgs e)
         {
-            if (VerificaFormaPagamento())
+            try
             {
-                if (cadastrar)
+                Verificações.VerificarCampos.Validar(Controls);
+                if (VerificaFormaPagamento())
                 {
-                    cadastrarFormaPagamento();
+                    if (cadastrar)
+                    {
+                        cadastrarFormaPagamento();
+                    }
+                    else
+                    {
+                        AtualizarFormaPagamento();
+                    }
                 }
-                else
-                {
-                    AtualizarFormaPagamento();
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

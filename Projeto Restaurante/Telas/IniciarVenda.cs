@@ -26,12 +26,20 @@ namespace Projeto_Restaurante.Telas
 
 		private void BTabrir_Click(object sender, EventArgs e)
 		{
-			string numerogarcom = TBnumerogarçom.Text;
-			string numeropessoa = TBnumeropessoas.Text;
-			mesa.MudarParaOcupado();
-			Telas.Venda abrir = new Venda(mesa, numerogarcom, numeropessoa);
-			abrir.ShowDialog();
-			Hide();
+            try
+            {
+                Verificações.VerificarCampos.Validar(Controls);
+
+                string numerogarcom = TBnumerogarçom.Text;
+                string numeropessoa = TBnumeropessoas.Text;
+                mesa.MudarParaOcupado();
+                Telas.Venda abrir = new Venda(mesa, numerogarcom, numeropessoa);
+                abrir.ShowDialog();
+                Hide();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 		}
 
 		private void BTsair_Click(object sender, EventArgs e)

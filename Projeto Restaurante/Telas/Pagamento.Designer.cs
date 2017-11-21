@@ -65,6 +65,7 @@
             this.TBvalortotal.Name = "TBvalortotal";
             this.TBvalortotal.Size = new System.Drawing.Size(330, 29);
             this.TBvalortotal.TabIndex = 1;
+            this.TBvalortotal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBvalortotal_KeyPress);
             // 
             // TBsubtotal
             // 
@@ -73,6 +74,7 @@
             this.TBsubtotal.Name = "TBsubtotal";
             this.TBsubtotal.Size = new System.Drawing.Size(166, 29);
             this.TBsubtotal.TabIndex = 3;
+            this.TBsubtotal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBsubtotal_KeyPress);
             // 
             // label2
             // 
@@ -92,6 +94,7 @@
             this.TBvalorRecebido.Size = new System.Drawing.Size(258, 29);
             this.TBvalorRecebido.TabIndex = 5;
             this.TBvalorRecebido.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TBvalorRecebido_KeyDown);
+            this.TBvalorRecebido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBvalorRecebido_KeyPress);
             // 
             // label3
             // 
@@ -110,6 +113,7 @@
             this.TBopcao.Name = "TBopcao";
             this.TBopcao.Size = new System.Drawing.Size(66, 29);
             this.TBopcao.TabIndex = 7;
+            this.TBopcao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBopcao_KeyPress);
             // 
             // label4
             // 
@@ -170,7 +174,7 @@
             this.LVbandeiracartao.GridLines = true;
             this.LVbandeiracartao.Location = new System.Drawing.Point(12, 216);
             this.LVbandeiracartao.Name = "LVbandeiracartao";
-            this.LVbandeiracartao.Size = new System.Drawing.Size(335, 224);
+            this.LVbandeiracartao.Size = new System.Drawing.Size(335, 315);
             this.LVbandeiracartao.TabIndex = 13;
             this.LVbandeiracartao.UseCompatibleStateImageBehavior = false;
             this.LVbandeiracartao.View = System.Windows.Forms.View.Details;
@@ -183,7 +187,7 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Bandeira do Cartão";
-            this.columnHeader2.Width = 193;
+            this.columnHeader2.Width = 232;
             // 
             // label5
             // 
@@ -197,6 +201,8 @@
             // 
             // CBformapagamento
             // 
+            this.CBformapagamento.BackColor = System.Drawing.SystemColors.Window;
+            this.CBformapagamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBformapagamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBformapagamento.FormattingEnabled = true;
             this.CBformapagamento.Location = new System.Drawing.Point(17, 103);
@@ -209,7 +215,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(815, 547);
+            this.ClientSize = new System.Drawing.Size(811, 543);
             this.ControlBox = false;
             this.Controls.Add(this.CBformapagamento);
             this.Controls.Add(this.label5);
@@ -226,13 +232,14 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.TBvalortotal);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Pagamento";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pagamento";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Pagamento_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Pagamento_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

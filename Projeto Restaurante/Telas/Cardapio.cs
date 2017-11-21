@@ -131,15 +131,23 @@ namespace Projeto_Restaurante.Telas
 
 		private void BTpesquisa_Click(object sender, EventArgs e)
 		{
-			if (TBpesquisa.Text == string.Empty)
-			{
-				MessageBox.Show("Escreva o nome do Prato para pesquisar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                Verificações.VerificarCampos.Validar(Controls);
+                if (TBpesquisa.Text == string.Empty)
+                {
+                    MessageBox.Show("Escreva o nome do Prato para pesquisar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-			}
-			else
-			{
-				CarregarListView();
-			}
+                }
+                else
+                {
+                    CarregarListView();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 		}
 
 		private void TBpesquisa_KeyPress(object sender, KeyPressEventArgs e)

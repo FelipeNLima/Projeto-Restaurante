@@ -10,142 +10,151 @@ using System.Windows.Forms;
 
 namespace Projeto_Restaurante.Telas
 {
-	
+
     public partial class CadastrarCardapio : Form
     {
-		bool cadastrar;
-		int id;
+        bool cadastrar;
+        int id;
 
-		List<Modelos.ClasseCategoria_Cardapio> lista = new List<Modelos.ClasseCategoria_Cardapio>();
+        List<Modelos.ClasseCategoria_Cardapio> lista = new List<Modelos.ClasseCategoria_Cardapio>();
 
-		public CadastrarCardapio()
+        public CadastrarCardapio()
         {
             InitializeComponent();
-			cadastrar = true; 
+            cadastrar = true;
         }
 
-		public CadastrarCardapio(int id)
-		{
-			InitializeComponent();
-			this.id = id;
-			cadastrar = false;
-			this.Text = "Editar Cardápio";
-		}
+        public CadastrarCardapio(int id)
+        {
+            InitializeComponent();
+            this.id = id;
+            cadastrar = false;
+            this.Text = "Editar Cardápio";
+        }
 
-		public void cadastrarCardapio()
-		{
-			Modelos.ClasseCardapio cardapio = new Modelos.ClasseCardapio();
+        public void cadastrarCardapio()
+        {
+            Modelos.ClasseCardapio cardapio = new Modelos.ClasseCardapio();
 
-			cardapio.nome_item = TBnomeprato.Text;
-			cardapio.preco_item = float.Parse(TBvalorprato.Text);
-			cardapio.categoria = lista[CBcategoriaprato.SelectedIndex];
-			cardapio.apagado = false;
-
-
-			bool certo = cardapio.CadastrarCardapio();
-			try
-			{
-				if (certo)
-				{
-					MessageBox.Show("Cardápio Cadastrado com Sucesso! ", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-					Close();
-				}
-				else
-				{
-					MessageBox.Show("Erro ao Cadastrar Cardápio! ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				}
-			}
-
-			catch (Exception erro)
-			{
-				MessageBox.Show(erro + "Erro Ocorrido");
-			}
-
-		}
-
-		public void AtualizarCardapio()
-		{
-			Modelos.ClasseCardapio cardapio = new Modelos.ClasseCardapio();
-
-			cardapio.id_cardapio = id;
-			cardapio.nome_item = TBnomeprato.Text;
-			cardapio.preco_item = float.Parse(TBvalorprato.Text);
-			cardapio.categoria = lista[CBcategoriaprato.SelectedIndex];
-			cardapio.apagado = false;
+            cardapio.nome_item = TBnomeprato.Text;
+            cardapio.preco_item = float.Parse(TBvalorprato.Text);
+            cardapio.categoria = lista[CBcategoriaprato.SelectedIndex];
+            cardapio.apagado = false;
 
 
-			bool certo = cardapio.AtualizarCardapio();
-			try
-			{
-				if (certo)
-				{
-					MessageBox.Show("Cardápio Atualizado com Sucesso! ", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-					Close();
-				}
-				else
-				{
-					MessageBox.Show("Erro ao Atualizar Cardápio! ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-				}
-			}
+            bool certo = cardapio.CadastrarCardapio();
+            try
+            {
+                if (certo)
+                {
+                    MessageBox.Show("Cardápio Cadastrado com Sucesso! ", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao Cadastrar Cardápio! ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
 
-			catch (Exception erro)
-			{
-				MessageBox.Show(erro + "Erro Ocorrido");
-			}
-		}
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro + "Erro Ocorrido");
+            }
 
-		public void CarregarDados()
-		{
-			Modelos.ClasseCardapio cardapio = new Modelos.ClasseCardapio();
+        }
 
-			cardapio.CarregarPorId(id);
-			TBnomeprato.Text = cardapio.nome_item;
-			TBvalorprato.Text = cardapio.preco_item.ToString();
-			CBcategoriaprato.SelectedItem = Modelos.ClasseCategoria_Cardapio.CarregarCategoriaCardapio();
-		}
+        public void AtualizarCardapio()
+        {
+            Modelos.ClasseCardapio cardapio = new Modelos.ClasseCardapio();
 
-		private void TSBsair_Click(object sender, EventArgs e)
+            cardapio.id_cardapio = id;
+            cardapio.nome_item = TBnomeprato.Text;
+            cardapio.preco_item = float.Parse(TBvalorprato.Text);
+            cardapio.categoria = lista[CBcategoriaprato.SelectedIndex];
+            cardapio.apagado = false;
+
+
+            bool certo = cardapio.AtualizarCardapio();
+            try
+            {
+                if (certo)
+                {
+                    MessageBox.Show("Cardápio Atualizado com Sucesso! ", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao Atualizar Cardápio! ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            catch (Exception erro)
+            {
+                MessageBox.Show(erro + "Erro Ocorrido");
+            }
+        }
+
+        public void CarregarDados()
+        {
+            Modelos.ClasseCardapio cardapio = new Modelos.ClasseCardapio();
+
+            cardapio.CarregarPorId(id);
+            TBnomeprato.Text = cardapio.nome_item;
+            TBvalorprato.Text = cardapio.preco_item.ToString();
+            CBcategoriaprato.SelectedItem = Modelos.ClasseCategoria_Cardapio.CarregarCategoriaCardapio();
+        }
+
+        private void TSBsair_Click(object sender, EventArgs e)
         {
             Hide();
         }
 
-		private void CadastrarCardapio_Load(object sender, EventArgs e)
-		{
-			lista = Modelos.ClasseCategoria_Cardapio.CarregarCategoriaCardapio();
+        private void CadastrarCardapio_Load(object sender, EventArgs e)
+        {
+            lista = Modelos.ClasseCategoria_Cardapio.CarregarCategoriaCardapio();
 
-			foreach (var item in lista)
-			{
-				CBcategoriaprato.Items.Add(item.descricao);
-			}
+            foreach (var item in lista)
+            {
+                CBcategoriaprato.Items.Add(item.descricao);
+            }
 
-			// VERIFICA SE EH ATUALZAR
-			if (!cadastrar)
-				CarregarDados();
-		}
+            // VERIFICA SE EH ATUALZAR
+            if (!cadastrar)
+                CarregarDados();
+        }
 
-		private void TSBcadastrar_Click(object sender, EventArgs e)
-		{
-			if (cadastrar)
-			{
-				cadastrarCardapio();
+        private void TSBcadastrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Verificações.VerificarCampos.Validar(Controls);
 
-			}
-			else
-			{
-				AtualizarCardapio();
-			}
-		}
+                if (cadastrar)
+                {
+                    cadastrarCardapio();
 
-		private void TBnomeprato_KeyPress(object sender, KeyPressEventArgs e)
-		{
-			Verificações.Entradas usar = new Verificações.Entradas();
-			usar.VerificaLetra(e);
-		}
+                }
+                else
+                {
+                    AtualizarCardapio();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
-		private void TBvalorprato_KeyPress(object sender, KeyPressEventArgs e)
-		{
-			Verificações.Entradas usar = new Verificações.Entradas();
-			usar.VerificaNumero(e);
-		}
-	}
+        private void TBnomeprato_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Verificações.Entradas usar = new Verificações.Entradas();
+            usar.VerificaLetra(e);
+        }
+
+        private void TBvalorprato_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Verificações.Entradas usar = new Verificações.Entradas();
+            usar.VerificaNumero(e);
+        }
+    }
 }

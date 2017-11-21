@@ -2,13 +2,8 @@
 using Projeto_Restaurante.Modelos;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Projeto_Restaurante.Telas
@@ -17,23 +12,31 @@ namespace Projeto_Restaurante.Telas
     {
         ClasseVenda venda = new ClasseVenda();
         ClasseMesa mesa = new ClasseMesa();
+        ClassePagamento pagamento = new ClassePagamento();
         List<ClasseFormaPagamento> listaformapagamento = new List<ClasseFormaPagamento>();
+        int idmesa;
+        public bool alterou;
+
         public Pagamento(float valortotal, int id_mesa)
         {
             InitializeComponent();
             TBvalortotal.Text = valortotal.ToString("N2");
-            venda.CarregarVendaPorMesa(id_mesa);
-            mesa.CarregarMesaPorID(id_mesa);
+            this.idmesa = id_mesa;
         }
 
-        public void EfetuarPagamento()
+        public bool EfetuarPagamento()
         {
             Modelos.ClassePagamento pagamento = new Modelos.ClassePagamento();
 
-            pagamento.Valor = float.Parse(TBvalortotal.Text);
+            pagamento.Valor_total = float.Parse(TBvalortotal.Text);
+            pagamento.Valor_recebido = float.Parse(TBvalorRecebido.Text);
             pagamento.data = DateTime.Now;
+            if(TBtroco.Text == "")
+            {
+                TBtroco.Text = "0";
+            } 
             pagamento.troco = float.Parse(TBtroco.Text);
-            pagamento.apagado = false;
+            venda.CarregarVendaPorMesa(idmesa);
             pagamento.venda = venda;
             pagamento.formaPagamento = listaformapagamento[CBformapagamento.SelectedIndex];
             ClasseBandeira bandeira = new ClasseBandeira();
@@ -44,23 +47,8 @@ namespace Projeto_Restaurante.Telas
             pagamento.caixa = caixa;
 
             bool certo = pagamento.CadastrarPagamento();
-            try
-            {
-                if (certo)
-                {
-                    MessageBox.Show("Bandeira do Cartão Cadastrada com Sucesso! ", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Close();
-                }
-                else
-                {
-                    MessageBox.Show("Erro ao Cadastrar Bandeira do Cartão! ", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            return certo;
 
-            catch (Exception erro)
-            {
-                MessageBox.Show(erro + "Erro Ocorrido");
-            }
         }
 
         public void CarregarListViewBandeira(int opcao)
@@ -132,57 +120,121 @@ namespace Projeto_Restaurante.Telas
         private void BTok_Click(object sender, EventArgs e)
         {
             ClasseMesa mesa = new ClasseMesa();
+            mesa.CarregarMesaPorID(idmesa);
             mesa.status = StatusMesa.Disponivel;
             mesa.AtualizarMesa();
-            venda.Status_Venda = StatusVenda.Disponivel;
+            venda.Status_Venda = StatusVenda.Finalizado;
             venda.AtualizarVenda();
-            EfetuarPagamento();
+            alterou = true;
+            this.Close();
+            
+
         }
 
         public void preencherLabel()
         {
-            TBsubtotal.Text = calcularSubTotal().ToString("N2");
-            TBtroco.Text = CalcularTroco().ToString("N2");
+            TBsubtotal.Text = SomaSubtotal().ToString("N2");
+            TBtroco.Text = CalcularTroco().ToString("N2");   
         }
-        public float calcularSubTotal()
+
+        public void ApagarLabel()
         {
-            float valortotal =0;
-            valortotal += valortotal;
-            valortotal = float.Parse(TBvalorRecebido.Text);
-            return valortotal;
+            CBformapagamento.Text = " ";
+            TBopcao.Text = " ";
+            TBvalorRecebido.Text = " ";
+        }
+
+        public float SomaSubtotal()
+        {
+            pagamento.CarregarPagamento();
+            float valor = 0, valor1 = 0, valor2 = 0;
+            valor1 = pagamento.Valor_recebido;
+            if(TBsubtotal.Text == "")
+            {
+                TBsubtotal.Text = "0";
+            }
+            valor2 = float.Parse(TBsubtotal.Text);
+            valor = valor1 + valor2;
+            return valor;
+            
         }
 
         public float CalcularTroco()
         {
-            float valor1 = 0, valor2 = 0, troco = 0;
-            valor1 = float.Parse(TBsubtotal.Text);
-            valor2 = float.Parse(TBvalortotal.Text);
-            if(valor1 > valor2)
-                troco = (valor1 - valor2);
+            pagamento.CarregarPagamento();
+            float troco=0, valor1 = 0, valor2 = 0;
+            valor1 = float.Parse(TBsubtotal.Text); 
+            valor2 = pagamento.Valor_total;
+            troco = valor1 - valor2;
+            if (troco < 0)
+            {
+                TBtroco.ForeColor = Color.Red;
+            }
             return troco; 
         }
 
-        public void calcularSeAbateuValor()
+        public bool calcularSeAbateuValor()
         {
-            float valor1 = 0, valor2 = 0;
-            valor1 = float.Parse(TBvalortotal.Text);
-            valor2 = float.Parse(TBsubtotal.Text);
-            if (valor1 <= valor2)
+            float valor = 0, valorSubtotal = 0;
+            pagamento.CarregarPagamento();
+            valor = pagamento.Valor_total;
+            if (TBsubtotal.Text == "")
             {
-                TBvalorRecebido.Text = (" ");
-                TBopcao.Text = (" ");
+                TBsubtotal.Text = "0";
             }
+            valorSubtotal = float.Parse(TBsubtotal.Text);
+            if (valor == valorSubtotal)
+                return true;
+            else
+                return false;
         }
 
         private void TBvalorRecebido_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+                if (e.KeyCode == Keys.Enter)
+                {
+                        EfetuarPagamento();
+                        preencherLabel();
+                        ApagarLabel();
+                    if(calcularSeAbateuValor())
+                    {
+                    MessageBox.Show("Pagamento Efetuado com Sucesso");
+                }
+
+                }
+     
+        }
+
+        private void Pagamento_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue.Equals(27)) //ESC
             {
-                calcularSubTotal();
-                preencherLabel();
-                calcularSeAbateuValor();
-                preencherLabel();
+                this.Close();
             }
+        }
+
+        private void TBvalortotal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Verificações.Entradas usar = new Verificações.Entradas();
+            usar.VerificaNumero(e);
+        }
+
+        private void TBopcao_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Verificações.Entradas usar = new Verificações.Entradas();
+            usar.VerificaNumero(e);
+        }
+
+        private void TBvalorRecebido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Verificações.Entradas usar = new Verificações.Entradas();
+            usar.VerificaNumero(e);
+        }
+
+        private void TBsubtotal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Verificações.Entradas usar = new Verificações.Entradas();
+            usar.VerificaNumero(e);
         }
     }
 }

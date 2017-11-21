@@ -128,13 +128,21 @@ namespace Projeto_Restaurante.Telas
 
         private void TSBcaixa_Click(object sender, EventArgs e)
         {
-            if (statuscaixa)
+            try
             {
-                AbrirCaixa();
-            }
-            else
+                Verificações.VerificarCampos.Validar(Controls);
+
+                if (statuscaixa)
+                {
+                    AbrirCaixa();
+                }
+                else
+                {
+                    FecharCaixa();
+                }
+            }catch(Exception ex)
             {
-                FecharCaixa();
+                MessageBox.Show(ex.Message);
             }
                         
         }

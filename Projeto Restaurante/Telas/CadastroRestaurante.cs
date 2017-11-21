@@ -29,15 +29,22 @@ namespace Projeto_Restaurante
 
 		private void TSBcadastrar_Click(object sender, EventArgs e)
 		{
-			if (validar())
-				if (cadastrar)
-				{
-					cadastrarRestaurante();
-				}
-				else
-				{
-					AtualizarRestaurante();
-				}
+            try
+            {
+                Verificações.VerificarCampos.Validar(Controls);
+                if (validar())
+                    if (cadastrar)
+                    {
+                        cadastrarRestaurante();
+                    }
+                    else
+                    {
+                        AtualizarRestaurante();
+                    }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 		}
 
 		private bool validar()

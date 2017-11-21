@@ -69,14 +69,13 @@ namespace Projeto_Restaurante.Modelos
             {
                 obj.conectar();
 
-                string sql = "UPDATE VENDA SET Desconto=@DESCONTO, Couvert_artistico=@COUVERT, Status_venda=@STATUSVENDA, Data_Saida=@DATASAIDA, id_mesa=@IDMESA, id_garcom=@IDGARCOM where id_venda = @IDVENDA";
+                string sql = "UPDATE VENDA SET Desconto=@DESCONTO, Couvert_artistico=@COUVERT, Status_venda=@STATUSVENDA, id_mesa=@IDMESA, id_garcom=@IDGARCOM where id_venda = @IDVENDA";
 
                 obj.cmd = new System.Data.SqlClient.SqlCommand(sql, obj.objCon);
 
                 obj.cmd.Parameters.AddWithValue("@DESCONTO", Desconto);
                 obj.cmd.Parameters.AddWithValue("@COUVERT", Couvert_artistico);
                 obj.cmd.Parameters.AddWithValue("@STATUSVENDA", Status_Venda);
-                obj.cmd.Parameters.AddWithValue("@DATASAIDA", Data_saida);
                 obj.cmd.Parameters.AddWithValue("@IDVENDA", id_venda);
                 obj.cmd.Parameters.AddWithValue("@IDMESA",mesa.id_mesa);
                 obj.cmd.Parameters.AddWithValue("@IDGARCOM", garcom.id_garcom);
@@ -103,7 +102,7 @@ namespace Projeto_Restaurante.Modelos
             {
                 obj.conectar();
                 SqlDataReader Leitor = null;
-                SqlCommand cmd = new SqlCommand("SELECT	Numero_pessoa,Data_entrada,Status_venda, id_garcom, id_mesa FROM VENDA  WHERE id_venda = @ID", obj.objCon);
+                SqlCommand cmd = new SqlCommand("SELECT	Numero_pessoa,Data_entrada,Status_venda, id_garcom, id_mesa FROM VENDA  WHERE id_venda = @ID AND Status_venda != 3", obj.objCon);
 
                 cmd.Parameters.AddWithValue("@ID", id);
 
@@ -138,7 +137,7 @@ namespace Projeto_Restaurante.Modelos
             {
                 obj.conectar();
                 SqlDataReader Leitor = null;
-                SqlCommand cmd = new SqlCommand("SELECT	id_venda,Numero_pessoa,Data_entrada,Status_venda, id_garcom, id_mesa FROM VENDA  WHERE id_mesa = @ID", obj.objCon);
+                SqlCommand cmd = new SqlCommand("SELECT	id_venda,Numero_pessoa,Data_entrada,Status_venda, id_garcom, id_mesa FROM VENDA  WHERE id_mesa = @ID AND Status_venda != 3", obj.objCon);
 
                 cmd.Parameters.AddWithValue("@ID", idMesa);
 

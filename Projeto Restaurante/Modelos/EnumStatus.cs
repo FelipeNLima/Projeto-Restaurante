@@ -8,7 +8,7 @@ namespace Projeto_Restaurante.Modelos
 
 	public enum StatusVenda
 	{
-		Disponivel = 0, Ocupado = 1, ReceberPagamento = 2
+		Disponivel = 0, Ocupado = 1, ReceberPagamento = 2, Finalizado = 3
 	}
 
     public enum StatusCaixa

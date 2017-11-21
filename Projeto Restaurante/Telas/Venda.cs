@@ -3,6 +3,7 @@ using Projeto_Restaurante.Conexão;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Projeto_Restaurante.Telas
 {
@@ -52,7 +53,6 @@ namespace Projeto_Restaurante.Telas
             CarregarCardapio();
             EfetuarVenda();
         }
-
 
         // VENDA
         public void EfetuarVenda()
@@ -143,11 +143,23 @@ namespace Projeto_Restaurante.Telas
         public void CadastrarConsumo()
         {
             ClasseConsumo consumo = new ClasseConsumo();
-            ClasseCardapio cardapio = listaproduto[CBproduto.SelectedIndex];
+            string verifica = "^[0-9]";
 
-            consumo.quantidade = 1;
-            consumo.Valor_total = cardapio.preco_item;
-            consumo.Cardapio = cardapio;
+            consumo.quantidade = 1; 
+            if (Regex.IsMatch(CBproduto.Text, verifica))
+            {
+                ClasseCardapio cardapio = new ClasseCardapio();
+                cardapio.CarregarPorId(int.Parse(CBproduto.Text));
+                consumo.Cardapio = cardapio;
+                consumo.Valor_total = cardapio.preco_item;
+            }
+            else
+            {
+                ClasseCardapio cardapio = listaproduto[CBproduto.SelectedIndex];
+                consumo.Cardapio = cardapio;
+                consumo.Valor_total = cardapio.preco_item;
+            }
+            
             venda.CarregarVendaPorMesa(int.Parse(TBtelanumerovenda.Text));
             consumo.Venda = venda;
             consumo.apagado = false;
@@ -185,7 +197,7 @@ namespace Projeto_Restaurante.Telas
 
         }
 
-        // 
+        // CARDAPIO
         public void CarregarCardapio()
         {
             listaproduto = ClasseCardapio.CarregarTodoCardapio();
@@ -242,7 +254,7 @@ namespace Projeto_Restaurante.Telas
 
         public float CalculaCouvert_Artistico()
         {
-            return venda.Numero_pessoa * venda.Couvert_artistico;
+            return venda.Numero_pessoa * float.Parse(TBcouvert.Text);
         }
 
         public float CalculaValorTotalDataGridView()
@@ -346,6 +358,10 @@ namespace Projeto_Restaurante.Telas
             }
             else if(e.KeyCode == Keys.F5)
             {
+                mesa.CarregarMesaPorID(int.Parse(TBtelanumerovenda.Text));
+                mesa.status = StatusMesa.Ausente;
+                mesa.AtualizarMesa();
+                alteracao = true;
                 AtualizarVenda(2);
             }
             else if(e.KeyCode == Keys.F6)
@@ -355,6 +371,7 @@ namespace Projeto_Restaurante.Telas
                     float valor = float.Parse(textvalortotal.Text);
                     int idmesa = int.Parse(TBtelanumerovenda.Text);
                     Pagamento abrir = new Pagamento(valor,idmesa);
+                    this.Close();
                     abrir.ShowDialog();
                 }
                 else
@@ -377,7 +394,6 @@ namespace Projeto_Restaurante.Telas
         {
             if (e.KeyCode == Keys.Enter)
             {
-
                 CadastrarConsumo();
                 CarregarDataGridVenda();
             }
@@ -388,6 +404,7 @@ namespace Projeto_Restaurante.Telas
             if (e.KeyCode == Keys.Enter)
             {
                 textcouvert.Text = CalculaCouvert_Artistico().ToString();
+                preencher_Label();
             }
         }
 
@@ -416,6 +433,7 @@ namespace Projeto_Restaurante.Telas
 
             }
         }
+
         private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)
@@ -431,9 +449,12 @@ namespace Projeto_Restaurante.Telas
 
         private void BTfecharMesa_Click_1(object sender, EventArgs e)
         {
-            mesa.CarregarMesaPorID(mesa.id_mesa);
+            mesa.CarregarMesaPorID(int.Parse(TBtelanumerovenda.Text));
             mesa.status = StatusMesa.Ausente;
             mesa.AtualizarMesa();
+            usargarcom.CarregarGarcom(int.Parse(TBcodigogarcom.Text));
+            usargarcom.taxa_serviço = float.Parse(texttaxaservico.Text);
+            usargarcom.Atualizargarcom();
             alteracao = true;
             AtualizarVenda(2);
             
@@ -446,9 +467,13 @@ namespace Projeto_Restaurante.Telas
             {
                 float valor = float.Parse(textvalortotal.Text);
                 int idmesa = int.Parse(TBtelanumerovenda.Text);
-
                 Pagamento abrir = new Pagamento(valor, idmesa);
                 abrir.ShowDialog();
+                if (abrir.alterou)
+                {
+                    this.Close();
+                }
+                alteracao = abrir.alterou;
             }
             else
             {

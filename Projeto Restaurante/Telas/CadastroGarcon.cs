@@ -124,17 +124,24 @@ namespace Projeto_Restaurante
 
         private void TSBcadastrar_Click(object sender, EventArgs e)
         {
-            if (VerificaGarcom())
+            try
             {
+                Verificações.VerificarCampos.Validar(Controls);
+                if (VerificaGarcom())
+                {
 
-                if (cadastrar)
-                {
-                    cadastrarGarcom();
+                    if (cadastrar)
+                    {
+                        cadastrarGarcom();
+                    }
+                    else
+                    {
+                        AtualizarGarcom();
+                    }
                 }
-                else
-                {
-                    AtualizarGarcom();
-                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

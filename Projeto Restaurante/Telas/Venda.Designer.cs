@@ -104,7 +104,7 @@
             // 
             this.TBtelanumerovenda.Enabled = false;
             this.TBtelanumerovenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 60F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TBtelanumerovenda.Location = new System.Drawing.Point(0, 12);
+            this.TBtelanumerovenda.Location = new System.Drawing.Point(5, 12);
             this.TBtelanumerovenda.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TBtelanumerovenda.Multiline = true;
             this.TBtelanumerovenda.Name = "TBtelanumerovenda";
@@ -712,6 +712,7 @@
             this.Controls.Add(this.TBtelanumerovenda);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
