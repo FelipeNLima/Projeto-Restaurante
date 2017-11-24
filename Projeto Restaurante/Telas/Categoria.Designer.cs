@@ -139,6 +139,7 @@
             this.TBpesquisa.Name = "TBpesquisa";
             this.TBpesquisa.Size = new System.Drawing.Size(320, 20);
             this.TBpesquisa.TabIndex = 13;
+            this.TBpesquisa.Tag = "*";
             this.TBpesquisa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBpesquisa_KeyPress);
             // 
             // label1
@@ -228,6 +229,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Categoria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Tag = "*";
             this.Text = "Categoria";
             this.Load += new System.EventHandler(this.Categoria_Load);
             this.toolStrip1.ResumeLayout(false);

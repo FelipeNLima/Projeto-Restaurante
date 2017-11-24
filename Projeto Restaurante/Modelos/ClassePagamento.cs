@@ -1,16 +1,17 @@
 ﻿using Projeto_Restaurante.Conexão;
 using System;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 
 namespace Projeto_Restaurante.Modelos
 {
-    
+
     class ClassePagamento
     {
         public int id_pagamento { get; set; }
         public float Valor_total { get; set; }
         public float Valor_recebido { get; set; }
-        public DateTime data { get; set; }          
+        public DateTime data { get; set; }
         public float troco { get; set; }
         public ClasseVenda venda { get; set; }
         public ClasseFormaPagamento formaPagamento { get; set; }
@@ -38,9 +39,8 @@ namespace Projeto_Restaurante.Modelos
                 obj.cmd.Parameters.AddWithValue("@TROCO", troco);
                 obj.cmd.Parameters.AddWithValue("@IDVENDA", venda.id_venda);
                 obj.cmd.Parameters.AddWithValue("@IDFORMAPAGAMENTO", formaPagamento.id_formaPagamento);
-                obj.cmd.Parameters.AddWithValue("@IDBANDEIRA", bandeiras.id_bandeira);
+                obj.cmd.Parameters.AddWithValue("@IDBANDEIRA", bandeiras.id_bandeira == 0 ? SqlInt32.Null : bandeiras.id_bandeira);
                 obj.cmd.Parameters.AddWithValue("@IDCAIXA", caixa.id_caixa);
-
 
                 obj.cmd.ExecuteNonQuery();
 
@@ -79,7 +79,10 @@ namespace Projeto_Restaurante.Modelos
                     formaPagamento = new ClasseFormaPagamento();
                     formaPagamento.id_formaPagamento = int.Parse(Leitor["id_formaPagamento"].ToString());
                     bandeiras = new ClasseBandeira();
-                    bandeiras.id_bandeira = int.Parse(Leitor["id_bandeiras"].ToString());
+                    if (Leitor["id_bandeiras"] != DBNull.Value)
+                    {
+                        bandeiras.id_bandeira = int.Parse(Leitor["id_bandeiras"].ToString());
+                    }
                     caixa = new ClasseCaixa();
                     caixa.id_caixa = int.Parse(Leitor["id_caixa"].ToString());
                 }

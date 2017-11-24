@@ -31,12 +31,6 @@ namespace Projeto_Restaurante
             abrir.ShowDialog();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Consumo abrir = new Consumo();
-            abrir.ShowDialog();
-        }
-
         private void Timer1_Tick(object sender, EventArgs e)
         {
             DateTime datahora = DateTime.Now;

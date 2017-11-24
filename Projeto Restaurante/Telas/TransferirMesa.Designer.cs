@@ -52,6 +52,7 @@
             this.TBmesaatual.Name = "TBmesaatual";
             this.TBmesaatual.Size = new System.Drawing.Size(100, 20);
             this.TBmesaatual.TabIndex = 1;
+            this.TBmesaatual.Tag = "*";
             // 
             // TBmesanova
             // 
@@ -59,6 +60,7 @@
             this.TBmesanova.Name = "TBmesanova";
             this.TBmesanova.Size = new System.Drawing.Size(100, 20);
             this.TBmesanova.TabIndex = 2;
+            this.TBmesanova.Tag = "*";
             // 
             // BTsalvar
             // 
@@ -106,6 +108,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "TransferirMesa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Tag = "*";
             this.Text = "Transferir Mesa";
             this.ResumeLayout(false);
             this.PerformLayout();

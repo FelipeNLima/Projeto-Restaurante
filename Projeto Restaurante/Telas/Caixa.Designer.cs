@@ -102,6 +102,7 @@
             this.TBvalor.Name = "TBvalor";
             this.TBvalor.Size = new System.Drawing.Size(161, 26);
             this.TBvalor.TabIndex = 3;
+            this.TBvalor.Tag = "*";
             // 
             // Caixa
             // 
@@ -117,6 +118,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Caixa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Tag = "*";
             this.Text = "Abrir Caixa";
             this.Load += new System.EventHandler(this.Caixa_Load);
             this.toolStrip1.ResumeLayout(false);

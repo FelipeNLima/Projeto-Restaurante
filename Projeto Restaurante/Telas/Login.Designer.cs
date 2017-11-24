@@ -87,6 +87,7 @@
             this.TB_usuario.Name = "TB_usuario";
             this.TB_usuario.Size = new System.Drawing.Size(237, 20);
             this.TB_usuario.TabIndex = 4;
+            this.TB_usuario.Tag = "*";
             // 
             // TB_senha
             // 
@@ -95,6 +96,7 @@
             this.TB_senha.PasswordChar = '*';
             this.TB_senha.Size = new System.Drawing.Size(237, 20);
             this.TB_senha.TabIndex = 5;
+            this.TB_senha.Tag = "*";
             this.TB_senha.UseSystemPasswordChar = true;
             // 
             // Login
@@ -116,6 +118,7 @@
             this.MinimizeBox = false;
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Tag = "*";
             this.Text = "Login";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Login_KeyDown);
             this.ResumeLayout(false);

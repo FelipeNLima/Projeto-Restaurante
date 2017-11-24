@@ -142,6 +142,7 @@ namespace Projeto_Restaurante.Telas
             CBformapagamento.Text = " ";
             TBopcao.Text = " ";
             TBvalorRecebido.Text = " ";
+            LVbandeiracartao.Items.Clear();
         }
 
         public float SomaSubtotal()
@@ -191,15 +192,17 @@ namespace Projeto_Restaurante.Telas
 
         private void TBvalorRecebido_KeyDown(object sender, KeyEventArgs e)
         {
+                       
                 if (e.KeyCode == Keys.Enter)
                 {
-                        EfetuarPagamento();
+              
+                    EfetuarPagamento();
                         preencherLabel();
                         ApagarLabel();
                     if(calcularSeAbateuValor())
                     {
-                    MessageBox.Show("Pagamento Efetuado com Sucesso");
-                }
+                        MessageBox.Show("Pagamento Efetuado com Sucesso");
+                    }
 
                 }
      

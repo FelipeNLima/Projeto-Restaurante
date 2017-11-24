@@ -141,6 +141,7 @@
             this.CBcategoriaprato.Name = "CBcategoriaprato";
             this.CBcategoriaprato.Size = new System.Drawing.Size(201, 21);
             this.CBcategoriaprato.TabIndex = 6;
+            this.CBcategoriaprato.Tag = "*";
             // 
             // CadastrarCardapio
             // 
@@ -159,6 +160,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CadastrarCardapio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Tag = "*";
             this.Text = "Cadastrar Cardápio";
             this.Load += new System.EventHandler(this.CadastrarCardapio_Load);
             this.toolStrip1.ResumeLayout(false);

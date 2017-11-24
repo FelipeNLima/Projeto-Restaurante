@@ -66,6 +66,7 @@
             this.TBpesquisa.Name = "TBpesquisa";
             this.TBpesquisa.Size = new System.Drawing.Size(387, 20);
             this.TBpesquisa.TabIndex = 9;
+            this.TBpesquisa.Tag = "*";
             this.TBpesquisa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBpesquisa_KeyPress);
             // 
             // label1
@@ -207,6 +208,7 @@
             this.MinimizeBox = false;
             this.Name = "Cartão";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Tag = "*";
             this.Text = "Cartão";
             this.Load += new System.EventHandler(this.Cartão_Load);
             this.toolStrip1.ResumeLayout(false);

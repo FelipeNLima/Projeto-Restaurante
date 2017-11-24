@@ -16,10 +16,16 @@ namespace Projeto_Restaurante.Verificações
             {
                 if (campo is TextBox)
                 {
-                    if ((campo as TextBox)?.Tag.ToString() == "*")
-                        if (string.IsNullOrEmpty((campo as TextBox).Text))
-                        throw new Exception("Campo(s) Inválido(s)!");
+                    if ((campo as TextBox)?.Tag != null)
+                        if ((campo as TextBox)?.Tag?.ToString() == "*")
+                            if (string.IsNullOrEmpty((campo as TextBox).Text))
+                                throw new Exception("Campo(s) Inválido(s)!");
                 }
+                else if (campo is ComboBox)
+                    if ((campo as ComboBox)?.Tag != null)
+                        if ((campo as ComboBox)?.Tag?.ToString() == "*")
+                            if ((campo as ComboBox)?.SelectedIndex == -1)
+                                throw new Exception("Campo(s) Inválido(s)!");
             }
         }
     }

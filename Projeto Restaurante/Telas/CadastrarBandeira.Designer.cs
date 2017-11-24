@@ -49,6 +49,7 @@
             this.TBnomeBandeira.Name = "TBnomeBandeira";
             this.TBnomeBandeira.Size = new System.Drawing.Size(246, 20);
             this.TBnomeBandeira.TabIndex = 5;
+            this.TBnomeBandeira.Tag = "*";
             this.TBnomeBandeira.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBnomeBandeira_KeyPress);
             // 
             // toolStrip1
@@ -110,6 +111,7 @@
             this.TBtaxa.Name = "TBtaxa";
             this.TBtaxa.Size = new System.Drawing.Size(246, 20);
             this.TBtaxa.TabIndex = 7;
+            this.TBtaxa.Tag = "*";
             this.TBtaxa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBtaxa_KeyPress);
             // 
             // label2
@@ -140,6 +142,7 @@
             this.CBformaPagamento.Name = "CBformaPagamento";
             this.CBformaPagamento.Size = new System.Drawing.Size(246, 21);
             this.CBformaPagamento.TabIndex = 9;
+            this.CBformaPagamento.Tag = "*";
             // 
             // CadastrarBandeira
             // 
@@ -160,6 +163,7 @@
             this.MinimizeBox = false;
             this.Name = "CadastrarBandeira";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Tag = "*";
             this.Text = "Cadastrar Bandeira";
             this.Load += new System.EventHandler(this.CadastrarBandeira_Load);
             this.toolStrip1.ResumeLayout(false);
