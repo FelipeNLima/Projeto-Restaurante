@@ -137,7 +137,7 @@ namespace Projeto_Restaurante.Modelos
             {
                 obj.conectar();
                 SqlDataReader Leitor = null;
-                SqlCommand cmd = new SqlCommand("SELECT	id_venda,Numero_pessoa,Data_entrada,Status_venda, id_garcom, id_mesa FROM VENDA  WHERE id_mesa = @ID AND Status_venda != 3", obj.objCon);
+                SqlCommand cmd = new SqlCommand("SELECT	id_venda,Numero_pessoa,Desconto,Couvert_artistico,Data_entrada,Status_venda, id_garcom, id_mesa FROM VENDA  WHERE id_mesa = @ID AND Status_venda != 3", obj.objCon);
 
                 cmd.Parameters.AddWithValue("@ID", idMesa);
 
@@ -147,6 +147,8 @@ namespace Projeto_Restaurante.Modelos
                 {
                     id_venda = int.Parse(Leitor["id_venda"].ToString());
                     Numero_pessoa = int.Parse((Leitor["Numero_pessoa"].ToString()));
+                    Desconto = float.Parse(Leitor["Desconto"].ToString());
+                    Couvert_artistico = float.Parse(Leitor["Couvert_artistico"].ToString());
                     Status_Venda = (StatusVenda)Enum.Parse(typeof(StatusVenda), Leitor["Status_venda"].ToString());
                     Data_entrada = DateTime.Parse(Leitor["Data_entrada"].ToString());
                     garcom = new ClasseGarcom();

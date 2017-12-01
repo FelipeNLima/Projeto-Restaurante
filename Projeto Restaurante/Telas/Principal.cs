@@ -31,15 +31,9 @@ namespace Projeto_Restaurante
             abrir.ShowDialog();
         }
 
-        private void Timer1_Tick(object sender, EventArgs e)
-        {
-            DateTime datahora = DateTime.Now;
-            Data.Text = " " +datahora.ToLocalTime();
-        }
-
         private void Principal_Load(object sender, EventArgs e)
         {
-            Timer1_Tick(e, e);
+            timer1_Tick_1(e,e);
         }
 
         private void TSBformapagamento_Click(object sender, EventArgs e)
@@ -94,5 +88,11 @@ namespace Projeto_Restaurante
             abrir.ShowDialog();
         }
 
+        private void timer1_Tick_1(object sender, EventArgs e)
+        {
+            DateTime datahora = DateTime.Now;
+            Data.Text = "" + datahora.ToLongDateString();
+            Hora.Text = "Hora: " + datahora.ToLongTimeString();
+        }
     }
 }

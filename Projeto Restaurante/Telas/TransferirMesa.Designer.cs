@@ -68,7 +68,7 @@
             this.BTsalvar.Name = "BTsalvar";
             this.BTsalvar.Size = new System.Drawing.Size(75, 23);
             this.BTsalvar.TabIndex = 3;
-            this.BTsalvar.Text = "Salvar";
+            this.BTsalvar.Text = "Transferir";
             this.BTsalvar.UseVisualStyleBackColor = true;
             this.BTsalvar.Click += new System.EventHandler(this.BTsalvar_Click);
             // 

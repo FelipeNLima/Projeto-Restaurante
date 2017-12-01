@@ -136,6 +136,7 @@
             this.TBcodigogarcom.Size = new System.Drawing.Size(86, 26);
             this.TBcodigogarcom.TabIndex = 6;
             this.TBcodigogarcom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TBcodigogarcom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TBcodigogarcom_KeyDown);
             // 
             // label3
             // 
@@ -413,6 +414,7 @@
             this.TBcouvert.Size = new System.Drawing.Size(86, 26);
             this.TBcouvert.TabIndex = 23;
             this.TBcouvert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TBcouvert.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TBcouvert_KeyDown);
             // 
             // label15
             // 
@@ -458,7 +460,7 @@
             this.TBdesconto.Size = new System.Drawing.Size(86, 26);
             this.TBdesconto.TabIndex = 28;
             this.TBdesconto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TBdesconto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TBdesconto_KeyPress);
+            this.TBdesconto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TBdesconto_KeyDown);
             // 
             // label18
             // 
@@ -588,6 +590,7 @@
             this.TBnumeropessoas.Size = new System.Drawing.Size(54, 26);
             this.TBnumeropessoas.TabIndex = 35;
             this.TBnumeropessoas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TBnumeropessoas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TBnumeropessoas_KeyDown);
             // 
             // label5
             // 
@@ -712,7 +715,7 @@
             this.Controls.Add(this.TBtelanumerovenda);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);

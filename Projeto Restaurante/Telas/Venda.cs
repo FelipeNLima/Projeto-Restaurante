@@ -4,12 +4,12 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace Projeto_Restaurante.Telas
 {
-    using Modelos;
-    using System.Linq;
 
+    using Modelos;
     public partial class Venda : Form
     {
         public bool alteracao;
@@ -25,20 +25,22 @@ namespace Projeto_Restaurante.Telas
         public Venda(ClasseMesa mesa)
         {
             InitializeComponent();
-            TBcouvert.Text = venda.Couvert_artistico.ToString("N2");
-            TBdesconto.Text = venda.Desconto.ToString();
             venda.CarregarVendaPorMesa(mesa.id_mesa);
+            TBcouvert.Text = venda.Couvert_artistico.ToString();
+            TBdesconto.Text = venda.Desconto.ToString();
             Time_entrada.Text = "Horario Entrada " + venda.Data_entrada.ToLongTimeString();
             TBtelanumerovenda.Text = mesa.numero.ToString();
+            TBnumeropessoas.Text = venda.Numero_pessoa.ToString();
+            usargarcom.CarregarPorId(venda.garcom.id_garcom);
+            TBcodigogarcom.Text = usargarcom.codigo.ToString();
+            TBnomegarcom.Text = usargarcom.nome_garcom.ToString();
             this.mesa = mesa;
-            venda.CarregarVendaPorMesa(mesa.id_mesa);
-            carregarVenda(mesa.id_mesa);
             CarregarCardapio();
             CarregarDataGridVenda();
         }
 
         // ABRIR MESA
-        public Venda(ClasseMesa mesa, string codigogarcom, string numeropessoas)
+        public Venda(ClasseMesa mesa, string codigogarcom, string numeropessoas, string couvertartistico)
         {
             InitializeComponent();
             this.mesa = mesa;
@@ -49,7 +51,7 @@ namespace Projeto_Restaurante.Telas
             TBnomegarcom.Text = usargarcom.nome_garcom;
             TBnumeropessoas.Text = numeropessoas;
             TBdesconto.Text = "0";
-            TBcouvert.Text = "0";
+            TBcouvert.Text = couvertartistico;
             CarregarCardapio();
             EfetuarVenda();
         }
@@ -66,8 +68,8 @@ namespace Projeto_Restaurante.Telas
             venda.garcom = usargarcom;
             venda.mesa = mesa;
             venda.Status_Venda = StatusVenda.Ocupado;
-            venda.Couvert_artistico = 0;
-            venda.Desconto = 0;
+            venda.Couvert_artistico = float.Parse(TBcouvert.Text); ;
+            venda.Desconto = float.Parse(TBdesconto.Text);
 
             venda.InserirVenda();
         }
@@ -76,7 +78,7 @@ namespace Projeto_Restaurante.Telas
         {
             venda.id_venda = venda.id_venda;
             venda.Numero_pessoa = int.Parse(TBnumeropessoas.Text);
-            venda.Desconto = CalculaDesconto();
+            venda.Desconto = float.Parse(TBdesconto.Text);
             venda.Data_saida = DateTime.Now;
             venda.Couvert_artistico = CalculaCouvert_Artistico();
             mesa.CarregarMesaPorID(int.Parse(TBtelanumerovenda.Text));
@@ -94,7 +96,7 @@ namespace Projeto_Restaurante.Telas
             }
 
             venda.AtualizarVenda();
-            Close();
+            //Close();
 
         }
 
@@ -235,7 +237,7 @@ namespace Projeto_Restaurante.Telas
         {
             float valor1, valor2;
 
-            valor1 = venda.Desconto;
+            valor1 = float.Parse(TBdesconto.Text);
             valor2 = CalcularValorTotalPagar();
 
             return valor1 * valor2 / 100;
@@ -254,7 +256,7 @@ namespace Projeto_Restaurante.Telas
 
         public float CalculaCouvert_Artistico()
         {
-            return venda.Numero_pessoa * float.Parse(TBcouvert.Text);
+            return venda.Numero_pessoa * venda.Couvert_artistico;
         }
 
         public float CalculaValorTotalDataGridView()
@@ -344,7 +346,6 @@ namespace Projeto_Restaurante.Telas
             Time_saida.Text = "Horario Saida:   " + datahora.ToLongTimeString();
         }
 
-
         // BOTOES DE ATALHOS
         private void Venda_KeyDown(object sender, KeyEventArgs e)
         {
@@ -399,15 +400,6 @@ namespace Projeto_Restaurante.Telas
             }
         }
 
-        private void TBcouvert_KeyPress(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                textcouvert.Text = CalculaCouvert_Artistico().ToString();
-                preencher_Label();
-            }
-        }
-
         private void BTvoltarMenu_KeyPress(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F4)
@@ -420,18 +412,6 @@ namespace Projeto_Restaurante.Telas
         {
             Principal voltar = new Principal();
             voltar.Show();
-        }
-
-        private void TBdesconto_KeyPress(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                textdesconto.Text = CalculaDesconto().ToString("N2");
-                int status = 1;
-                AtualizarVenda(status);
-                preencher_Label();
-
-            }
         }
 
         private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
@@ -478,6 +458,42 @@ namespace Projeto_Restaurante.Telas
             else
             {
                 MessageBox.Show("Não foi possivel efetuar o Recebimento da Mesa");
+            }
+        }
+
+        private void TBcouvert_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                preencher_Label();
+            }
+        }
+
+        private void TBdesconto_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                AtualizarVenda(1);
+                preencher_Label();
+            }
+        }
+
+        private void TBnumeropessoas_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                preencher_Label();
+            }
+        }
+
+        private void TBcodigogarcom_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                ClasseGarcom garcom = new ClasseGarcom();
+                garcom.CarregarPorId(int.Parse(TBcodigogarcom.Text));
+                TBnomegarcom.Text = garcom.nome_garcom;
+                AtualizarVenda(1);
             }
         }
     }

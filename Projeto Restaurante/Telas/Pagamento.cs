@@ -40,8 +40,16 @@ namespace Projeto_Restaurante.Telas
             pagamento.venda = venda;
             pagamento.formaPagamento = listaformapagamento[CBformapagamento.SelectedIndex];
             ClasseBandeira bandeira = new ClasseBandeira();
-            bandeira.CarregarPorID(int.Parse(TBopcao.Text));
-            pagamento.bandeiras = bandeira;
+            if(TBopcao.Text == "")
+            {
+                TBopcao.Text = null;
+                pagamento.bandeiras = bandeira;
+            }
+            else
+            {
+                bandeira.CarregarPorID(int.Parse(TBopcao.Text));
+                pagamento.bandeiras = bandeira;
+            }
             ClasseCaixa caixa = new ClasseCaixa();
             caixa.CarregarCaixa();
             pagamento.caixa = caixa;
@@ -196,7 +204,7 @@ namespace Projeto_Restaurante.Telas
                 if (e.KeyCode == Keys.Enter)
                 {
               
-                    EfetuarPagamento();
+                        EfetuarPagamento();
                         preencherLabel();
                         ApagarLabel();
                     if(calcularSeAbateuValor())

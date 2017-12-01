@@ -48,13 +48,13 @@ namespace Projeto_Restaurante.Telas
             {
                 if (certo)
                 {
-                    MessageBox.Show("Caixa Aberto! ", "Sucesso");
+                    MessageBox.Show("Caixa Aberto!");
                     Close();
 
                 }
                 else
                 {
-                    MessageBox.Show("Erro ao Abrir Caixa! ", "Erro");
+                    MessageBox.Show("Erro ao Abrir Caixa!");
                 }
             }
 
@@ -80,12 +80,12 @@ namespace Projeto_Restaurante.Telas
             {
                 if (certo)
                 {
-                    MessageBox.Show("Caixa Fechado! ", "Sucesso");
+                    MessageBox.Show("Caixa Fechado!");
                     Close();
                 }
                 else
                 {
-                    MessageBox.Show("Erro ao Fechar Caixa! ", "Erro");
+                    MessageBox.Show("Erro ao Fechar Caixa!");
                 }
             }
 

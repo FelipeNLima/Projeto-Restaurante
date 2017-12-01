@@ -56,7 +56,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.IMGList = new System.Windows.Forms.ImageList(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.Hora = new System.Windows.Forms.Label();
             this.Data = new System.Windows.Forms.Label();
+            this.BTNvinho = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -75,6 +78,8 @@
             this.toolStripSeparator10,
             this.TSBcardapio,
             this.toolStripSeparator11,
+            this.BTNvinho,
+            this.toolStripSeparator5,
             this.TSBformapagamento,
             this.toolStripSeparator4,
             this.TSBcartão,
@@ -91,7 +96,7 @@
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip2.Size = new System.Drawing.Size(1222, 86);
+            this.toolStrip2.Size = new System.Drawing.Size(1299, 86);
             this.toolStrip2.TabIndex = 1;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -318,7 +323,7 @@
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Location = new System.Drawing.Point(0, 89);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1222, 398);
+            this.groupBox1.Size = new System.Drawing.Size(1299, 398);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
@@ -328,7 +333,7 @@
             this.pictureBox1.Image = global::Projeto_Restaurante.Properties.Resources.fundo2;
             this.pictureBox1.Location = new System.Drawing.Point(3, 16);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1216, 379);
+            this.pictureBox1.Size = new System.Drawing.Size(1293, 379);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -345,6 +350,17 @@
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
+            // 
+            // Hora
+            // 
+            this.Hora.AutoSize = true;
+            this.Hora.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Hora.Location = new System.Drawing.Point(12, 51);
+            this.Hora.Name = "Hora";
+            this.Hora.Size = new System.Drawing.Size(52, 17);
+            this.Hora.TabIndex = 3;
+            this.Hora.Text = "label1";
             // 
             // Data
             // 
@@ -353,15 +369,37 @@
             this.Data.Location = new System.Drawing.Point(12, 9);
             this.Data.Name = "Data";
             this.Data.Size = new System.Drawing.Size(52, 17);
-            this.Data.TabIndex = 0;
+            this.Data.TabIndex = 4;
             this.Data.Text = "label1";
+            // 
+            // BTNvinho
+            // 
+            this.BTNvinho.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.BTNvinho.Enabled = false;
+            this.BTNvinho.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.BTNvinho.Image = ((System.Drawing.Image)(resources.GetObject("BTNvinho.Image")));
+            this.BTNvinho.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BTNvinho.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.BTNvinho.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BTNvinho.Name = "BTNvinho";
+            this.BTNvinho.Size = new System.Drawing.Size(68, 83);
+            this.BTNvinho.Text = "Vinho";
+            this.BTNvinho.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.BTNvinho.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 86);
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1222, 487);
+            this.ClientSize = new System.Drawing.Size(1299, 487);
             this.Controls.Add(this.Data);
+            this.Controls.Add(this.Hora);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -408,7 +446,10 @@
         private System.Windows.Forms.ToolStripButton TSBmesas;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label Data;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label Hora;
+        private System.Windows.Forms.Label Data;
+        private System.Windows.Forms.ToolStripButton BTNvinho;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     }
 }
