@@ -12,12 +12,12 @@ namespace Projeto_Restaurante.Modelos
         public string CNPJ { get; set; }
         public string Nome_fantasia { get; set; }
         public string email { get; set; }
-        public int Telefone { get; set; }
+        public string Telefone { get; set; }
         public string Endereco { get; set; }
         public int numero { get; set; }
         public string Cidade { get; set; }
         public string Estado { get; set; }
-        public int cep { get; set; }
+        public string cep { get; set; }
 
 
 
@@ -30,7 +30,7 @@ namespace Projeto_Restaurante.Modelos
             {
                 obj.conectar();
 
-                string sql = "INSERT INTO RESTAURANTE (Nome_restaurante,IE,CNPJ,Nome_fantasia,email,Telefone,Endereco,numero,Cidade,Estado,cep)   VALUES (@NOME, @IE, @CNPJ, @NOMEFANTASIA, @EMAIL, @TELEFONE, @ENDERECO, @NUMERO, @CIDADE, @ESTADO, @CEP)";
+                string sql = "INSERT INTO RESTAURANTE (Nome_restaurante, IE, CNPJ, Nome_fantasia, email, Telefone, Endereco, numero, Cidade, Estado, cep)   VALUES (@NOME, @IE, @CNPJ, @NOMEFANTASIA, @EMAIL, @TELEFONE, @ENDERECO, @NUMERO, @CIDADE, @ESTADO, @CEP)";
                 obj.cmd = new System.Data.SqlClient.SqlCommand(sql, obj.objCon);
 
 
@@ -147,12 +147,12 @@ namespace Projeto_Restaurante.Modelos
                     CNPJ = (Leitor["CNPJ"].ToString());
                     Nome_fantasia = (Leitor["Nome_fantasia"].ToString());
                     email = (Leitor["email"].ToString());
-                    Telefone = int.Parse(Leitor["Telefone"].ToString());
+                    Telefone = Leitor["Telefone"].ToString();
                     Endereco = (Leitor["Endereco"].ToString());
                     numero = int.Parse(Leitor["numero"].ToString());
                     Cidade = (Leitor["Cidade"].ToString());
                     Estado = (Leitor["Estado"].ToString());
-                    cep = int.Parse(Leitor["cep"].ToString());
+                    cep = Leitor["cep"].ToString();
 
                 }
 

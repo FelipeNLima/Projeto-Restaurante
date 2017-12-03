@@ -98,6 +98,7 @@
             this.TB_senha.TabIndex = 5;
             this.TB_senha.Tag = "*";
             this.TB_senha.UseSystemPasswordChar = true;
+            this.TB_senha.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_senha_KeyDown);
             // 
             // Login
             // 

@@ -51,7 +51,7 @@ namespace Projeto_Restaurante
 		{
 			if (!Verificações.ValidadorCNPJ.ValidarCNPJ(TBcnpj.Text))
 			{
-				MessageBox.Show("Erro");
+				MessageBox.Show("CNPJ invalido");
 				return false;
 			}
 			return true;
@@ -65,13 +65,13 @@ namespace Projeto_Restaurante
 			restaurante.Nome_fantasia = TBnomefantasia.Text;
 			restaurante.CNPJ = TBcnpj.Text;
 			restaurante.IE = TBie.Text;
-			restaurante.Telefone = int.Parse(TBtelefone.Text);
+			restaurante.Telefone = TBtelefone.Text;
 			restaurante.email = TBemail.Text;
 			restaurante.Endereco = TBendereco.Text;
 			restaurante.numero = int.Parse(TBnumero.Text);
 			restaurante.Cidade = TBcidade.Text;
 			restaurante.Estado = TBestado.Text;
-			restaurante.cep = int.Parse(TBcep.Text);
+			restaurante.cep = TBcep.Text;
 
 
 			bool certo = restaurante.CadastrarRestaurante();
@@ -104,13 +104,13 @@ namespace Projeto_Restaurante
 			restaurante.Nome_fantasia = TBnomefantasia.Text;
 			restaurante.CNPJ = TBcnpj.Text;
 			restaurante.IE = TBie.Text;
-			restaurante.Telefone = int.Parse(TBtelefone.Text);
+			restaurante.Telefone = TBtelefone.Text;
 			restaurante.email = TBemail.Text;
 			restaurante.Endereco = TBendereco.Text;
 			restaurante.numero = int.Parse(TBnumero.Text);
 			restaurante.Cidade = TBcidade.Text;
 			restaurante.Estado = TBestado.Text;
-			restaurante.cep = int.Parse(TBcep.Text);
+			restaurante.cep = TBcep.Text;
 
 
 			bool certo = restaurante.AtualizarRestaurante();

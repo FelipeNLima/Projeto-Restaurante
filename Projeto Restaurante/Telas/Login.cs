@@ -72,6 +72,12 @@ namespace Projeto_Restaurante
             }
         }
 
-
+        private void TB_senha_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                logar();
+            }
+        }
     }
 }

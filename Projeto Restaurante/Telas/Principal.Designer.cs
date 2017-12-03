@@ -39,6 +39,8 @@
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.TSBcardapio = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
+            this.BTNvinho = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.TSBformapagamento = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.TSBcartão = new System.Windows.Forms.ToolStripButton();
@@ -58,8 +60,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Hora = new System.Windows.Forms.Label();
             this.Data = new System.Windows.Forms.Label();
-            this.BTNvinho = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -180,6 +180,27 @@
             this.toolStripSeparator11.Name = "toolStripSeparator11";
             this.toolStripSeparator11.Size = new System.Drawing.Size(6, 86);
             // 
+            // BTNvinho
+            // 
+            this.BTNvinho.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.BTNvinho.Enabled = false;
+            this.BTNvinho.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.BTNvinho.Image = ((System.Drawing.Image)(resources.GetObject("BTNvinho.Image")));
+            this.BTNvinho.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BTNvinho.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.BTNvinho.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BTNvinho.Name = "BTNvinho";
+            this.BTNvinho.Size = new System.Drawing.Size(68, 83);
+            this.BTNvinho.Text = "Vinho";
+            this.BTNvinho.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.BTNvinho.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 86);
+            // 
             // TSBformapagamento
             // 
             this.TSBformapagamento.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -282,6 +303,7 @@
             // TSBmesas
             // 
             this.TSBmesas.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.TSBmesas.Enabled = false;
             this.TSBmesas.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.TSBmesas.Image = ((System.Drawing.Image)(resources.GetObject("TSBmesas.Image")));
             this.TSBmesas.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -371,27 +393,6 @@
             this.Data.Size = new System.Drawing.Size(52, 17);
             this.Data.TabIndex = 4;
             this.Data.Text = "label1";
-            // 
-            // BTNvinho
-            // 
-            this.BTNvinho.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.BTNvinho.Enabled = false;
-            this.BTNvinho.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.BTNvinho.Image = ((System.Drawing.Image)(resources.GetObject("BTNvinho.Image")));
-            this.BTNvinho.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BTNvinho.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.BTNvinho.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.BTNvinho.Name = "BTNvinho";
-            this.BTNvinho.Size = new System.Drawing.Size(68, 83);
-            this.BTNvinho.Text = "Vinho";
-            this.BTNvinho.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BTNvinho.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 86);
             // 
             // Principal
             // 

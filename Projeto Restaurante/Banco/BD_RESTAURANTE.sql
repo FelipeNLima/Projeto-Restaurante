@@ -128,19 +128,20 @@ go
 
 CREATE TABLE RESTAURANTE (
 id_restaurante				int		PRIMARY KEY		IDENTITY,
-Nome_restaurante			varchar(50),
-IE							varchar(9),
-CNPJ						varchar(14),
-Nome_fantasia				varchar(50),
-email						varchar(50),
-Telefone					int,
+Nome_restaurante			varchar(250),
+IE							varchar(220),
+CNPJ						varchar(220),
+Nome_fantasia				varchar(250),
+email						varchar(250),
+Telefone					varchar(250),
 Endereco					varchar(50),
 numero						int,
-Cidade						varchar(50),
-Estado						varchar(5),
-cep							int
+Cidade						varchar(250),
+Estado						varchar(220),
+cep							varchar(250)
 )
 go
+
 
 
 --chaves estrangeiras 
@@ -179,18 +180,4 @@ end
 INSERT INTO CAIXA (valor_inicial, StatusCaixa)
 VALUES
 	(0,1)
-
 GO
-
---update mesa set Status = 0
---go
-
-SELECT * from VENDA
-go
-
-SELECT * FROM PAGAMENTO
-GO
-
-SELECT SUM (Valor_recebido) AS 'Valor SubTotal'
-from PAGAMENTO
-go
