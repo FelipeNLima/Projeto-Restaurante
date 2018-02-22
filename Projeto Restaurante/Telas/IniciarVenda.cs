@@ -14,8 +14,10 @@ namespace Projeto_Restaurante.Telas
 	public partial class IniciarVenda : Form
 	{
 		ClasseMesa mesa;
+        List<Modelos.ClasseUsuario> lista = new List<Modelos.ClasseUsuario>();
 
-		public IniciarVenda(ClasseMesa mesa)
+
+        public IniciarVenda(ClasseMesa mesa)
 		{
 			InitializeComponent();
 			ClasseMesa.CarregarMesa();
@@ -24,17 +26,18 @@ namespace Projeto_Restaurante.Telas
 			TBnumeroMesa.Text = mesa.numero.ToString();
 		}
 
-		private void BTabrir_Click(object sender, EventArgs e)
+        private void BTabrir_Click(object sender, EventArgs e)
 		{
             try
             {
                 Verificações.VerificarCampos.Validar(Controls);
+               
 
-                string numerogarcom = TBnumerogarçom.Text;
+                int index_garcom = CBnomegarcom.SelectedIndex;
                 string numeropessoa = TBnumeropessoas.Text;
                 string couvert = TBcouvert.Text;
                 mesa.MudarParaOcupado();
-                Telas.Venda abrir = new Venda(mesa, numerogarcom, numeropessoa, couvert);
+                Telas.Venda abrir = new Venda(mesa, index_garcom, numeropessoa, couvert);
                 abrir.ShowDialog();
                 Hide();
             }catch(Exception ex)
@@ -55,5 +58,15 @@ namespace Projeto_Restaurante.Telas
 				this.Close();
 			}
 		}
-	}
+
+        private void IniciarVenda_Load(object sender, EventArgs e)
+        {
+            lista = ClasseUsuario.CarregarGarcom();
+
+            foreach (var item in lista)
+            {
+                CBnomegarcom.Items.Add(item.nome);
+            }
+        }
+    }
 }

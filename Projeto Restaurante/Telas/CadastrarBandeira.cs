@@ -38,7 +38,6 @@ namespace Projeto_Restaurante
             Modelos.ClasseBandeira bandeira = new Modelos.ClasseBandeira();
 
             bandeira.nome_bandeira = TBnomeBandeira.Text;
-            bandeira.taxa = float.Parse(TBtaxa.Text);
             bandeira.apagado = false;
             bandeira.formapagamento = listaformapagamento[CBformaPagamento.SelectedIndex];
 
@@ -70,7 +69,6 @@ namespace Projeto_Restaurante
 
             bandeira.id_bandeira = id;
             bandeira.nome_bandeira = TBnomeBandeira.Text;
-            bandeira.taxa = float.Parse(TBtaxa.Text);
             bandeira.apagado = false;
             bandeira.formapagamento = listaformapagamento[CBformaPagamento.SelectedIndex];
 
@@ -100,7 +98,6 @@ namespace Projeto_Restaurante
             Modelos.ClasseBandeira bandeira = new Modelos.ClasseBandeira();
             bandeira.CarregarPorID(id);
             TBnomeBandeira.Text = bandeira.nome_bandeira;
-            TBtaxa.Text = bandeira.taxa.ToString();
             CBformaPagamento.SelectedItem = ClasseFormaPagamento.CarregarFormadePagamento();
 
         }

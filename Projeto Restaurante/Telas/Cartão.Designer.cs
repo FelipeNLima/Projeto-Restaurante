@@ -42,7 +42,6 @@
             this.LVbandeira = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -160,7 +159,6 @@
             this.LVbandeira.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
-            this.columnHeader3,
             this.columnHeader4});
             this.LVbandeira.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LVbandeira.FullRowSelect = true;
@@ -179,17 +177,12 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Nome";
-            this.columnHeader2.Width = 192;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Taxa";
-            this.columnHeader3.Width = 149;
+            this.columnHeader2.Width = 249;
             // 
             // columnHeader4
             // 
             this.columnHeader4.Text = "Forma de Pagamento";
-            this.columnHeader4.Width = 187;
+            this.columnHeader4.Width = 337;
             // 
             // Cartão
             // 
@@ -233,7 +226,6 @@
         private System.Windows.Forms.ToolStripButton TSBsair;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }

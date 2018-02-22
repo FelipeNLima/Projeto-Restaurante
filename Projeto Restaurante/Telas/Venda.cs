@@ -13,7 +13,7 @@ namespace Projeto_Restaurante.Telas
     public partial class Venda : Form
     {
         public bool alteracao;
-        private ClasseGarcom usargarcom = new ClasseGarcom();
+        private ClasseUsuario usuario = new ClasseUsuario();
         private ClasseVenda venda = new ClasseVenda();
         private ClasseConsumo consumo = new ClasseConsumo();
         private ClasseCardapio carregarcardapio = new ClasseCardapio();
@@ -31,24 +31,22 @@ namespace Projeto_Restaurante.Telas
             Time_entrada.Text = "Horario Entrada " + venda.Data_entrada.ToLongTimeString();
             TBtelanumerovenda.Text = mesa.numero.ToString();
             TBnumeropessoas.Text = venda.Numero_pessoa.ToString();
-            usargarcom.CarregarPorId(venda.garcom.id_garcom);
-            TBcodigogarcom.Text = usargarcom.codigo.ToString();
-            TBnomegarcom.Text = usargarcom.nome_garcom.ToString();
+            usuario.CarregarUsuarioGarcom();
+            TBnomegarcom.Text = usuario.nome.ToString();
             this.mesa = mesa;
             CarregarCardapio();
             CarregarDataGridVenda();
         }
 
         // ABRIR MESA
-        public Venda(ClasseMesa mesa, string codigogarcom, string numeropessoas, string couvertartistico)
+        public Venda(ClasseMesa mesa, int index, string numeropessoas, string couvertartistico)
         {
             InitializeComponent();
             this.mesa = mesa;
             Time_entrada.Text = "Horario Entrada: " + DateTime.Now.ToLongTimeString();
             TBtelanumerovenda.Text = mesa.numero.ToString();
-            TBcodigogarcom.Text = codigogarcom;
-            usargarcom.CarregarGarcom(int.Parse(TBcodigogarcom.Text));
-            TBnomegarcom.Text = usargarcom.nome_garcom;
+            usuario.CarregarUsuarioPorId(index);
+            TBnomegarcom.Text = usuario.nome;
             TBnumeropessoas.Text = numeropessoas;
             TBdesconto.Text = "0";
             TBcouvert.Text = couvertartistico;
@@ -64,8 +62,8 @@ namespace Projeto_Restaurante.Telas
             venda.Numero_pessoa = int.Parse(TBnumeropessoas.Text);
             venda.Data_entrada = DateTime.Now;
             venda.Data_saida = DateTime.Now;
-            usargarcom.CarregarGarcom(int.Parse(TBcodigogarcom.Text));
-            venda.garcom = usargarcom;
+            usuario.CarregarUsuarioGarcomPorNome(TBnomegarcom.Text);
+            venda.usuario = usuario;
             venda.mesa = mesa;
             venda.Status_Venda = StatusVenda.Ocupado;
             venda.Couvert_artistico = float.Parse(TBcouvert.Text); ;
@@ -80,12 +78,13 @@ namespace Projeto_Restaurante.Telas
             venda.Numero_pessoa = int.Parse(TBnumeropessoas.Text);
             venda.Desconto = float.Parse(TBdesconto.Text);
             venda.Data_saida = DateTime.Now;
-            venda.Couvert_artistico = CalculaCouvert_Artistico();
+            venda.Couvert_artistico = int.Parse(TBcouvert.Text);
             mesa.CarregarMesaPorID(int.Parse(TBtelanumerovenda.Text));
             venda.mesa = mesa;
-            ClasseGarcom carregar = new ClasseGarcom();
-            carregar.CarregarGarcom(int.Parse(TBcodigogarcom.Text));
-            venda.garcom = carregar;
+            ClasseUsuario carregar = new ClasseUsuario();
+            carregar.CarregarUsuarioGarcomPorNome(TBnomegarcom.Text);
+            venda.usuario = carregar;
+
             if (statusdamesa == 1)
             {
                 venda.Status_Venda = StatusVenda.Ocupado;
@@ -108,7 +107,7 @@ namespace Projeto_Restaurante.Telas
             {
                 obj.conectar();
                 SqlDataReader Leitor = null;
-                SqlCommand cmd = new SqlCommand("SELECT	Numero_pessoa, GARCOM.codigo, GARCOM.nome_garcom, MESA.id_mesa FROM VENDA INNER JOIN GARCOM ON GARCOM.id_garcom = VENDA.id_garcom INNER JOIN  MESA ON MESA.id_mesa = VENDA.id_mesa WHERE MESA.id_mesa = @ID", obj.objCon);
+                SqlCommand cmd = new SqlCommand("SELECT	Numero_pessoa, Usuario.nome, MESA.id_mesa FROM VENDA INNER JOIN USUARIO ON USUARIO.id_usuario = VENDA.id_usuario INNER JOIN  MESA ON MESA.id_mesa = VENDA.id_mesa WHERE MESA.id_mesa = @ID", obj.objCon);
 
                 cmd.Parameters.AddWithValue("@ID", id);
 
@@ -118,10 +117,9 @@ namespace Projeto_Restaurante.Telas
                 {
 
                     TBnumeropessoas.Text = (Leitor["Numero_pessoa"].ToString());
-                    usargarcom = new ClasseGarcom();
-                    usargarcom.CarregarGarcom(int.Parse(Leitor["codigo"].ToString()));
-                    TBcodigogarcom.Text = usargarcom.codigo.ToString();
-                    TBnomegarcom.Text = usargarcom.nome_garcom.ToString();
+                    usuario = new ClasseUsuario();
+                    usuario.CarregarUsuarioGarcomPorNome(TBnomegarcom.Text);
+                    TBnomegarcom.Text = usuario.nome.ToString();
                     mesa = new ClasseMesa();
                     TBtelanumerovenda.Text = (Leitor["id_mesa"].ToString());
                 }
@@ -359,11 +357,13 @@ namespace Projeto_Restaurante.Telas
             }
             else if(e.KeyCode == Keys.F5)
             {
+                
                 mesa.CarregarMesaPorID(int.Parse(TBtelanumerovenda.Text));
                 mesa.status = StatusMesa.Ausente;
                 mesa.AtualizarMesa();
                 alteracao = true;
                 AtualizarVenda(2);
+                this.Close();
             }
             else if(e.KeyCode == Keys.F6)
             {
@@ -432,11 +432,11 @@ namespace Projeto_Restaurante.Telas
             mesa.CarregarMesaPorID(int.Parse(TBtelanumerovenda.Text));
             mesa.status = StatusMesa.Ausente;
             mesa.AtualizarMesa();
-            usargarcom.CarregarGarcom(int.Parse(TBcodigogarcom.Text));
-            usargarcom.taxa_serviço = float.Parse(texttaxaservico.Text);
-            usargarcom.Atualizargarcom();
+            usuario.CarregarUsuarioGarcomPorNome(TBnomegarcom.Text);
+            usuario.AtualizarUsuario();
             alteracao = true;
             AtualizarVenda(2);
+            this.Close();
             
         }
 
@@ -465,6 +465,7 @@ namespace Projeto_Restaurante.Telas
         {
             if (e.KeyCode == Keys.Enter)
             {
+                AtualizarVenda(1);
                 preencher_Label();
             }
         }
@@ -482,18 +483,8 @@ namespace Projeto_Restaurante.Telas
         {
             if (e.KeyCode == Keys.Enter)
             {
-                preencher_Label();
-            }
-        }
-
-        private void TBcodigogarcom_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-                ClasseGarcom garcom = new ClasseGarcom();
-                garcom.CarregarPorId(int.Parse(TBcodigogarcom.Text));
-                TBnomegarcom.Text = garcom.nome_garcom;
                 AtualizarVenda(1);
+                preencher_Label();
             }
         }
     }

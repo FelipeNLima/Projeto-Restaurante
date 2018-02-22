@@ -64,13 +64,17 @@
     <Compile Include="Modelos\ClasseBandeira.cs" />
     <Compile Include="Modelos\ClasseCaixa.cs" />
     <Compile Include="Modelos\ClasseCardapio.cs" />
+    <Compile Include="Modelos\ClasseCargo.cs" />
     <Compile Include="Modelos\ClasseCategoria_Cardapio.cs" />
     <Compile Include="Modelos\ClasseCategoria_Produto.cs" />
     <Compile Include="Modelos\ClasseConsumo.cs" />
+    <Compile Include="Modelos\ClasseCouvert_Artistico.cs" />
+    <Compile Include="Modelos\ClasseEstoque.cs" />
     <Compile Include="Modelos\ClassePagamento.cs" />
+    <Compile Include="Modelos\ClasseTaxaServico.cs" />
     <Compile Include="Modelos\EnumStatus.cs" />
     <Compile Include="Modelos\ClasseFormaPagamento.cs" />
-    <Compile Include="Modelos\ClasseGarcom.cs" />
+    <Compile Include="Modelos\ClasseUsuario.cs" />
     <Compile Include="Modelos\ClasseMesa.cs" />
     <Compile Include="Modelos\ClasseProduto.cs" />
     <Compile Include="Modelos\ClasseRestaurante.cs" />
@@ -149,17 +153,23 @@
     <Compile Include="Telas\CouvertArtistico.Designer.cs">
       <DependentUpon>CouvertArtistico.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Estoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Estoque.Designer.cs">
+      <DependentUpon>Estoque.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\FormaPagamento.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Telas\FormaPagamento.Designer.cs">
       <DependentUpon>FormaPagamento.cs</DependentUpon>
     </Compile>
-    <Compile Include="Telas\Garcon.cs">
+    <Compile Include="Telas\Usuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Telas\Garcon.Designer.cs">
-      <DependentUpon>Garcon.cs</DependentUpon>
+    <Compile Include="Telas\Usuario.Designer.cs">
+      <DependentUpon>Usuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\IniciarVenda.cs">
       <SubType>Form</SubType>
@@ -174,11 +184,11 @@
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelos\ClasseLogar.cs" />
-    <Compile Include="Telas\CadastroGarcon.cs">
+    <Compile Include="Telas\CadastroUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Telas\CadastroGarcon.Designer.cs">
-      <DependentUpon>CadastroGarcon.cs</DependentUpon>
+    <Compile Include="Telas\CadastroUsuario.Designer.cs">
+      <DependentUpon>CadastroUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\Mesas.cs">
       <SubType>Form</SubType>
@@ -264,11 +274,14 @@
     <EmbeddedResource Include="Telas\CouvertArtistico.resx">
       <DependentUpon>CouvertArtistico.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Estoque.resx">
+      <DependentUpon>Estoque.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\FormaPagamento.resx">
       <DependentUpon>FormaPagamento.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Telas\Garcon.resx">
-      <DependentUpon>Garcon.cs</DependentUpon>
+    <EmbeddedResource Include="Telas\Usuario.resx">
+      <DependentUpon>Usuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\IniciarVenda.resx">
       <DependentUpon>IniciarVenda.cs</DependentUpon>
@@ -276,8 +289,8 @@
     <EmbeddedResource Include="Telas\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Telas\CadastroGarcon.resx">
-      <DependentUpon>CadastroGarcon.cs</DependentUpon>
+    <EmbeddedResource Include="Telas\CadastroUsuario.resx">
+      <DependentUpon>CadastroUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Mesas.resx">
       <DependentUpon>Mesas.cs</DependentUpon>

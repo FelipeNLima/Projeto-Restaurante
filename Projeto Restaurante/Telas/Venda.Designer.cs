@@ -36,8 +36,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Venda));
             this.label1 = new System.Windows.Forms.Label();
             this.TBtelanumerovenda = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.TBcodigogarcom = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -112,39 +110,13 @@
             this.TBtelanumerovenda.TabIndex = 2;
             this.TBtelanumerovenda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(326, 12);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 17);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Código";
-            // 
-            // TBcodigogarcom
-            // 
-            this.TBcodigogarcom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TBcodigogarcom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TBcodigogarcom.Location = new System.Drawing.Point(324, 41);
-            this.TBcodigogarcom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.TBcodigogarcom.Name = "TBcodigogarcom";
-            this.TBcodigogarcom.Size = new System.Drawing.Size(86, 26);
-            this.TBcodigogarcom.TabIndex = 6;
-            this.TBcodigogarcom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.TBcodigogarcom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TBcodigogarcom_KeyDown);
-            // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(532, 12);
+            this.label3.Location = new System.Drawing.Point(369, 12);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 17);
@@ -157,7 +129,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(944, 12);
+            this.label4.Location = new System.Drawing.Point(848, 14);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(128, 17);
@@ -396,7 +368,7 @@
             this.TBnomegarcom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TBnomegarcom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TBnomegarcom.Location = new System.Drawing.Point(439, 41);
+            this.TBnomegarcom.Location = new System.Drawing.Point(276, 41);
             this.TBnomegarcom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TBnomegarcom.Name = "TBnomegarcom";
             this.TBnomegarcom.Size = new System.Drawing.Size(283, 26);
@@ -408,7 +380,7 @@
             this.TBcouvert.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TBcouvert.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TBcouvert.Location = new System.Drawing.Point(947, 41);
+            this.TBcouvert.Location = new System.Drawing.Point(851, 43);
             this.TBcouvert.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TBcouvert.Name = "TBcouvert";
             this.TBcouvert.Size = new System.Drawing.Size(86, 26);
@@ -454,7 +426,7 @@
             this.TBdesconto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TBdesconto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TBdesconto.Location = new System.Drawing.Point(1100, 39);
+            this.TBdesconto.Location = new System.Drawing.Point(1023, 41);
             this.TBdesconto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TBdesconto.Name = "TBdesconto";
             this.TBdesconto.Size = new System.Drawing.Size(86, 26);
@@ -468,7 +440,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(1116, 12);
+            this.label18.Location = new System.Drawing.Point(1020, 14);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(76, 17);
@@ -584,7 +556,7 @@
             this.TBnumeropessoas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TBnumeropessoas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TBnumeropessoas.Location = new System.Drawing.Point(778, 39);
+            this.TBnumeropessoas.Location = new System.Drawing.Point(682, 41);
             this.TBnumeropessoas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TBnumeropessoas.Name = "TBnumeropessoas";
             this.TBnumeropessoas.Size = new System.Drawing.Size(54, 26);
@@ -598,7 +570,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(751, 12);
+            this.label5.Location = new System.Drawing.Point(655, 14);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(153, 17);
@@ -709,9 +681,7 @@
             this.Controls.Add(this.Data);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.TBcodigogarcom);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.TBtelanumerovenda);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -736,8 +706,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TBtelanumerovenda;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox TBcodigogarcom;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox1;

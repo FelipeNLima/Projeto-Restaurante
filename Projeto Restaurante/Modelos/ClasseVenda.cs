@@ -17,7 +17,7 @@ namespace Projeto_Restaurante.Modelos
         public DateTime Data_entrada { get; set; }
         public DateTime Data_saida { get; set; }
         public float Couvert_artistico { get; set; }
-        public ClasseGarcom garcom { get; set; }
+        public ClasseUsuario usuario { get; set; }
         public ClasseMesa mesa { get; set; }
 
 
@@ -42,7 +42,7 @@ namespace Projeto_Restaurante.Modelos
                 obj.cmd.Parameters.AddWithValue("@STATUSVENDA", Status_Venda);
                 obj.cmd.Parameters.AddWithValue("@DESCONTO", Desconto);
                 obj.cmd.Parameters.AddWithValue("@COUVERT", Couvert_artistico);
-                obj.cmd.Parameters.AddWithValue("@IDGARCOM", garcom.id_garcom);
+                obj.cmd.Parameters.AddWithValue("@IDUSUARIO", usuario.id_usuario);
                 obj.cmd.Parameters.AddWithValue("@IDMESA", mesa.id_mesa);
 
 
@@ -78,7 +78,7 @@ namespace Projeto_Restaurante.Modelos
                 obj.cmd.Parameters.AddWithValue("@STATUSVENDA", Status_Venda);
                 obj.cmd.Parameters.AddWithValue("@IDVENDA", id_venda);
                 obj.cmd.Parameters.AddWithValue("@IDMESA",mesa.id_mesa);
-                obj.cmd.Parameters.AddWithValue("@IDGARCOM", garcom.id_garcom);
+                obj.cmd.Parameters.AddWithValue("@IDGARCOM", usuario.id_usuario);
 
 
                 obj.cmd.ExecuteNonQuery();
@@ -114,8 +114,8 @@ namespace Projeto_Restaurante.Modelos
                     Numero_pessoa = int.Parse((Leitor["Numero_pessoa"].ToString()));
                     Status_Venda = (StatusVenda)Enum.Parse(typeof(StatusVenda), Leitor["Status_venda"].ToString());
                     Data_entrada = DateTime.Parse(Leitor["Data_entrada"].ToString());
-                    garcom = new ClasseGarcom();
-                    garcom.id_garcom = int.Parse(Leitor["id_garcom"].ToString());
+                    usuario = new ClasseUsuario();
+                    usuario.id_usuario = int.Parse(Leitor["id_usuario"].ToString());
                     mesa = new ClasseMesa();
                     mesa.id_mesa = int.Parse(Leitor["id_mesa"].ToString());
                 }
@@ -151,8 +151,8 @@ namespace Projeto_Restaurante.Modelos
                     Couvert_artistico = float.Parse(Leitor["Couvert_artistico"].ToString());
                     Status_Venda = (StatusVenda)Enum.Parse(typeof(StatusVenda), Leitor["Status_venda"].ToString());
                     Data_entrada = DateTime.Parse(Leitor["Data_entrada"].ToString());
-                    garcom = new ClasseGarcom();
-                    garcom.id_garcom = int.Parse(Leitor["id_garcom"].ToString());
+                    usuario = new ClasseUsuario();
+                    usuario.id_usuario = int.Parse(Leitor["id_usuario"].ToString());
                     mesa = new ClasseMesa();
                     mesa.id_mesa = int.Parse(Leitor["id_mesa"].ToString());
                 }

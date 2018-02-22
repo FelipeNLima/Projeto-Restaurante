@@ -7,9 +7,9 @@ namespace Projeto_Restaurante
 {
     using Conexão;
 
-    public partial class Garçom : Form
+    public partial class Usuario : Form
     {
-        public Garçom()
+        public Usuario()
         {
             InitializeComponent();
             CarregarListView();
@@ -17,7 +17,7 @@ namespace Projeto_Restaurante
 
         public void TSBadicionar_Click(object sender, EventArgs e)
         {
-            CadastroGarcon abrir = new CadastroGarcon();
+            CadastroUsuario abrir = new CadastroUsuario();
             abrir.ShowDialog();
             CarregarListView();
             
@@ -31,15 +31,16 @@ namespace Projeto_Restaurante
         public void CarregarListView()
         {
             Conexao obj = new Conexao();
-            listViewgarcom.Items.Clear();
+            listViewusuario.Items.Clear();
             try
             {
                 string sql = $@"SELECT 
-                                id_garcom,
-                                nome_garcom,   
-                                codigo 
-                                FROM GARCOM  
-                                WHERE apagado = 0 AND nome_garcom LIKE '%{TBpesquisa.Text}%'";
+                                nome,
+                                login,
+                                CARGO.descricao 
+                                FROM USUARIO 
+                                INNER JOIN CARGO ON CARGO.id_cargo = USUARIO.id_cargo
+                                WHERE apagado = 0 AND nome LIKE '%{TBpesquisa.Text}%'";
                 obj.conectar();
 
                 SqlCommand cmd = new SqlCommand(sql, obj.objCon);
@@ -48,19 +49,19 @@ namespace Projeto_Restaurante
 
                 while (dr.Read())
                 {
-                    ListViewItem id = new ListViewItem();
-                    ListViewItem.ListViewSubItem nome = new ListViewItem.ListViewSubItem();
-                    ListViewItem.ListViewSubItem codigo = new ListViewItem.ListViewSubItem();
+                    ListViewItem nome = new ListViewItem();
+                    ListViewItem.ListViewSubItem login = new ListViewItem.ListViewSubItem();
+                    ListViewItem.ListViewSubItem cargo = new ListViewItem.ListViewSubItem();
 
 
-                    id.Text = dr[0].ToString();
-                    nome.Text = dr[1].ToString();
-                    codigo.Text = dr[2].ToString();
+                    nome.Text = dr[0].ToString();
+                    login.Text = dr[1].ToString();
+                    cargo.Text = dr[2].ToString();
 
-                    id.SubItems.Add(nome);
-                    id.SubItems.Add(codigo);
+                    nome.SubItems.Add(login);
+                    nome.SubItems.Add(cargo);
 
-                    listViewgarcom.Items.Add(id);
+                    listViewusuario.Items.Add(nome);
 
                 }
 
@@ -78,33 +79,33 @@ namespace Projeto_Restaurante
 
         public void TSBeditar_Click(object sender, EventArgs e)
         {
-            
-            if(listViewgarcom.SelectedItems.Count > 0)
+
+            if (listViewusuario.SelectedItems.Count > 0)
             {
-                Modelos.ClasseGarcom x = new Modelos.ClasseGarcom();
-                CadastroGarcon teste = new CadastroGarcon(int.Parse(listViewgarcom.SelectedItems[0].Text));
-                teste.ShowDialog();
+
+                CadastroUsuario Abrir = new CadastroUsuario(int.Parse(listViewusuario.SelectedItems[0].Text));
+                Abrir.ShowDialog();
                 CarregarListView();
             }
             else
             {
                 MessageBox.Show("Linha Não Selecionada !!!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
         private void TSBdeletar_Click(object sender, EventArgs e)
         {
-            if(listViewgarcom.SelectedItems.Count > 0)
+            if(listViewusuario.SelectedItems.Count > 0)
             {
-                var opcao = MessageBox.Show("Deseja Realmente apagar garçom!!","Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var opcao = MessageBox.Show("Deseja Realmente apagar Usuario!!","Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (opcao == DialogResult.Yes)
                 {
-                    var id = int.Parse(listViewgarcom.SelectedItems[0].Text);
-                    Modelos.ClasseGarcom chamar = new Modelos.ClasseGarcom();
-                    chamar.CarregarPorId(id);
-                    chamar.Deletargarcom();
+                    var id = int.Parse(listViewusuario.SelectedItems[0].Text);
+                    Modelos.ClasseUsuario chamar = new Modelos.ClasseUsuario();
+                    chamar.CarregarUsuarioPorId(id);
+                    chamar.DeletarUsuario();
                     CarregarListView();
 
                 }
@@ -116,7 +117,7 @@ namespace Projeto_Restaurante
             }
         }
 
-        private void Garcon_Load(object sender, EventArgs e)
+        private void Usuario_Load(object sender, EventArgs e)
         {
            CarregarListView();
         }
@@ -128,7 +129,7 @@ namespace Projeto_Restaurante
                 Verificações.VerificarCampos.Validar(Controls);
                 if (TBpesquisa.Text == string.Empty)
                 {
-                    MessageBox.Show("Escreva o nome do Garçom para pesquisar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Escreva o nome do Usuario para pesquisar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
                 else

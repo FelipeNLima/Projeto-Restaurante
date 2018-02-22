@@ -15,7 +15,7 @@ namespace Projeto_Restaurante
 
         private void TSBgarcon_Click_1(object sender, EventArgs e)
         {
-            Garçom abrir = new Garçom();
+            Usuario abrir = new Usuario();
             abrir.ShowDialog();
         }
 
@@ -93,6 +93,12 @@ namespace Projeto_Restaurante
             DateTime datahora = DateTime.Now;
             Data.Text = "" + datahora.ToLongDateString();
             Hora.Text = "Hora: " + datahora.ToLongTimeString();
+        }
+
+        private void TSBestoque_Click(object sender, EventArgs e)
+        {
+            Telas.Estoque abrir = new Telas.Estoque();
+            abrir.ShowDialog();
         }
     }
 }

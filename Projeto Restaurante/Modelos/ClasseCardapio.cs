@@ -98,7 +98,7 @@ namespace Projeto_Restaurante.Modelos
 			try
 			{
 				obj.conectar();
-				int Codigo = ID;
+				
 				SqlDataReader Leitor = null;
 				SqlCommand cmd = new SqlCommand("SELECT  nome_item, preco_item, id_categoriacardapio  FROM CARDAPIO WHERE id_cardapio = @CODIGO", obj.objCon);
                 cmd.Parameters.AddWithValue("@CODIGO", ID);

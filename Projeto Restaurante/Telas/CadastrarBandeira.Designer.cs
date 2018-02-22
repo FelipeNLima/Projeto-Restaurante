@@ -35,8 +35,6 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.TSBsair = new System.Windows.Forms.ToolStripButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.TBtaxa = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.CBformaPagamento = new System.Windows.Forms.ComboBox();
             this.toolStrip1.SuspendLayout();
@@ -60,7 +58,7 @@
             this.TSBcadastrar,
             this.toolStripSeparator1,
             this.TSBsair});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 144);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 101);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.toolStrip1.Size = new System.Drawing.Size(451, 55);
@@ -105,30 +103,11 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Nome da Bandeira";
             // 
-            // TBtaxa
-            // 
-            this.TBtaxa.Location = new System.Drawing.Point(154, 55);
-            this.TBtaxa.Name = "TBtaxa";
-            this.TBtaxa.Size = new System.Drawing.Size(246, 20);
-            this.TBtaxa.TabIndex = 7;
-            this.TBtaxa.Tag = "*";
-            this.TBtaxa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TBtaxa_KeyPress);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 55);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(136, 17);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Taxa da Bandeira";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 94);
+            this.label3.Location = new System.Drawing.Point(6, 58);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(133, 17);
             this.label3.TabIndex = 8;
@@ -138,7 +117,7 @@
             // 
             this.CBformaPagamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBformaPagamento.FormattingEnabled = true;
-            this.CBformaPagamento.Location = new System.Drawing.Point(154, 94);
+            this.CBformaPagamento.Location = new System.Drawing.Point(154, 58);
             this.CBformaPagamento.Name = "CBformaPagamento";
             this.CBformaPagamento.Size = new System.Drawing.Size(246, 21);
             this.CBformaPagamento.TabIndex = 9;
@@ -148,12 +127,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(451, 199);
+            this.ClientSize = new System.Drawing.Size(451, 156);
             this.ControlBox = false;
             this.Controls.Add(this.CBformaPagamento);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.TBtaxa);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.TBnomeBandeira);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.label1);
@@ -181,8 +158,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton TSBsair;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox TBtaxa;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox CBformaPagamento;
     }

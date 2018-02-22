@@ -1,6 +1,7 @@
 ﻿using System;
 using Projeto_Restaurante.Conexão;
 using System.Data.SqlClient;
+using System.Collections.Generic;
 
 namespace Projeto_Restaurante.Modelos
 {
@@ -123,6 +124,44 @@ namespace Projeto_Restaurante.Modelos
             finally { obj.desconectar(); }
         }
 
-       
+        public static List<ClasseProduto> CarregarProduto()
+        {
+
+            {
+                Conexao obj = new Conexao();
+                List<ClasseProduto> lista = new List<ClasseProduto>();
+
+                try
+                {
+                    obj.conectar();
+
+                    SqlDataReader Leitor = null;
+                    SqlCommand cmd = new SqlCommand("SELECT id_produto, nome_produto, preco_custo, estoque_atual, estoque_minimo, id_categoriaproduto  FROM PRODUTO", obj.objCon);
+                    Leitor = cmd.ExecuteReader();
+
+                    while (Leitor.Read())
+                    {
+                        ClasseProduto produto = new ClasseProduto();
+                        produto.id_produto = int.Parse(Leitor["id_produto"].ToString());
+                        produto.nome_produto = (Leitor["nome_produto"].ToString());
+                        produto.preco_custo = float.Parse(Leitor["preco_custo"].ToString());
+                        produto.categoria = new ClasseCategoria_Produto();
+                        produto.categoria.CarregarProdutoID(int.Parse(Leitor["id_categoriaproduto"].ToString()));
+                        produto.estoque_atual = int.Parse(Leitor["estoque_atual"].ToString());
+                        produto.estoque_minimo = int.Parse(Leitor["estoque_minimo"].ToString());
+                       
+                        lista.Add(produto);
+                    }
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+                finally { obj.desconectar(); }
+                return lista;
+            }
+        }
     }
 }

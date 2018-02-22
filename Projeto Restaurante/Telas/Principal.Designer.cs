@@ -38,8 +38,6 @@
             this.TSBproduto = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.TSBcardapio = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
-            this.BTNvinho = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.TSBformapagamento = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -47,10 +45,8 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.TSBrestaurante = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.TSBrelatorio = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.TSBestoque = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.TSBmesas = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.TSBcaixa = new System.Windows.Forms.ToolStripButton();
@@ -77,8 +73,6 @@
             this.TSBproduto,
             this.toolStripSeparator10,
             this.TSBcardapio,
-            this.toolStripSeparator11,
-            this.BTNvinho,
             this.toolStripSeparator5,
             this.TSBformapagamento,
             this.toolStripSeparator4,
@@ -86,10 +80,8 @@
             this.toolStripSeparator1,
             this.TSBrestaurante,
             this.toolStripSeparator3,
-            this.TSBrelatorio,
-            this.toolStripSeparator12,
             this.TSBestoque,
-            this.toolStripSeparator7,
+            this.toolStripSeparator12,
             this.TSBmesas,
             this.toolStripSeparator2,
             this.TSBcaixa});
@@ -109,7 +101,7 @@
             this.TSBgarcon.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TSBgarcon.Name = "TSBgarcon";
             this.TSBgarcon.Size = new System.Drawing.Size(68, 83);
-            this.TSBgarcon.Text = "Garçom";
+            this.TSBgarcon.Text = "Usuario";
             this.TSBgarcon.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.TSBgarcon.Click += new System.EventHandler(this.TSBgarcon_Click_1);
             // 
@@ -173,27 +165,6 @@
             this.TSBcardapio.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.TSBcardapio.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             this.TSBcardapio.Click += new System.EventHandler(this.TSBcardapio_Click);
-            // 
-            // toolStripSeparator11
-            // 
-            this.toolStripSeparator11.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(6, 86);
-            // 
-            // BTNvinho
-            // 
-            this.BTNvinho.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.BTNvinho.Enabled = false;
-            this.BTNvinho.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.BTNvinho.Image = ((System.Drawing.Image)(resources.GetObject("BTNvinho.Image")));
-            this.BTNvinho.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.BTNvinho.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.BTNvinho.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.BTNvinho.Name = "BTNvinho";
-            this.BTNvinho.Size = new System.Drawing.Size(68, 83);
-            this.BTNvinho.Text = "Vinho";
-            this.BTNvinho.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.BTNvinho.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
             // 
             // toolStripSeparator5
             // 
@@ -262,29 +233,9 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 86);
             // 
-            // TSBrelatorio
-            // 
-            this.TSBrelatorio.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.TSBrelatorio.Enabled = false;
-            this.TSBrelatorio.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.TSBrelatorio.Image = ((System.Drawing.Image)(resources.GetObject("TSBrelatorio.Image")));
-            this.TSBrelatorio.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.TSBrelatorio.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.TSBrelatorio.Name = "TSBrelatorio";
-            this.TSBrelatorio.Size = new System.Drawing.Size(68, 83);
-            this.TSBrelatorio.Text = "Relatorio";
-            this.TSBrelatorio.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            // 
-            // toolStripSeparator12
-            // 
-            this.toolStripSeparator12.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripSeparator12.Name = "toolStripSeparator12";
-            this.toolStripSeparator12.Size = new System.Drawing.Size(6, 86);
-            // 
             // TSBestoque
             // 
             this.TSBestoque.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.TSBestoque.Enabled = false;
             this.TSBestoque.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.TSBestoque.Image = ((System.Drawing.Image)(resources.GetObject("TSBestoque.Image")));
             this.TSBestoque.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -293,17 +244,17 @@
             this.TSBestoque.Size = new System.Drawing.Size(98, 83);
             this.TSBestoque.Text = "Estoque";
             this.TSBestoque.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.TSBestoque.Click += new System.EventHandler(this.TSBestoque_Click);
             // 
-            // toolStripSeparator7
+            // toolStripSeparator12
             // 
-            this.toolStripSeparator7.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 86);
+            this.toolStripSeparator12.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripSeparator12.Name = "toolStripSeparator12";
+            this.toolStripSeparator12.Size = new System.Drawing.Size(6, 86);
             // 
             // TSBmesas
             // 
             this.TSBmesas.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.TSBmesas.Enabled = false;
             this.TSBmesas.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.TSBmesas.Image = ((System.Drawing.Image)(resources.GetObject("TSBmesas.Image")));
             this.TSBmesas.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -424,17 +375,14 @@
 
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripButton TSBcaixa;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripButton TSBgarcon;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.Windows.Forms.ToolStripButton TSBproduto;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
         private System.Windows.Forms.ToolStripButton TSBcartão;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
         private System.Windows.Forms.ToolStripButton TSBestoque;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
-        private System.Windows.Forms.ToolStripButton TSBrelatorio;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ToolStripButton TSBformapagamento;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -450,7 +398,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label Hora;
         private System.Windows.Forms.Label Data;
-        private System.Windows.Forms.ToolStripButton BTNvinho;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     }
 }
