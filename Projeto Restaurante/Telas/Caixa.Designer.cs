@@ -119,7 +119,7 @@
             this.Name = "Caixa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Tag = "*";
-            this.Text = "Abrir Caixa";
+            this.Text = "Caixa";
             this.Load += new System.EventHandler(this.Caixa_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Projeto_Restaurante.Telas
@@ -14,7 +8,7 @@ namespace Projeto_Restaurante.Telas
 	public partial class IniciarVenda : Form
 	{
 		ClasseMesa mesa;
-        List<Modelos.ClasseUsuario> lista = new List<Modelos.ClasseUsuario>();
+        List<ClasseUsuario> lista = new List<ClasseUsuario>();
 
 
         public IniciarVenda(ClasseMesa mesa)
@@ -33,7 +27,7 @@ namespace Projeto_Restaurante.Telas
                 Verificações.VerificarCampos.Validar(Controls);
                
 
-                int index_garcom = CBnomegarcom.SelectedIndex;
+                string index_garcom = CBnomegarcom.Text;
                 string numeropessoa = TBnumeropessoas.Text;
                 string couvert = TBcouvert.Text;
                 mesa.MudarParaOcupado();

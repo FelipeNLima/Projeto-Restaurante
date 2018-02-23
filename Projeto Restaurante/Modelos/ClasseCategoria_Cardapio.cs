@@ -112,7 +112,7 @@ namespace Projeto_Restaurante.Modelos
 		public static List<ClasseCategoria_Cardapio> CarregarCategoriaCardapio()
 		{
 
-			{
+			
 				Conexao obj = new Conexao();
 				List<ClasseCategoria_Cardapio> lista = new List<ClasseCategoria_Cardapio>();
 
@@ -142,7 +142,7 @@ namespace Projeto_Restaurante.Modelos
 				finally { obj.desconectar(); }
 				return lista;
 			}
-		}
+		
 
 	}
 }

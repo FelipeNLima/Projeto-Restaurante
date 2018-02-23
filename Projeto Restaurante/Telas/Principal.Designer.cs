@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.TSBgarcon = new System.Windows.Forms.ToolStripButton();
+            this.TSBusuario = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.TSBcategoria = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
@@ -66,7 +66,7 @@
             this.toolStrip2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TSBgarcon,
+            this.TSBusuario,
             this.toolStripSeparator8,
             this.TSBcategoria,
             this.toolStripSeparator9,
@@ -92,18 +92,18 @@
             this.toolStrip2.TabIndex = 1;
             this.toolStrip2.Text = "toolStrip2";
             // 
-            // TSBgarcon
+            // TSBusuario
             // 
-            this.TSBgarcon.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.TSBgarcon.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.TSBgarcon.Image = ((System.Drawing.Image)(resources.GetObject("TSBgarcon.Image")));
-            this.TSBgarcon.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.TSBgarcon.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.TSBgarcon.Name = "TSBgarcon";
-            this.TSBgarcon.Size = new System.Drawing.Size(68, 83);
-            this.TSBgarcon.Text = "Usuario";
-            this.TSBgarcon.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.TSBgarcon.Click += new System.EventHandler(this.TSBgarcon_Click_1);
+            this.TSBusuario.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.TSBusuario.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.TSBusuario.Image = ((System.Drawing.Image)(resources.GetObject("TSBusuario.Image")));
+            this.TSBusuario.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TSBusuario.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TSBusuario.Name = "TSBusuario";
+            this.TSBusuario.Size = new System.Drawing.Size(68, 83);
+            this.TSBusuario.Text = "Usuario";
+            this.TSBusuario.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.TSBusuario.Click += new System.EventHandler(this.TSBgarcon_Click_1);
             // 
             // toolStripSeparator8
             // 
@@ -374,9 +374,7 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripButton TSBcaixa;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
-        private System.Windows.Forms.ToolStripButton TSBgarcon;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.Windows.Forms.ToolStripButton TSBproduto;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
@@ -392,12 +390,14 @@
         private System.Windows.Forms.ToolStripButton TSBcategoria;
         private System.Windows.Forms.ToolStripButton TSBcardapio;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripButton TSBmesas;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label Hora;
         private System.Windows.Forms.Label Data;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        public System.Windows.Forms.ToolStripButton TSBusuario;
+        public System.Windows.Forms.ToolStripButton TSBcaixa;
+        public System.Windows.Forms.ToolStripButton TSBmesas;
     }
 }

@@ -43,6 +43,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.TBpesquisa = new System.Windows.Forms.TextBox();
             this.BTpesquisa = new System.Windows.Forms.Button();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,6 +52,7 @@
             this.listViewusuario.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewusuario.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader3,
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader4});
@@ -59,7 +61,7 @@
             this.listViewusuario.GridLines = true;
             this.listViewusuario.Location = new System.Drawing.Point(0, 78);
             this.listViewusuario.Name = "listViewusuario";
-            this.listViewusuario.Size = new System.Drawing.Size(594, 233);
+            this.listViewusuario.Size = new System.Drawing.Size(653, 233);
             this.listViewusuario.TabIndex = 0;
             this.listViewusuario.UseCompatibleStateImageBehavior = false;
             this.listViewusuario.View = System.Windows.Forms.View.Details;
@@ -91,7 +93,7 @@
             this.TSBdeletar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 314);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(594, 55);
+            this.toolStrip1.Size = new System.Drawing.Size(653, 55);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -176,18 +178,22 @@
             this.BTpesquisa.BackColor = System.Drawing.SystemColors.Control;
             this.BTpesquisa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BTpesquisa.Image = ((System.Drawing.Image)(resources.GetObject("BTpesquisa.Image")));
-            this.BTpesquisa.Location = new System.Drawing.Point(507, 12);
+            this.BTpesquisa.Location = new System.Drawing.Point(566, 12);
             this.BTpesquisa.Name = "BTpesquisa";
             this.BTpesquisa.Size = new System.Drawing.Size(75, 60);
             this.BTpesquisa.TabIndex = 4;
             this.BTpesquisa.UseVisualStyleBackColor = false;
             this.BTpesquisa.Click += new System.EventHandler(this.BTpesquisa_Click);
             // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Codigo";
+            // 
             // Usuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(594, 369);
+            this.ClientSize = new System.Drawing.Size(653, 369);
             this.ControlBox = false;
             this.Controls.Add(this.BTpesquisa);
             this.Controls.Add(this.TBpesquisa);
@@ -226,5 +232,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
     }
 }

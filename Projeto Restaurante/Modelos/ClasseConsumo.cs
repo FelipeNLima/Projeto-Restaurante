@@ -30,7 +30,7 @@ namespace Projeto_Restaurante.Modelos
 
                 string sql = "INSERT INTO CONSUMO (quantidade, Valor_total, apagado, id_cardapio, id_venda)  VALUES ( @QUANTIDADE, @VALORTOTAL, @APAGADO, @IDCARDAPIO, @IDVENDA)";
 
-                obj.cmd = new System.Data.SqlClient.SqlCommand(sql, obj.objCon);
+                obj.cmd = new SqlCommand(sql, obj.objCon);
 
 
                 obj.cmd.Parameters.AddWithValue("@QUANTIDADE", quantidade);

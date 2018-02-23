@@ -14,6 +14,7 @@ namespace Projeto_Restaurante.Telas
         {
             InitializeComponent();
             statuscaixa = true;
+
         }
 
         // FECHAR CAIXA
@@ -22,7 +23,7 @@ namespace Projeto_Restaurante.Telas
             InitializeComponent();
             this.aberto = aberto;
             this.Text = "Fechar Caixa";
-            
+
         }
 
         public bool AbrirCaixa()
@@ -108,7 +109,7 @@ namespace Projeto_Restaurante.Telas
         {
             DateTime datahora = System.DateTime.Now;
             data.Text = "Data: " + datahora.ToShortDateString();
-            
+
         }
 
         private void Caixa_Load(object sender, EventArgs e)
@@ -130,11 +131,12 @@ namespace Projeto_Restaurante.Telas
                 {
                     FecharCaixa();
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-                        
+
         }
 
     }

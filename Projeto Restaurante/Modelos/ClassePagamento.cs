@@ -29,7 +29,7 @@ namespace Projeto_Restaurante.Modelos
             {
                 obj.conectar();
 
-                string sql = "INSERT INTO PAGAMENTO (Valor_total, Valor_recebido, data, troco, id_venda, id_formaPagamento, id_bandeiras, id_caixa)  VALUES (@VALORTOTAL, @VALORRECEBIDO, @DATA, @TROCO, @IDVENDA, @IDFORMAPAGAMENTO, @IDBANDEIRA, @IDCAIXA)";
+                string sql = "INSERT INTO PAGAMENTO (Valor_total, Valor_recebido, data, troco, id_venda, id_formaPagamento, id_bandeira, id_caixa)  VALUES (@VALORTOTAL, @VALORRECEBIDO, @DATA, @TROCO, @IDVENDA, @IDFORMAPAGAMENTO, @IDBANDEIRA, @IDCAIXA)";
 
                 obj.cmd = new System.Data.SqlClient.SqlCommand(sql, obj.objCon);
 
@@ -63,7 +63,7 @@ namespace Projeto_Restaurante.Modelos
             {
                 obj.conectar();
                 SqlDataReader Leitor = null;
-                SqlCommand cmd = new SqlCommand("SELECT top 1 id_pagamento,Valor_total,Valor_recebido,data,troco,id_venda,id_formaPagamento,id_bandeiras,id_caixa  FROM PAGAMENTO ORDER BY id_pagamento DESC", obj.objCon);
+                SqlCommand cmd = new SqlCommand("SELECT top 1 id_pagamento,Valor_total,Valor_recebido,data,troco,id_venda,id_formaPagamento,id_bandeira,id_caixa  FROM PAGAMENTO ORDER BY id_pagamento DESC", obj.objCon);
 
                 Leitor = cmd.ExecuteReader();
 
@@ -79,9 +79,9 @@ namespace Projeto_Restaurante.Modelos
                     formaPagamento = new ClasseFormaPagamento();
                     formaPagamento.id_formaPagamento = int.Parse(Leitor["id_formaPagamento"].ToString());
                     bandeiras = new ClasseBandeira();
-                    if (Leitor["id_bandeiras"] != DBNull.Value)
+                    if (Leitor["id_bandeira"] != DBNull.Value)
                     {
-                        bandeiras.id_bandeira = int.Parse(Leitor["id_bandeiras"].ToString());
+                        bandeiras.id_bandeira = int.Parse(Leitor["id_bandeira"].ToString());
                     }
                     caixa = new ClasseCaixa();
                     caixa.id_caixa = int.Parse(Leitor["id_caixa"].ToString());

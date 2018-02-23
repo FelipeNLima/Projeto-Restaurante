@@ -39,14 +39,13 @@ namespace Projeto_Restaurante.Telas
         }
 
         // ABRIR MESA
-        public Venda(ClasseMesa mesa, int index, string numeropessoas, string couvertartistico)
+        public Venda(ClasseMesa mesa, string index, string numeropessoas, string couvertartistico)
         {
             InitializeComponent();
             this.mesa = mesa;
             Time_entrada.Text = "Horario Entrada: " + DateTime.Now.ToLongTimeString();
             TBtelanumerovenda.Text = mesa.numero.ToString();
-            usuario.CarregarUsuarioPorId(index);
-            TBnomegarcom.Text = usuario.nome;
+            TBnomegarcom.Text = index;
             TBnumeropessoas.Text = numeropessoas;
             TBdesconto.Text = "0";
             TBcouvert.Text = couvertartistico;
@@ -57,7 +56,8 @@ namespace Projeto_Restaurante.Telas
         // VENDA
         public void EfetuarVenda()
         {
-            Modelos.ClasseVenda venda = new Modelos.ClasseVenda();
+           ClasseVenda venda = new ClasseVenda();
+            
 
             venda.Numero_pessoa = int.Parse(TBnumeropessoas.Text);
             venda.Data_entrada = DateTime.Now;
@@ -66,7 +66,8 @@ namespace Projeto_Restaurante.Telas
             venda.usuario = usuario;
             venda.mesa = mesa;
             venda.Status_Venda = StatusVenda.Ocupado;
-            venda.Couvert_artistico = float.Parse(TBcouvert.Text); ;
+            venda.Couvert_artistico = float.Parse(TBcouvert.Text);
+            venda.taxaservico = float.Parse(texttaxaservico.Text);
             venda.Desconto = float.Parse(TBdesconto.Text);
 
             venda.InserirVenda();
@@ -78,7 +79,8 @@ namespace Projeto_Restaurante.Telas
             venda.Numero_pessoa = int.Parse(TBnumeropessoas.Text);
             venda.Desconto = float.Parse(TBdesconto.Text);
             venda.Data_saida = DateTime.Now;
-            venda.Couvert_artistico = int.Parse(TBcouvert.Text);
+            venda.Couvert_artistico = float.Parse(TBcouvert.Text);
+            venda.taxaservico = float.Parse(texttaxaservico.Text);
             mesa.CarregarMesaPorID(int.Parse(TBtelanumerovenda.Text));
             venda.mesa = mesa;
             ClasseUsuario carregar = new ClasseUsuario();
@@ -95,7 +97,7 @@ namespace Projeto_Restaurante.Telas
             }
 
             venda.AtualizarVenda();
-            //Close();
+            
 
         }
 
@@ -432,8 +434,6 @@ namespace Projeto_Restaurante.Telas
             mesa.CarregarMesaPorID(int.Parse(TBtelanumerovenda.Text));
             mesa.status = StatusMesa.Ausente;
             mesa.AtualizarMesa();
-            usuario.CarregarUsuarioGarcomPorNome(TBnomegarcom.Text);
-            usuario.AtualizarUsuario();
             alteracao = true;
             AtualizarVenda(2);
             this.Close();
@@ -467,6 +467,7 @@ namespace Projeto_Restaurante.Telas
             {
                 AtualizarVenda(1);
                 preencher_Label();
+
             }
         }
 

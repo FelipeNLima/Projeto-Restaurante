@@ -1,10 +1,6 @@
 ﻿using Projeto_Restaurante.Conexão;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Projeto_Restaurante.Modelos
 {
@@ -17,6 +13,7 @@ namespace Projeto_Restaurante.Modelos
         public DateTime Data_entrada { get; set; }
         public DateTime Data_saida { get; set; }
         public float Couvert_artistico { get; set; }
+        public float taxaservico { get; set; }
         public ClasseUsuario usuario { get; set; }
         public ClasseMesa mesa { get; set; }
 
@@ -31,7 +28,7 @@ namespace Projeto_Restaurante.Modelos
             {
                 obj.conectar();
 
-                string sql = "INSERT INTO VENDA (Numero_pessoa, Data_entrada, Data_saida, Status_venda, Desconto, Couvert_artistico, id_garcom, id_mesa)  VALUES ( @NUMEROPESSOAS, @DATAENTRADA, @DATASAIDA, @STATUSVENDA, @DESCONTO, @COUVERT, @IDGARCOM, @IDMESA)";
+                string sql = "INSERT INTO VENDA (Numero_pessoa, Data_entrada, Data_saida, Status_venda, Desconto, couvert, taxa_servico, id_usuario, id_mesa)  VALUES ( @NUMEROPESSOAS, @DATAENTRADA, @DATASAIDA, @STATUSVENDA, @DESCONTO,@COUVERT,@TAXA, @IDUSUARIO, @IDMESA)";
 
                 obj.cmd = new System.Data.SqlClient.SqlCommand(sql, obj.objCon);
 
@@ -42,6 +39,7 @@ namespace Projeto_Restaurante.Modelos
                 obj.cmd.Parameters.AddWithValue("@STATUSVENDA", Status_Venda);
                 obj.cmd.Parameters.AddWithValue("@DESCONTO", Desconto);
                 obj.cmd.Parameters.AddWithValue("@COUVERT", Couvert_artistico);
+                obj.cmd.Parameters.AddWithValue("@TAXA", taxaservico); 
                 obj.cmd.Parameters.AddWithValue("@IDUSUARIO", usuario.id_usuario);
                 obj.cmd.Parameters.AddWithValue("@IDMESA", mesa.id_mesa);
 
@@ -69,16 +67,18 @@ namespace Projeto_Restaurante.Modelos
             {
                 obj.conectar();
 
-                string sql = "UPDATE VENDA SET Desconto=@DESCONTO, Couvert_artistico=@COUVERT, Status_venda=@STATUSVENDA, id_mesa=@IDMESA, id_garcom=@IDGARCOM where id_venda = @IDVENDA";
+                string sql = "UPDATE VENDA SET Desconto=@DESCONTO, Numero_pessoa=@NUMERO, Status_venda=@STATUSVENDA, couvert=@COUVERT, taxa_servico=@TAXA, id_mesa=@IDMESA, id_usuario=@IDUSUARIO where id_venda = @IDVENDA";
 
                 obj.cmd = new System.Data.SqlClient.SqlCommand(sql, obj.objCon);
 
                 obj.cmd.Parameters.AddWithValue("@DESCONTO", Desconto);
+                obj.cmd.Parameters.AddWithValue("@NUMERO", Numero_pessoa);
                 obj.cmd.Parameters.AddWithValue("@COUVERT", Couvert_artistico);
+                obj.cmd.Parameters.AddWithValue("@TAXA", taxaservico);
                 obj.cmd.Parameters.AddWithValue("@STATUSVENDA", Status_Venda);
                 obj.cmd.Parameters.AddWithValue("@IDVENDA", id_venda);
                 obj.cmd.Parameters.AddWithValue("@IDMESA",mesa.id_mesa);
-                obj.cmd.Parameters.AddWithValue("@IDGARCOM", usuario.id_usuario);
+                obj.cmd.Parameters.AddWithValue("@IDUSUARIO", usuario.id_usuario);
 
 
                 obj.cmd.ExecuteNonQuery();
@@ -102,7 +102,7 @@ namespace Projeto_Restaurante.Modelos
             {
                 obj.conectar();
                 SqlDataReader Leitor = null;
-                SqlCommand cmd = new SqlCommand("SELECT	Numero_pessoa,Data_entrada,Status_venda, id_garcom, id_mesa FROM VENDA  WHERE id_venda = @ID AND Status_venda != 3", obj.objCon);
+                SqlCommand cmd = new SqlCommand("SELECT	Numero_pessoa,Data_entrada,Status_venda,couvert, taxa_servico, id_usuario, id_mesa FROM VENDA  WHERE id_venda = @ID AND Status_venda != 3", obj.objCon);
 
                 cmd.Parameters.AddWithValue("@ID", id);
 
@@ -113,6 +113,8 @@ namespace Projeto_Restaurante.Modelos
                     this.id_venda = id;
                     Numero_pessoa = int.Parse((Leitor["Numero_pessoa"].ToString()));
                     Status_Venda = (StatusVenda)Enum.Parse(typeof(StatusVenda), Leitor["Status_venda"].ToString());
+                    Couvert_artistico = float.Parse(Leitor["couvert"].ToString());
+                    taxaservico = float.Parse(Leitor["taxa_servico"].ToString());
                     Data_entrada = DateTime.Parse(Leitor["Data_entrada"].ToString());
                     usuario = new ClasseUsuario();
                     usuario.id_usuario = int.Parse(Leitor["id_usuario"].ToString());
@@ -137,7 +139,7 @@ namespace Projeto_Restaurante.Modelos
             {
                 obj.conectar();
                 SqlDataReader Leitor = null;
-                SqlCommand cmd = new SqlCommand("SELECT	id_venda,Numero_pessoa,Desconto,Couvert_artistico,Data_entrada,Status_venda, id_garcom, id_mesa FROM VENDA  WHERE id_mesa = @ID AND Status_venda != 3", obj.objCon);
+                SqlCommand cmd = new SqlCommand("SELECT	id_venda,Numero_pessoa,Desconto,couvert, taxa_servico, Data_entrada,Status_venda, id_usuario, id_mesa FROM VENDA  WHERE id_mesa = @ID AND Status_venda != 3", obj.objCon);
 
                 cmd.Parameters.AddWithValue("@ID", idMesa);
 
@@ -148,7 +150,8 @@ namespace Projeto_Restaurante.Modelos
                     id_venda = int.Parse(Leitor["id_venda"].ToString());
                     Numero_pessoa = int.Parse((Leitor["Numero_pessoa"].ToString()));
                     Desconto = float.Parse(Leitor["Desconto"].ToString());
-                    Couvert_artistico = float.Parse(Leitor["Couvert_artistico"].ToString());
+                    Couvert_artistico = float.Parse(Leitor["couvert"].ToString());
+                    taxaservico = float.Parse(Leitor["taxa_servico"].ToString());
                     Status_Venda = (StatusVenda)Enum.Parse(typeof(StatusVenda), Leitor["Status_venda"].ToString());
                     Data_entrada = DateTime.Parse(Leitor["Data_entrada"].ToString());
                     usuario = new ClasseUsuario();

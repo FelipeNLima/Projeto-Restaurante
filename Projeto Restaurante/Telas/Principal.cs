@@ -1,7 +1,5 @@
-﻿using Projeto_Restaurante.Conexão;
-using Projeto_Restaurante.Modelos;
+﻿using Projeto_Restaurante.Modelos;
 using System;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace Projeto_Restaurante

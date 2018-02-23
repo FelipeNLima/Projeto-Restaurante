@@ -66,8 +66,8 @@ namespace Projeto_Restaurante.Telas
             try
             {
                 string sql = $@"SELECT 
-                                id_bandeiras,
-                                nome_bandeiras   
+                                id_bandeira,
+                                nome_bandeira   
                                 FROM BANDEIRA_CARTAO 
 								INNER JOIN FORMA_PAGAMENTO ON FORMA_PAGAMENTO.id_formaPagamento = BANDEIRA_CARTAO.id_formaPagamento 
                                 WHERE FORMA_PAGAMENTO.id_formaPagamento = '{opcao}'";
@@ -127,14 +127,39 @@ namespace Projeto_Restaurante.Telas
 
         private void BTok_Click(object sender, EventArgs e)
         {
-            ClasseMesa mesa = new ClasseMesa();
-            mesa.CarregarMesaPorID(idmesa);
-            mesa.status = StatusMesa.Disponivel;
-            mesa.AtualizarMesa();
-            venda.Status_Venda = StatusVenda.Finalizado;
-            venda.AtualizarVenda();
-            alterou = true;
-            this.Close();
+            if (calcularSeAbateuValor())
+            {
+                ClasseMesa mesa = new ClasseMesa();
+                ClasseCouvert_Artistico couvert = new ClasseCouvert_Artistico();
+                ClasseTaxaServico taxa = new ClasseTaxaServico();
+                ClasseVenda venda = new ClasseVenda();
+
+                venda.CarregarVendaPorMesa(idmesa);
+                float valorcouvert = venda.Couvert_artistico * venda.Numero_pessoa;
+                couvert.data = DateTime.Now;
+                couvert.valor = valorcouvert;
+                couvert.venda = venda;
+                couvert.InserirCouvert();
+
+                taxa.valor = venda.taxaservico;
+                taxa.data = DateTime.Now;
+                taxa.usuario = venda.usuario;
+                taxa.venda = venda;
+                taxa.InserirTaxaServico();
+
+                mesa.CarregarMesaPorID(idmesa);
+                mesa.status = StatusMesa.Disponivel;
+                mesa.AtualizarMesa();
+                venda.Status_Venda = StatusVenda.Finalizado;
+                venda.AtualizarVenda();
+                alterou = true;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Valor não Abatido ao valor do Conta");
+            }
+            
             
 
         }
@@ -211,8 +236,12 @@ namespace Projeto_Restaurante.Telas
                     {
                         MessageBox.Show("Pagamento Efetuado com Sucesso");
                     }
+                    else
+                    {
+                        MessageBox.Show("Valor não Abatido ao valor do Conta");
+                    }
 
-                }
+            }
      
         }
 

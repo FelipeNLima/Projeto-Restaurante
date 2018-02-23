@@ -16,7 +16,7 @@ namespace Projeto_Restaurante.Modelos
         public float valor_final { get; set; }
         public DateTime data_abertura { get; set; }
         public float diferença { get; set; }
-        public StatusCaixa StatusCaixa { get; set; } 
+        public StatusCaixa StatusCaixa { get; set; } = StatusCaixa.Fechado;
 
         public bool AbrirCaixa()
         {

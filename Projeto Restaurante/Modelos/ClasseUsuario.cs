@@ -13,7 +13,7 @@ namespace Projeto_Restaurante.Modelos
         public string login { get; set; }
         public string senha { get; set; }
         public bool apagado { get; set; } = false;
-        public ClasseCargo cargo { get; set; } 
+        public ClasseCargo cargo { get; set; }
 
         public bool CadastrarUsuario()
         {
@@ -84,12 +84,33 @@ namespace Projeto_Restaurante.Modelos
 
         }
 
-        public void DeletarUsuario()
+        public bool DeletarUsuario(int id)
         {
-            this.apagado = true;
-            AtualizarUsuario();
-        }
+            Conexao obj = new Conexao();
 
+            bool correto = false;
+
+            try
+            {
+                obj.conectar();
+
+                string sql = "DELETE FROM USUARIO WHERE ID_USUARIO = @ID_USUARIO";
+                
+                obj.cmd = new SqlCommand(sql, obj.objCon);
+
+                obj.cmd.Parameters.AddWithValue("@ID_USUARIO", id_usuario);
+                obj.cmd.ExecuteNonQuery();
+                correto = true;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+                throw;
+            }
+            finally { obj.desconectar(); }
+            return correto;
+        }
+        
         public void CarregarUsuarioPorId(int ID)
         {
             Conexao obj = new Conexao();
@@ -188,17 +209,15 @@ namespace Projeto_Restaurante.Modelos
                     obj.conectar();
 
                     SqlDataReader Leitor = null;
-                    SqlCommand cmd = new SqlCommand("SELECT id_usuario, nome, login, id_cargo FROM USUARIO WHERE id_cargo = 4", obj.objCon);
+                    SqlCommand cmd = new SqlCommand("SELECT nome FROM USUARIO WHERE id_cargo = 4", obj.objCon);
                     Leitor = cmd.ExecuteReader();
 
                     while (Leitor.Read())
                     {
                         ClasseUsuario usuario = new ClasseUsuario();
-                        usuario.id_usuario = int.Parse(Leitor["id_usuario"].ToString());
+                        
                         usuario.nome = Leitor["nome"].ToString();
-                        usuario.login = Leitor["login"].ToString();
-                        usuario.cargo.id_cargo = int.Parse(Leitor["id_cargo"].ToString());
-
+                        
                         lista.Add(usuario);
                     }
 
@@ -240,6 +259,36 @@ namespace Projeto_Restaurante.Modelos
             finally { obj.desconectar(); }
         }
 
+        public void CarregarUsuarioPorLogin(string login)
+        {
+            Conexao obj = new Conexao();
+            try
+            {
+                obj.conectar();
+
+                SqlDataReader Leitor = null;
+                SqlCommand cmd = new SqlCommand("SELECT id_usuario, nome, login, senha, id_cargo FROM USUARIO WHERE login = @LOGIN", obj.objCon);
+                cmd.Parameters.AddWithValue("@LOGIN", login);
+                Leitor = cmd.ExecuteReader();
+
+                if (Leitor.Read())
+                {
+                    id_usuario = int.Parse(Leitor["id_usuario"].ToString());
+                    nome = Leitor["nome"].ToString();
+                    login = Leitor["login"].ToString();
+                    senha = Leitor["senha"].ToString();
+                    cargo = new ClasseCargo();
+                    cargo.CarregarCargoPorID(int.Parse(Leitor["id_cargo"].ToString()));
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
+                throw;
+            }
+            finally { obj.desconectar(); }
+        }
+
         public bool logar()
         {
             Conexao obj = new Conexao();
@@ -250,12 +299,13 @@ namespace Projeto_Restaurante.Modelos
             {
                 obj.conectar();
 
-                string sql = "SELECT id_usuario FROM USUARIO WHERE login = @LOGIN AND senha = @SENHA";
+                string sql = "SELECT id_usuario, login, senha, id_cargo FROM USUARIO WHERE login = @LOGIN AND senha = @SENHA";
 
-                obj.cmd = new System.Data.SqlClient.SqlCommand(sql, obj.objCon);
+                obj.cmd = new SqlCommand(sql, obj.objCon);
 
                 obj.cmd.Parameters.AddWithValue("@LOGIN", login);
                 obj.cmd.Parameters.AddWithValue("@SENHA", criptografia.GerarHashMd5(senha));
+
 
 
                 obj.leitor = obj.cmd.ExecuteReader();
@@ -270,6 +320,6 @@ namespace Projeto_Restaurante.Modelos
             finally { obj.desconectar(); }
             return correto;
         }
-
     }
+
 }

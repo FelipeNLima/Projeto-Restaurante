@@ -34,7 +34,8 @@ namespace Projeto_Restaurante
             listViewusuario.Items.Clear();
             try
             {
-                string sql = $@"SELECT 
+                string sql = $@"SELECT
+                                id_usuario,
                                 nome,
                                 login,
                                 CARGO.descricao 
@@ -49,19 +50,23 @@ namespace Projeto_Restaurante
 
                 while (dr.Read())
                 {
-                    ListViewItem nome = new ListViewItem();
+                    
+                    ListViewItem id = new ListViewItem();
+                    ListViewItem.ListViewSubItem nome = new ListViewItem.ListViewSubItem();
                     ListViewItem.ListViewSubItem login = new ListViewItem.ListViewSubItem();
                     ListViewItem.ListViewSubItem cargo = new ListViewItem.ListViewSubItem();
 
 
-                    nome.Text = dr[0].ToString();
-                    login.Text = dr[1].ToString();
-                    cargo.Text = dr[2].ToString();
+                    id.Text = dr[0].ToString();
+                    nome.Text = dr[1].ToString();
+                    login.Text = dr[2].ToString();
+                    cargo.Text = dr[3].ToString();
 
-                    nome.SubItems.Add(login);
-                    nome.SubItems.Add(cargo);
+                    id.SubItems.Add(nome);
+                    id.SubItems.Add(login);
+                    id.SubItems.Add(cargo);
 
-                    listViewusuario.Items.Add(nome);
+                    listViewusuario.Items.Add(id);
 
                 }
 
@@ -105,7 +110,7 @@ namespace Projeto_Restaurante
                     var id = int.Parse(listViewusuario.SelectedItems[0].Text);
                     Modelos.ClasseUsuario chamar = new Modelos.ClasseUsuario();
                     chamar.CarregarUsuarioPorId(id);
-                    chamar.DeletarUsuario();
+                    chamar.DeletarUsuario(id);
                     CarregarListView();
 
                 }

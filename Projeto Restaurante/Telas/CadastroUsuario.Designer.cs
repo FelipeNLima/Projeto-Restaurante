@@ -155,6 +155,7 @@
             // 
             this.TBsenha.Location = new System.Drawing.Point(55, 102);
             this.TBsenha.Name = "TBsenha";
+            this.TBsenha.PasswordChar = '*';
             this.TBsenha.Size = new System.Drawing.Size(341, 20);
             this.TBsenha.TabIndex = 10;
             // 

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Projeto_Restaurante.Modelos;
 
@@ -20,19 +13,47 @@ namespace Projeto_Restaurante
 
         public void logar()
         {
-            Modelos.ClasseLogar login = new Modelos.ClasseLogar();
+            ClasseUsuario login = new ClasseUsuario();
 
-            login.usuario = TB_usuario.Text;
+            login.login = TB_usuario.Text;
             login.senha = TB_senha.Text;
+            
+
             bool certo = login.logar();
             try
             {
                 if (certo)
                 {
-                    Hide();
-                    Projeto_Restaurante.carregando teste = new carregando();
-                    teste.ShowDialog();
-                    Close();
+                    login.CarregarUsuarioPorLogin(TB_usuario.Text);
+                    if (login.cargo.id_cargo == 1)
+                    {
+                        Hide();
+                        carregando teste = new carregando(login.cargo.id_cargo);
+                        teste.ShowDialog();
+                        Close();
+                    }
+                    else if (login.cargo.id_cargo == 2)
+                    {
+                        
+                        Hide();
+                        carregando teste = new carregando(login.cargo.id_cargo);
+                        teste.ShowDialog();
+                        Close();
+                    }
+                    else if (login.cargo.id_cargo == 3)
+                    {
+                        
+                        Hide();
+                        carregando teste = new carregando(login.cargo.id_cargo);
+                        teste.ShowDialog();
+                        Close();
+                       
+                    }
+                    else if (login.cargo.id_cargo == 4)
+                    {
+                        MessageBox.Show("Acesso Negado!!!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+  
                 }
                 else
                 {
@@ -51,8 +72,8 @@ namespace Projeto_Restaurante
             try
             {
                 Verificações.VerificarCampos.Validar(Controls);
-
                 logar();
+
             }catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);

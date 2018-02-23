@@ -1,21 +1,18 @@
 ﻿using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows;
 
 
 namespace Projeto_Restaurante
 {
     public partial class carregando : Form
     {
-        public carregando()
+        bool certo = false;
+        public carregando(int cargo)
         {
+            if(cargo != 1)
+            {
+                certo = true;
+            }
             InitializeComponent();
 
             timer1.Interval = 2000; //Definir o intervalo em 2 segundos
@@ -26,7 +23,11 @@ namespace Projeto_Restaurante
         {
             timer1.Enabled = false; // Parar o timer, porque isso só é necessário uma vez
             Hide();
-            Projeto_Restaurante.Principal mudar = new Principal();
+            Principal mudar = new Principal();
+            if (certo)
+            {
+                mudar.TSBusuario.Enabled = false;
+            }
             mudar.ShowDialog();
             Close();
         }
