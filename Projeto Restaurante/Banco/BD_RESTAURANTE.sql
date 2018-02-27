@@ -4,127 +4,6 @@ GO
 USE BD_RESTAURANTE
 GO
 
-CREATE TABLE FORMA_PAGAMENTO (
-id_formaPagamento			int		PRIMARY KEY		IDENTITY,
-tipo_pagamento				varchar(50),
-apagado						bit,
-)
-go
-
-CREATE TABLE BANDEIRA_CARTAO (
-id_bandeiras				int		PRIMARY KEY		IDENTITY,
-nome_bandeiras				varchar(50),
-taxa						decimal (9,2),
-apagado						bit,
-id_formaPagamento			int
-)
-go
-
-CREATE TABLE PAGAMENTO (
-id_pagamento				int		PRIMARY KEY		IDENTITY,
-Valor_total					decimal(9,2),
-Valor_recebido				decimal(9,2),
-data						date,
-troco						decimal(9,2), 
-id_venda					int,
-id_formaPagamento			int,
-id_bandeiras				int,
-id_caixa					int
-)
-go
-
-CREATE TABLE GARCOM (
-id_garcom					int		PRIMARY KEY		IDENTITY,
-codigo						int,
-taxa_servico				decimal(9,2),
-nome_garcom					varchar(50),
-apagado						bit
-)
-go
-
-CREATE TABLE CATEGORIAPRODUTO (
-id_categoriaproduto			int		PRIMARY KEY		IDENTITY,
-descricao					varchar(50),
-apagado						bit
-)
-go
-
-CREATE TABLE CATEGORIACARDAPIO (
-id_categoriacardapio		int		PRIMARY KEY		IDENTITY,
-descricao					varchar(50),
-apagado						bit
-)
-go
-
-CREATE TABLE PRODUTO (
-id_produto					int		PRIMARY KEY		IDENTITY,
-preco_custo					decimal(9,2),
-nome_produto				varchar(50),
-estoque_atual				int,
-estoque_minimo				int,
-apagado						bit,
-id_categoriaproduto			int
-)
-go
-
-CREATE TABLE CARDAPIO (
-id_cardapio					int		PRIMARY KEY		IDENTITY,
-nome_item					varchar(100),
-preco_item					decimal(9,2),
-apagado						bit,
-id_categoriacardapio		int
-)
-go
-
-CREATE TABLE MESA (
-id_mesa						int		PRIMARY KEY		IDENTITY,
-Numero_mesas				int,
-Status						tinyint
-)
-go
-
-CREATE TABLE CONSUMO (
-id_consumo					int		PRIMARY KEY		IDENTITY,
-quantidade					int,
-Subtotal	 				decimal(9,2),
-Valor_total 				decimal(9,2),
-apagado						bit,
-id_cardapio					int,
-id_venda					int
-)
-go
-
-CREATE TABLE VENDA (
-id_venda					int		PRIMARY KEY		IDENTITY,
-Numero_pessoa				int,
-Desconto					decimal(9,2),
-Status_venda				tinyint,
-Data_entrada				datetime,
-Data_saida					datetime,
-Couvert_artistico			decimal(9,2),
-id_garcom					int,
-id_mesa						int
-)
-go
-
-CREATE TABLE LOGIN (
-id_login					int		PRIMARY KEY		IDENTITY,
-Usuario						varchar(50),
-Senha						varchar(128)
-)
-go
-
-
-CREATE TABLE CAIXA (
-id_caixa					int		PRIMARY KEY		IDENTITY,
-data_fechamento				datetime,
-valor_inicial				decimal(9,2),
-valor_final					decimal(9,2),
-data_abertura				datetime,
-diferenÃ§a					decimal(9,2),
-StatusCaixa					tinyint				
-)
-go
 
 CREATE TABLE RESTAURANTE (
 id_restaurante				int		PRIMARY KEY		IDENTITY,
@@ -142,30 +21,171 @@ cep							varchar(250)
 )
 go
 
-
-
---chaves estrangeiras 
-ALTER TABLE BANDEIRA_CARTAO	 ADD FOREIGN KEY(id_formaPagamento)		REFERENCES FORMA_PAGAMENTO (id_formaPagamento)
-ALTER TABLE PAGAMENTO		 ADD FOREIGN KEY(id_venda)				REFERENCES VENDA (id_venda)
-ALTER TABLE PAGAMENTO		 ADD FOREIGN KEY(id_caixa)				REFERENCES CAIXA (id_caixa)
-ALTER TABLE PAGAMENTO		 ADD FOREIGN KEY(id_formaPagamento)		REFERENCES FORMA_PAGAMENTO (id_formaPagamento)
-ALTER TABLE PAGAMENTO		 ADD FOREIGN KEY(id_bandeiras)			REFERENCES BANDEIRA_CARTAO (id_bandeiras)
-ALTER TABLE PRODUTO			 ADD FOREIGN KEY(id_categoriaproduto)	REFERENCES CATEGORIAPRODUTO (id_categoriaproduto)
-ALTER TABLE CONSUMO			 ADD FOREIGN KEY(id_venda)				REFERENCES VENDA (id_venda)
-ALTER TABLE CONSUMO			 ADD FOREIGN KEY(id_cardapio)			REFERENCES CARDAPIO (id_cardapio)
-ALTER TABLE CARDAPIO		 ADD FOREIGN KEY(id_categoriacardapio)	REFERENCES CATEGORIACARDAPIO (id_categoriacardapio)
-ALTER TABLE VENDA			 ADD FOREIGN KEY(id_mesa)	            REFERENCES MESA (id_mesa)
-ALTER TABLE VENDA			 ADD FOREIGN KEY(id_garcom)				REFERENCES GARCOM (id_garcom)
-
-
-
-
-INSERT INTO Login
-	(Usuario,Senha)
- VALUES
-	('admin','202cb962ac59075b964b07152d234b70')
+CREATE TABLE PAGAMENTO (
+id_pagamento		int		PRIMARY KEY		IDENTITY,
+Valor_total			decimal(9,2),
+Valor_recebido		decimal(9,2),
+data				date,
+troco				decimal(9,2),
+id_caixa			int,
+id_venda			int,
+id_bandeira			int,
+id_formapagamento	int
+)
 go
 
+CREATE TABLE CAIXA (
+id_caixa					int		PRIMARY KEY		IDENTITY,
+data_fechamento				datetime,
+valor_inicial				decimal(9,2),
+valor_final					decimal(9,2),
+data_abertura				datetime,
+diferença					decimal(9,2),
+StatusCaixa					tinyint
+)
+go
+
+CREATE TABLE FORMA_PAGAMENTO (
+id_formapagamento	int		PRIMARY KEY		IDENTITY,
+tipo_pagamento		varchar(200),
+apagado				bit
+)
+go
+
+CREATE TABLE BANDEIRA_CARTAO (
+id_bandeira			int		PRIMARY KEY		IDENTITY,
+nome_bandeira		varchar(200),
+apagado				bit,
+id_formaPagamento	int
+)
+go
+
+CREATE TABLE MESA (
+id_mesa				int		PRIMARY KEY		IDENTITY,
+Status				int,
+Numero_mesas		int
+)
+go
+
+CREATE TABLE CATEGORIACARDAPIO (
+id_categoriacardapio		int		PRIMARY KEY		IDENTITY,
+descricao					varchar(50),
+apagado						bit
+)
+go
+
+CREATE TABLE CONSUMO (
+id_consumo			int		PRIMARY KEY		IDENTITY,
+quantidade			int,
+Subtotal	 		decimal(9,2),
+Valor_total 		decimal(9,2),
+apagado				bit,
+id_venda			int,
+id_cardapio			int
+)
+go
+
+CREATE TABLE CARDAPIO (
+id_cardapio			int		PRIMARY KEY		IDENTITY,
+nome_item			varchar(200),
+preco_item			decimal(9,2),
+apagado				bit,
+id_categoriacardapio int
+)
+go
+
+CREATE TABLE CATEGORIAPRODUTO (
+id_categoriaproduto			int		PRIMARY KEY		IDENTITY,
+descricao					varchar(200),
+apagado						bit
+)
+go
+
+CREATE TABLE PRODUTO (
+id_produto			int		PRIMARY KEY		IDENTITY,
+nome_produto		varchar(200),
+preco_custo			decimal(9,2),
+estoque_minimo		int,
+estoque_atual		int,
+apagado				bit,
+id_categoriaproduto int
+)
+go
+
+CREATE TABLE USUARIO (
+id_usuario			int		PRIMARY KEY		IDENTITY,
+nome				varchar(200),
+login				varchar(200),
+senha				varchar(200),
+apagado				bit,
+id_cargo			int
+)
+go
+
+CREATE TABLE CARGO (
+id_cargo			int		PRIMARY KEY		IDENTITY,
+descricao			varchar(200)	
+)
+GO
+
+CREATE TABLE VENDA (
+id_venda			int		PRIMARY KEY		IDENTITY,
+Desconto			varchar(200),
+Numero_pessoa		int,
+Data_entrada		datetime,
+Data_saida			datetime,
+Status_venda		int,
+taxa_servico		decimal(9,2),
+couvert				decimal(9,2),
+id_usuario			int,
+id_mesa				int
+)
+go
+
+
+CREATE TABLE COUVERT_ARTISTICO (
+id_couvert			int		PRIMARY KEY		IDENTITY,
+Data				date,
+valor				decimal(9,2),
+id_venda			int
+)
+go
+
+CREATE TABLE TAXA_SERVICO (
+id_taxaservico		int		PRIMARY KEY		IDENTITY,
+valor				decimal(9,2),
+data				date,
+id_usuario			int,
+id_venda			int
+)
+go
+
+CREATE TABLE ESTOQUE (
+id_estoque			int		PRIMARY KEY		IDENTITY,
+Data_entrada		date,
+quantidade_entrada	int,
+id_produto			int
+)
+go
+
+
+--chaves estrangeiras
+ALTER TABLE USUARIO ADD FOREIGN KEY (id_cargo) REFERENCES CARGO (id_cargo)
+ALTER TABLE VENDA ADD FOREIGN KEY(id_usuario) REFERENCES USUARIO (id_usuario)
+ALTER TABLE VENDA ADD FOREIGN KEY(id_mesa) REFERENCES MESA (id_mesa)
+ALTER TABLE TAXA_SERVICO ADD FOREIGN KEY(id_usuario) REFERENCES USUARIO (id_usuario)
+ALTER TABLE ESTOQUE ADD FOREIGN KEY(id_produto) REFERENCES PRODUTO (id_produto)
+ALTER TABLE PAGAMENTO ADD FOREIGN KEY(id_caixa) REFERENCES CAIXA (id_caixa)
+ALTER TABLE PAGAMENTO ADD FOREIGN KEY(id_venda) REFERENCES VENDA (id_venda)
+ALTER TABLE PAGAMENTO ADD FOREIGN KEY(id_bandeira) REFERENCES BANDEIRA_CARTAO (id_bandeira)
+ALTER TABLE PAGAMENTO ADD FOREIGN KEY(id_formapagamento) REFERENCES FORMA_PAGAMENTO (id_formapagamento)
+ALTER TABLE BANDEIRA_CARTAO	 ADD FOREIGN KEY(id_formaPagamento)	REFERENCES FORMA_PAGAMENTO (id_formaPagamento)
+ALTER TABLE CONSUMO ADD FOREIGN KEY(id_venda) REFERENCES VENDA (id_venda)
+ALTER TABLE CONSUMO ADD FOREIGN KEY(id_cardapio) REFERENCES CARDAPIO (id_cardapio)
+ALTER TABLE TAXA_SERVICO ADD FOREIGN KEY(id_venda) REFERENCES VENDA (id_venda)
+ALTER TABLE COUVERT_ARTISTICO ADD FOREIGN KEY(id_venda) REFERENCES VENDA (id_venda)
+ALTER TABLE PRODUTO ADD FOREIGN KEY(id_categoriaproduto) REFERENCES CATEGORIAPRODUTO (id_categoriaproduto)
+ALTER TABLE CARDAPIO ADD FOREIGN KEY(id_categoriacardapio) REFERENCES CATEGORIACARDAPIO (id_categoriacardapio)
 
 
 declare @i as int = 1
@@ -177,7 +197,12 @@ begin
 	set @i = @i+1
 end
 
-INSERT INTO CAIXA (valor_inicial, StatusCaixa)
+
+INSERT INTO CARGO
+	(descricao)
 VALUES
-	(0,1)
+	('Proprietario'),
+	('Gerente'),
+	('Maitre'),
+	('Garçom')
 GO

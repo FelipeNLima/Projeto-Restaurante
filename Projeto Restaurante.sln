@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.0
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projeto Restaurante", "Projeto Restaurante\Projeto Restaurante.csproj", "{29DD1A8B-1DCD-4199-96C9-38065714B0B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projeto Restaurante Web", "Projeto Restaurante Web\Projeto Restaurante Web.csproj", "{9762D250-9E1F-42B1-8560-A4FD16D8A043}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projeto Restaurante Comanda Eletronica", "Projeto Restaurante Comanda Eletronica\Projeto Restaurante Comanda Eletronica.csproj", "{BE48132C-4C06-41AA-8131-53D927F5D559}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,12 +17,15 @@ Global
 		{29DD1A8B-1DCD-4199-96C9-38065714B0B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29DD1A8B-1DCD-4199-96C9-38065714B0B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29DD1A8B-1DCD-4199-96C9-38065714B0B7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9762D250-9E1F-42B1-8560-A4FD16D8A043}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9762D250-9E1F-42B1-8560-A4FD16D8A043}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9762D250-9E1F-42B1-8560-A4FD16D8A043}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9762D250-9E1F-42B1-8560-A4FD16D8A043}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE48132C-4C06-41AA-8131-53D927F5D559}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE48132C-4C06-41AA-8131-53D927F5D559}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE48132C-4C06-41AA-8131-53D927F5D559}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE48132C-4C06-41AA-8131-53D927F5D559}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {91B16273-85B7-4CE7-AF5B-57B9091D4815}
 	EndGlobalSection
 EndGlobal
