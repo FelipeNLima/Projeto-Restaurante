@@ -11,8 +11,7 @@
     </head>
 <body class="bodylogin" >
     <form  id="form1" class="form-login" runat="server">
-        <img src = "Imagens/fundo.jpg" class = "imglogo" alt = "logo" id = "logo" />
-        <div>Usuario</div>
+        &nbsp;<div>Usuario</div>
             <asp:TextBox ID="TBusuario" runat="server" class="form-control" placeholder="Digite Seu Usuario"></asp:TextBox>
         <div>Senha</div>
             <asp:TextBox ID="TBsenha" runat="server" class="form-control" TextMode="Password" placeholder="Digite Sua Senha"></asp:TextBox>
