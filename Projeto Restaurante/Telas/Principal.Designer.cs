@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.TSBusuario = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.TSBcategoria = new System.Windows.Forms.ToolStripButton();
@@ -50,6 +51,8 @@
             this.TSBmesas = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.TSBcaixa = new System.Windows.Forms.ToolStripButton();
+            this.TSBsair = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.IMGList = new System.Windows.Forms.ImageList(this.components);
@@ -66,6 +69,7 @@
             this.toolStrip2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripSeparator6,
             this.TSBusuario,
             this.toolStripSeparator8,
             this.TSBcategoria,
@@ -84,13 +88,21 @@
             this.toolStripSeparator12,
             this.TSBmesas,
             this.toolStripSeparator2,
-            this.TSBcaixa});
+            this.TSBcaixa,
+            this.TSBsair,
+            this.toolStripSeparator7});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip2.Size = new System.Drawing.Size(1299, 86);
             this.toolStrip2.TabIndex = 1;
             this.toolStrip2.Text = "toolStrip2";
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 86);
             // 
             // TSBusuario
             // 
@@ -255,6 +267,7 @@
             // TSBmesas
             // 
             this.TSBmesas.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.TSBmesas.Enabled = false;
             this.TSBmesas.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.TSBmesas.Image = ((System.Drawing.Image)(resources.GetObject("TSBmesas.Image")));
             this.TSBmesas.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -287,6 +300,24 @@
             this.TSBcaixa.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.TSBcaixa.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.TSBcaixa.Click += new System.EventHandler(this.TSBcaixa_Click);
+            // 
+            // TSBsair
+            // 
+            this.TSBsair.Image = ((System.Drawing.Image)(resources.GetObject("TSBsair.Image")));
+            this.TSBsair.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.TSBsair.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.TSBsair.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TSBsair.Name = "TSBsair";
+            this.TSBsair.Size = new System.Drawing.Size(68, 83);
+            this.TSBsair.Text = "Sair";
+            this.TSBsair.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.TSBsair.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            this.TSBsair.Click += new System.EventHandler(this.TSBsair_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 86);
             // 
             // groupBox1
             // 
@@ -329,7 +360,7 @@
             // 
             this.Hora.AutoSize = true;
             this.Hora.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Hora.Location = new System.Drawing.Point(12, 51);
+            this.Hora.Location = new System.Drawing.Point(92, 34);
             this.Hora.Name = "Hora";
             this.Hora.Size = new System.Drawing.Size(52, 17);
             this.Hora.TabIndex = 3;
@@ -339,7 +370,7 @@
             // 
             this.Data.AutoSize = true;
             this.Data.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Data.Location = new System.Drawing.Point(12, 9);
+            this.Data.Location = new System.Drawing.Point(92, 9);
             this.Data.Name = "Data";
             this.Data.Size = new System.Drawing.Size(52, 17);
             this.Data.TabIndex = 4;
@@ -399,5 +430,8 @@
         public System.Windows.Forms.ToolStripButton TSBusuario;
         public System.Windows.Forms.ToolStripButton TSBcaixa;
         public System.Windows.Forms.ToolStripButton TSBmesas;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripButton TSBsair;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
     }
 }

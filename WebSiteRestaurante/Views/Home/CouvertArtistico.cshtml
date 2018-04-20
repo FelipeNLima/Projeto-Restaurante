@@ -1,0 +1,45 @@
+﻿@model PagedList.IPagedList<WebSiteRestaurante.Models.TaxaCouvertArtisticoModel>
+
+@{
+    ViewBag.Title = "CouvertArtistico";
+    Layout = "~/Views/Home/Menu.cshtml";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<div class="panel panel-default">
+    <div class="panel-heading"><h4><b>Relatório Couvert Artistico por Período De: @ViewBag.dataInicial.ToShortDateString() á @ViewBag.dataFinal.ToShortDateString()</b></h4></div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-auto">
+                <table class="table">
+                    <tr style="background-color:lightgray">
+                        <th>Data</th>
+                        <th>Valor do CouvertArtistico</th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.data.ToShortDateString()
+                            </td>
+                            <td>
+                                @item.valor.ToString("N")
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <th>Total CouvertArtistico:</th>
+                        <th>@Model.Sum(t => t.valor).ToString("N2")</th>
+                    </tr>
+                    <tr>
+                        <td><b>@Model.Count registos de @Model.TotalItemCount</b></td>
+                        <td>@Html.ActionLink("GERAR PDF", "ReportViewerCouvert", new { gerarPDF = true, dataInicial = ViewBag.dataInicial, dataFinal = ViewBag.dataFinal }, new { target = "_blank" })</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

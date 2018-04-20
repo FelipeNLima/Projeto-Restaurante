@@ -151,6 +151,13 @@ id_venda			int
 )
 go
 
+CREATE TABLE CONFIGURACAO_COUVERT (
+id_configuracao		int		PRIMARY KEY		IDENTITY,
+Valor				float,
+ativo				bit 
+)
+GO
+
 CREATE TABLE TAXA_SERVICO (
 id_taxaservico		int		PRIMARY KEY		IDENTITY,
 valor				decimal(9,2),
@@ -206,3 +213,13 @@ VALUES
 	('Maitre'),
 	('Garçom')
 GO
+
+insert INTO  CONFIGURACAO_COUVERT
+		(Valor , ativo)
+values
+		(0,1)
+GO
+
+SELECT * FROM MESA
+GO
+

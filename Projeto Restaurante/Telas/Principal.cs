@@ -6,9 +6,29 @@ namespace Projeto_Restaurante
 {
     public partial class Principal : Form
     {
+
         public Principal()
         {
             InitializeComponent();
+            ClasseCaixa caixa = new ClasseCaixa();
+            caixa.CarregarCaixa();
+            if (caixa.StatusCaixa == StatusCaixa.Aberto)
+            {
+                Telas.Caixa abrir = new Telas.Caixa(StatusCaixa.Aberto);
+                abrir.ShowDialog();
+                if (abrir.FecharCaixa())
+                {
+                    TSBmesas.Enabled = false;
+                }
+            }
+            else
+            {
+                Telas.Caixa abrir1 = new Telas.Caixa();
+                abrir1.ShowDialog();
+                if (abrir1.AbrirCaixa())
+                    TSBmesas.Enabled = true;
+            }
+
         }
 
         private void TSBgarcon_Click_1(object sender, EventArgs e)
@@ -31,7 +51,7 @@ namespace Projeto_Restaurante
 
         private void Principal_Load(object sender, EventArgs e)
         {
-            timer1_Tick_1(e,e);
+            timer1_Tick_1(e,e); 
         }
 
         private void TSBformapagamento_Click(object sender, EventArgs e)
@@ -60,7 +80,7 @@ namespace Projeto_Restaurante
 
         private void TSBcaixa_Click(object sender, EventArgs e)
         {
-            Modelos.ClasseCaixa caixa = new Modelos.ClasseCaixa();
+            ClasseCaixa caixa = new ClasseCaixa();
             caixa.CarregarCaixa();
             if (caixa.StatusCaixa == StatusCaixa.Aberto)
             {
@@ -98,5 +118,13 @@ namespace Projeto_Restaurante
             Telas.Estoque abrir = new Telas.Estoque();
             abrir.ShowDialog();
         }
+
+        private void TSBsair_Click(object sender, EventArgs e)
+        {
+            Hide();
+            Login sair = new Login();
+            sair.ShowDialog();
+        }
+
     }
 }

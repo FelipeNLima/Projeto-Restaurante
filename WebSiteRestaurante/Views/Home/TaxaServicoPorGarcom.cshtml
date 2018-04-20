@@ -1,0 +1,50 @@
+﻿@model IList<WebSiteRestaurante.Models.TaxaServicoModel>
+
+@{
+    ViewBag.Title = "TaxaServicoPorGarcom";
+    Layout = "~/Views/Home/Menu.cshtml";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<div class="panel panel-default">
+    <div class="panel-heading"><h4><b>Relatório Taxa de Serviço por Período e Garçom De: @ViewBag.dataInicial.ToShortDateString() á @ViewBag.dataFinal.ToShortDateString()</b></h4></div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-auto">
+                <table class="table">
+                    <tr style="background-color:lightgray">
+                        <th>Nome do Garçom</th>
+                        <th>Data</th>
+                        <th>Valor por data</th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.usuario.nome
+                            </td>
+                            <td>
+                                @item.data.ToShortDateString()
+                            </td>
+                            <td>
+                                @item.valor.ToString("N")
+                            </td>
+                        </tr>
+                    }
+                        <tr>
+                            <th></th>
+                            <th>Total Taxa de Serviço:</th>
+                            <th>@Model.Sum(t => t.valor).ToString("N2")</th>
+                        </tr>
+                    <tr>
+                        <td><b>@Model.Count registos de @Model.Count.ToString("D4")</b></td>
+                        <td>@Html.ActionLink("GERAR PDF", "ReportViewerTaxaServico", new { dataInicial = ViewBag.dataInicial, dataFinal = ViewBag.dataFinal, id_usuario = ViewBag.id_usuario }, new { target = "_blank" })</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

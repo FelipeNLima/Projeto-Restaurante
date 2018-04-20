@@ -103,6 +103,7 @@
             this.TBvalor.Size = new System.Drawing.Size(161, 26);
             this.TBvalor.TabIndex = 3;
             this.TBvalor.Tag = "*";
+            this.TBvalor.Text = "0,00";
             // 
             // Caixa
             // 

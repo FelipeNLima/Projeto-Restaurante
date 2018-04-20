@@ -7,7 +7,7 @@ using System.Security.Cryptography;
 
 namespace Projeto_Restaurante.Verificações
 {
-    class criptografia
+    public class criptografia
     {
         public static string GerarHashMd5(string input)
         {

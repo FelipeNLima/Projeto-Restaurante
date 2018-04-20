@@ -7,6 +7,7 @@ namespace Projeto_Restaurante
     public partial class carregando : Form
     {
         bool certo = false;
+
         public carregando(int cargo)
         {
             if(cargo != 1)

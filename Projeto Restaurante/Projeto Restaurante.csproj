@@ -81,11 +81,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BD_RESTAURANTEDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BD_RESTAURANTEDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Mesas\MesaItens.cs" />
     <Compile Include="Modelos\ClasseBandeira.cs" />
     <Compile Include="Modelos\ClasseCaixa.cs" />
@@ -93,6 +88,7 @@
     <Compile Include="Modelos\ClasseCargo.cs" />
     <Compile Include="Modelos\ClasseCategoria_Cardapio.cs" />
     <Compile Include="Modelos\ClasseCategoria_Produto.cs" />
+    <Compile Include="Modelos\ClasseConfiguracaoCouvert.cs" />
     <Compile Include="Modelos\ClasseConsumo.cs" />
     <Compile Include="Modelos\ClasseCouvert_Artistico.cs" />
     <Compile Include="Modelos\ClasseEstoque.cs" />
@@ -348,17 +344,6 @@
     <EmbeddedResource Include="Telas\Venda.resx">
       <DependentUpon>Venda.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="BD_RESTAURANTEDataSet.xsc">
-      <DependentUpon>BD_RESTAURANTEDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="BD_RESTAURANTEDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BD_RESTAURANTEDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="BD_RESTAURANTEDataSet.xss">
-      <DependentUpon>BD_RESTAURANTEDataSet.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

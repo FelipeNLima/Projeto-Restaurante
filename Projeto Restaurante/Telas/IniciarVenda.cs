@@ -29,9 +29,8 @@ namespace Projeto_Restaurante.Telas
 
                 string index_garcom = CBnomegarcom.Text;
                 string numeropessoa = TBnumeropessoas.Text;
-                string couvert = TBcouvert.Text;
                 mesa.MudarParaOcupado();
-                Telas.Venda abrir = new Venda(mesa, index_garcom, numeropessoa, couvert);
+                Telas.Venda abrir = new Venda(mesa, index_garcom, numeropessoa);
                 abrir.ShowDialog();
                 Hide();
             }catch(Exception ex)

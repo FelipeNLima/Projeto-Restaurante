@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Projeto_Restaurante.Conexão;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -17,16 +17,19 @@ namespace Projeto_Restaurante.Telas
         private ClasseVenda venda = new ClasseVenda();
         private ClasseConsumo consumo = new ClasseConsumo();
         private ClasseCardapio carregarcardapio = new ClasseCardapio();
+        private ClasseConfiguracaoCouvert couvertartistico = new ClasseConfiguracaoCouvert();
         private ClasseMesa mesa;
 
-        List<Modelos.ClasseCardapio> listaproduto = new List<Modelos.ClasseCardapio>();
+
+        List<ClasseCardapio> listaproduto = new List<ClasseCardapio>();
 
         // MESA ABERTA
         public Venda(ClasseMesa mesa)
         {
             InitializeComponent();
             venda.CarregarVendaPorMesa(mesa.id_mesa);
-            TBcouvert.Text = venda.Couvert_artistico.ToString();
+            couvertartistico.CarregarCouvert();
+            TBcouvert.Text = couvertartistico.Valor.ToString();
             TBdesconto.Text = venda.Desconto.ToString();
             Time_entrada.Text = "Horario Entrada " + venda.Data_entrada.ToLongTimeString();
             TBtelanumerovenda.Text = mesa.numero.ToString();
@@ -39,7 +42,7 @@ namespace Projeto_Restaurante.Telas
         }
 
         // ABRIR MESA
-        public Venda(ClasseMesa mesa, string index, string numeropessoas, string couvertartistico)
+        public Venda(ClasseMesa mesa, string index, string numeropessoas)
         {
             InitializeComponent();
             this.mesa = mesa;
@@ -48,7 +51,15 @@ namespace Projeto_Restaurante.Telas
             TBnomegarcom.Text = index;
             TBnumeropessoas.Text = numeropessoas;
             TBdesconto.Text = "0";
-            TBcouvert.Text = couvertartistico;
+
+            if (couvertartistico.ativo == 1)
+            {
+                TBcouvert.Text = couvertartistico.Valor.ToString();
+            }
+            else
+            {
+                TBcouvert.Text = "0";
+            }
             CarregarCardapio();
             EfetuarVenda();
         }
@@ -221,14 +232,14 @@ namespace Projeto_Restaurante.Telas
 
         public float CalcularValorTotalPagar()
         {
-            float valor1, valor2, valor3, valortotal;
+            float valor1, valor2, valor3, valor4, valortotal;
 
             valor1 = CalculaValorTotalDataGridView();
             valor2 = CalculaCouvert_Artistico();
             valor3 = CalculaTaxaServiço();
+            valor4 = CalculaDesconto();
 
-
-            valortotal = valor1 + valor2 + valor3;
+            valortotal = (valor1 + valor2 + valor3) - valor4;
 
             return valortotal;
         }
@@ -238,7 +249,7 @@ namespace Projeto_Restaurante.Telas
             float valor1, valor2;
 
             valor1 = float.Parse(TBdesconto.Text);
-            valor2 = CalcularValorTotalPagar();
+            valor2 = CalculaValorTotalDataGridView();
 
             return valor1 * valor2 / 100;
         }

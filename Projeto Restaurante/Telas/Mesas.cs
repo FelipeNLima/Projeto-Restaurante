@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace Projeto_Restaurante.Telas
@@ -18,7 +13,6 @@ namespace Projeto_Restaurante.Telas
 		{
 			InitializeComponent();
 			panel1.Visible = false;
-			CarregarMesas();
 			panel1.Visible = true;
 		}
 
@@ -26,7 +20,7 @@ namespace Projeto_Restaurante.Telas
 		{
 			panel1.Controls.Clear();
 			int x = 12;
-			int y = 12;
+			int y = 0;
 
 			foreach (var mesaitem in ClasseMesa.CarregarMesa())
 			{
@@ -51,7 +45,7 @@ namespace Projeto_Restaurante.Telas
 			{
 				Location = posicao,
 				Tag = mesa,
-				BackColor = cor,
+				BackColor = System.Drawing.Color.LightGray,
 				Size = new System.Drawing.Size(116, 63),
 				Cursor = Cursors.Hand,
 				BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
@@ -65,9 +59,9 @@ namespace Projeto_Restaurante.Telas
 				Cursor = Cursors.Hand,
 				Location = new Point(-2, -4),
 				Font = new System.Drawing.Font("Microsoft Sans Serif", 40F, FontStyle.Bold),
-				ForeColor = System.Drawing.Color.White,
-				BackColor = cor,
-				Tag = mesa,
+				ForeColor = cor,
+				BackColor = System.Drawing.Color.LightGray,
+                Tag = mesa,
 				TextAlign = HorizontalAlignment.Center,
 				BorderStyle = System.Windows.Forms.BorderStyle.None,
 				Size = new System.Drawing.Size(126, 68),
@@ -78,6 +72,7 @@ namespace Projeto_Restaurante.Telas
 				WordWrap = false,
 			};
 
+            tb.GotFocus += (o, a) => pn.Focus();
             tb.Click += PnClick;
             pn.Controls.Add(tb);
 
@@ -130,8 +125,8 @@ namespace Projeto_Restaurante.Telas
 
         private void BTcouvertArtistico_Click(object sender, EventArgs e)
         {
-            //Telas.CouvertArtistico abrir = new CouvertArtistico();
-            //abrir.ShowDialog();
+           CouvertArtistico abrir = new CouvertArtistico();
+            abrir.ShowDialog();
         }
 
         private void BTTransferirMesa_Click(object sender, EventArgs e)
@@ -145,6 +140,21 @@ namespace Projeto_Restaurante.Telas
         {
             Principal abrir = new Principal();
             abrir.ShowDialog();
+        }
+
+        private void timerAtualizandoMesa_Tick(object sender, EventArgs e)
+        {
+            CarregarMesas();
+        }
+
+        private void Mesas_Load(object sender, EventArgs e)
+        {
+            timerAtualizandoMesa_Tick(e, e);
+        }
+
+        private void TSBCalculadora_Click(object sender, EventArgs e)
+        {
+            Process.Start("Calc.exe");
         }
     }
 }

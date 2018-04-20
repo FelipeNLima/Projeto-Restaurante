@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Projeto_Restaurante.Modelos
 {
-    class ClasseBandeira
+    public class ClasseBandeira
     {
         public int id_bandeira { get; set; }
         public string nome_bandeira { get; set; }

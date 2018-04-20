@@ -1,0 +1,15 @@
+﻿@using ReportViewerForMvc;
+
+@{
+    ViewBag.Title = "ReportViewerCouvert";
+}
+
+@section Styles {
+    <link href="@Url.Content("~/CSS/Relatorio.css")" rel="stylesheet" type="text/css" />
+}
+
+@Html.ReportViewer(ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer, new { Style = "width: 640px;height: 100%;margin: 0 auto;display: block;" })
+
+
+
+

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projeto_Restaurante.Modelos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,11 +13,14 @@ namespace Projeto_Restaurante.Telas
 {
     public partial class CouvertArtistico : Form
     {
-        Modelos.ClasseVenda venda = new Modelos.ClasseVenda();
-        public CouvertArtistico(Modelos.ClasseVenda venda)
+        ClasseVenda venda = new ClasseVenda();
+        ClasseConfiguracaoCouvert configuracao = new ClasseConfiguracaoCouvert();
+        public CouvertArtistico()
         {
             InitializeComponent();
-            this.venda = venda;
+            configuracao.CarregarCouvert();
+            TBvalor.Text = configuracao.Valor.ToString();
+           
         }
 
         private void BTsair_Click(object sender, EventArgs e)
@@ -26,8 +30,9 @@ namespace Projeto_Restaurante.Telas
 
         private void BTsalvar_Click(object sender, EventArgs e)
         {
-            venda.Couvert_artistico = float.Parse(TBvalor.Text);
-            venda.AtualizarVenda();
+            configuracao.Valor = float.Parse(TBvalor.Text);
+            configuracao.ativo = 1;
+            configuracao.FixarCouvert();
             Close();
         }
     }

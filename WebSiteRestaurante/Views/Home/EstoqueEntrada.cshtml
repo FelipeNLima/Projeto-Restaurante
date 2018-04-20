@@ -1,0 +1,47 @@
+﻿@model PagedList.IPagedList<WebSiteRestaurante.Models.EstoqueModel>
+
+@{
+    ViewBag.Title = "Estoque";
+    Layout = "~/Views/Home/Menu.cshtml";
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<div class="panel panel-default">
+    <div class="panel-heading"><h4><b>Relatório de entrada no estoque por Período De: @ViewBag.dataInicial.ToShortDateString() á @ViewBag.dataFinal.ToShortDateString()</b></h4></div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-10">
+                <table class="table">
+                    <tr style="background-color:lightgray">
+                        <th>Data de Entrada</th>
+                        <th>Produto</th>
+                        <th>Quantidade</th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.Data_entrada.ToShortDateString()
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.id_produto.nome_produto)
+                            </td>
+                            <td>
+                                @item.quantidade_entrada
+                            </td>
+                        </tr>
+                    }
+                   
+                    <tr>
+                        <td><b>@Model.Count registos de @Model.TotalItemCount</b></td>
+                        <th></th>
+                        <td>@Html.ActionLink("GERAR PDF", "ReportViewerEstoqueEntrada", new { gerarPDF = true, dataInicial = ViewBag.dataInicial, dataFinal = ViewBag.dataFinal }, new { target = "_blank" })</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

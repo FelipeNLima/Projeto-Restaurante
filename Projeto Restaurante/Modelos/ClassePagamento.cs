@@ -6,7 +6,7 @@ using System.Data.SqlTypes;
 namespace Projeto_Restaurante.Modelos
 {
 
-    class ClassePagamento
+    public class ClassePagamento
     {
         public int id_pagamento { get; set; }
         public float Valor_total { get; set; }

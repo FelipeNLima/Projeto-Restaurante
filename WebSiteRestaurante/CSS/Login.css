@@ -1,0 +1,38 @@
+﻿body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #eee;
+}
+
+.bodylogin {
+    margin: 0 auto;
+    padding: 0;
+    height: auto;
+    width: auto;
+}
+
+.form-login {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-control {
+    position: relative;
+    height: auto;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.imglogo {
+    height: 290px;
+    margin: -27px;
+    margin-top: -13px;
+}
+
+
+.botao {
+    margin-top: 10px;
+    width: 300px;
+}

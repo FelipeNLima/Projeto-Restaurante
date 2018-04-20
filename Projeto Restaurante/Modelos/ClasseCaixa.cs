@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Projeto_Restaurante.Modelos
 {
-    class ClasseCaixa
+    public class ClasseCaixa
     {
         public int id_caixa { get; set; }
         public DateTime data_fechamento { get; set; }

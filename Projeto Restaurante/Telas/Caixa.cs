@@ -28,11 +28,18 @@ namespace Projeto_Restaurante.Telas
 
         public bool AbrirCaixa()
         {
-            Modelos.ClasseCaixa caixa = new Modelos.ClasseCaixa();
+            ClasseCaixa caixa = new ClasseCaixa();
 
             caixa.data_abertura = DateTime.Now;
-            caixa.valor_inicial = float.Parse(TBvalor.Text);
-            caixa.StatusCaixa = StatusCaixa.Aberto;
+            if(TBvalor.Text == null)
+            {
+                MessageBox.Show("Insire uma valor para abrir o caixa !");
+            }
+            else
+            {
+                caixa.valor_inicial = float.Parse(TBvalor.Text);
+                caixa.StatusCaixa = StatusCaixa.Aberto;
+            }
 
             bool certo = caixa.AbrirCaixa();
             try
@@ -58,13 +65,20 @@ namespace Projeto_Restaurante.Telas
 
         public bool FecharCaixa()
         {
-            Modelos.ClasseCaixa caixa = new Modelos.ClasseCaixa();
+            ClasseCaixa caixa = new ClasseCaixa();
             caixa.CarregarCaixa();
             caixa.id_caixa = caixa.id_caixa;
-            caixa.valor_final = float.Parse(TBvalor.Text);
-            caixa.data_fechamento = DateTime.Now;
-            caixa.diferença = CalcularDiferenca();
-            caixa.StatusCaixa = StatusCaixa.Fechado;
+            if (TBvalor.Text == null)
+            {
+                MessageBox.Show("Insire uma valor para fechar o caixa !");
+            }
+            else
+            {
+                caixa.valor_final = float.Parse(TBvalor.Text);
+                caixa.data_fechamento = DateTime.Now;
+                caixa.diferença = CalcularDiferenca();
+                caixa.StatusCaixa = StatusCaixa.Fechado;
+            }
 
             bool certo = caixa.FecharCaixa();
             try

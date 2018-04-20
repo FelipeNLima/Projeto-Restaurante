@@ -5,144 +5,144 @@ using System.Data.SqlClient;
 
 namespace Projeto_Restaurante.Modelos
 {
-	using Conexão;
-	class ClasseCategoria_Cardapio
-	{
-		public int id_categoriacardapio { get; set; }
-		public string descricao { get; set; }
-		public bool apagado { get; set; }
+    using Conexão;
+    public class ClasseCategoria_Cardapio
+    {
+        public int id_categoriacardapio { get; set; }
+        public string descricao { get; set; }
+        public bool apagado { get; set; }
 
-		public bool CadastrarCategoriaCardapio()
-		{
-			Conexao obj = new Conexao();
+        public bool CadastrarCategoriaCardapio()
+        {
+            Conexao obj = new Conexao();
 
-			bool correto = false;
+            bool correto = false;
 
-			try
-			{
-				obj.conectar();
+            try
+            {
+                obj.conectar();
 
-				string sql = " INSERT INTO CATEGORIACARDAPIO (descricao, apagado) VALUES (@DESCRICAO, @APAGADO)";
+                string sql = " INSERT INTO CATEGORIACARDAPIO (descricao, apagado) VALUES (@DESCRICAO, @APAGADO)";
 
-				obj.cmd = new System.Data.SqlClient.SqlCommand(sql, obj.objCon);
+                obj.cmd = new System.Data.SqlClient.SqlCommand(sql, obj.objCon);
 
-				obj.cmd.Parameters.AddWithValue("@DESCRICAO", descricao);
-				obj.cmd.Parameters.AddWithValue("@APAGADO", apagado);
+                obj.cmd.Parameters.AddWithValue("@DESCRICAO", descricao);
+                obj.cmd.Parameters.AddWithValue("@APAGADO", apagado);
 
-				obj.cmd.ExecuteNonQuery();
+                obj.cmd.ExecuteNonQuery();
 
-				correto = true;
+                correto = true;
 
-			}
-			catch (Exception)
-			{
+            }
+            catch (Exception)
+            {
 
-				throw;
-			}
-			finally { obj.desconectar(); }
-			return correto;
-
-
-		}
-
-		public bool AtualizarCategoriaCardapio()
-		{
-			Conexao obj = new Conexao();
-
-			bool correto = false;
-
-			try
-			{
-				obj.conectar();
-
-				string sql = "UPDATE CATEGORIACARDAPIO SET  descricao = @DESCRICAO, apagado = @APAGADO WHERE id_categoriacardapio = @IDCATEGORIACARDAPIO";
-
-				obj.cmd = new System.Data.SqlClient.SqlCommand(sql, obj.objCon);
+                throw;
+            }
+            finally { obj.desconectar(); }
+            return correto;
 
 
-				obj.cmd.Parameters.AddWithValue("@DESCRICAO", descricao);
-				obj.cmd.Parameters.AddWithValue("@APAGADO", apagado);
-				obj.cmd.Parameters.AddWithValue("@IDCATEGORIACARDAPIO", id_categoriacardapio);
+        }
 
-				obj.cmd.ExecuteNonQuery();
-				correto = true;
-			}
-			catch (Exception)
-			{
+        public bool AtualizarCategoriaCardapio()
+        {
+            Conexao obj = new Conexao();
 
-				throw;
-			}
-			finally { obj.desconectar(); }
-			return correto;
-		}
+            bool correto = false;
 
-		public void DeletarCategoriaCardapio()
-		{
-			this.apagado = true;
-			AtualizarCategoriaCardapio();
-		}
+            try
+            {
+                obj.conectar();
 
-		public void CarregarCardapioID(int ID)
-		{
-			Conexao obj = new Conexao();
-			try
-			{
-				obj.conectar();
-				int Codigo = ID;
-				SqlDataReader Leitor = null;
-				SqlCommand cmd = new SqlCommand("SELECT descricao FROM CATEGORIACARDAPIO WHERE id_categoriacardapio = @CODIGO", obj.objCon);
+                string sql = "UPDATE CATEGORIACARDAPIO SET  descricao = @DESCRICAO, apagado = @APAGADO WHERE id_categoriacardapio = @IDCATEGORIACARDAPIO";
+
+                obj.cmd = new System.Data.SqlClient.SqlCommand(sql, obj.objCon);
+
+
+                obj.cmd.Parameters.AddWithValue("@DESCRICAO", descricao);
+                obj.cmd.Parameters.AddWithValue("@APAGADO", apagado);
+                obj.cmd.Parameters.AddWithValue("@IDCATEGORIACARDAPIO", id_categoriacardapio);
+
+                obj.cmd.ExecuteNonQuery();
+                correto = true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally { obj.desconectar(); }
+            return correto;
+        }
+
+        public void DeletarCategoriaCardapio()
+        {
+            this.apagado = true;
+            AtualizarCategoriaCardapio();
+        }
+
+        public void CarregarCardapioID(int ID)
+        {
+            Conexao obj = new Conexao();
+            try
+            {
+                obj.conectar();
+                int Codigo = ID;
+                SqlDataReader Leitor = null;
+                SqlCommand cmd = new SqlCommand("SELECT descricao FROM CATEGORIACARDAPIO WHERE id_categoriacardapio = @CODIGO", obj.objCon);
                 cmd.Parameters.AddWithValue("@CODIGO", ID);
                 Leitor = cmd.ExecuteReader();
 
-				if (Leitor.Read())
-				{
-					this.id_categoriacardapio = ID;
-					descricao = (Leitor["descricao"].ToString());
+                if (Leitor.Read())
+                {
+                    this.id_categoriacardapio = ID;
+                    descricao = (Leitor["descricao"].ToString());
 
-				}
-			}
-			catch (Exception)
-			{
+                }
+            }
+            catch (Exception)
+            {
 
-				throw;
-			}
-			finally { obj.desconectar(); }
-		}
+                throw;
+            }
+            finally { obj.desconectar(); }
+        }
 
-		public static List<ClasseCategoria_Cardapio> CarregarCategoriaCardapio()
-		{
+        public static List<ClasseCategoria_Cardapio> CarregarCategoriaCardapio()
+        {
 
-			
-				Conexao obj = new Conexao();
-				List<ClasseCategoria_Cardapio> lista = new List<ClasseCategoria_Cardapio>();
 
-				try
-				{
-					obj.conectar();
+            Conexao obj = new Conexao();
+            List<ClasseCategoria_Cardapio> lista = new List<ClasseCategoria_Cardapio>();
 
-					SqlDataReader Leitor = null;
-					SqlCommand cmd = new SqlCommand("SELECT  id_categoriacardapio, descricao  FROM CATEGORIACARDAPIO WHERE apagado = 0", obj.objCon);
-					Leitor = cmd.ExecuteReader();
+            try
+            {
+                obj.conectar();
 
-					while (Leitor.Read())
-					{
-						ClasseCategoria_Cardapio c = new ClasseCategoria_Cardapio();
-						c.id_categoriacardapio = int.Parse(Leitor["id_categoriacardapio"].ToString());
-						c.descricao = (Leitor["descricao"].ToString());
+                SqlDataReader Leitor = null;
+                SqlCommand cmd = new SqlCommand("SELECT  id_categoriacardapio, descricao  FROM CATEGORIACARDAPIO WHERE apagado = 0", obj.objCon);
+                Leitor = cmd.ExecuteReader();
 
-						lista.Add(c);
-					}
+                while (Leitor.Read())
+                {
+                    ClasseCategoria_Cardapio c = new ClasseCategoria_Cardapio();
+                    c.id_categoriacardapio = int.Parse(Leitor["id_categoriacardapio"].ToString());
+                    c.descricao = (Leitor["descricao"].ToString());
 
-				}
-				catch (Exception)
-				{
+                    lista.Add(c);
+                }
 
-					throw;
-				}
-				finally { obj.desconectar(); }
-				return lista;
-			}
-		
+            }
+            catch (Exception)
+            {
 
-	}
+                throw;
+            }
+            finally { obj.desconectar(); }
+            return lista;
+        }
+
+
+    }
 }

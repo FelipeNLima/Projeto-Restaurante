@@ -228,7 +228,6 @@ namespace Projeto_Restaurante.Telas
                        
                 if (e.KeyCode == Keys.Enter)
                 {
-              
                         EfetuarPagamento();
                         preencherLabel();
                         ApagarLabel();

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Projeto_Restaurante.Modelos
 {
-    class ClasseFormaPagamento
+    public class ClasseFormaPagamento
     {
         public int id_formaPagamento { get; set; }
         public string tipo_pagamento { get; set; }
