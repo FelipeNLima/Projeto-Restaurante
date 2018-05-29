@@ -279,8 +279,6 @@ namespace WebSiteRestaurante.DataSet {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class PAGAMENTODataTable : global::System.Data.TypedTableBase<PAGAMENTORow> {
             
-            private global::System.Data.DataColumn columndata;
-            
             private global::System.Data.DataColumn columnPagamento;
             
             private global::System.Data.DataColumn columnValor;
@@ -316,14 +314,6 @@ namespace WebSiteRestaurante.DataSet {
             protected PAGAMENTODataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn dataColumn {
-                get {
-                    return this.columndata;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -379,10 +369,9 @@ namespace WebSiteRestaurante.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PAGAMENTORow AddPAGAMENTORow(System.DateTime data, string Pagamento, decimal Valor) {
+            public PAGAMENTORow AddPAGAMENTORow(string Pagamento, decimal Valor) {
                 PAGAMENTORow rowPAGAMENTORow = ((PAGAMENTORow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        data,
                         Pagamento,
                         Valor};
                 rowPAGAMENTORow.ItemArray = columnValuesArray;
@@ -407,7 +396,6 @@ namespace WebSiteRestaurante.DataSet {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
-                this.columndata = base.Columns["data"];
                 this.columnPagamento = base.Columns["Pagamento"];
                 this.columnValor = base.Columns["Valor"];
             }
@@ -415,8 +403,6 @@ namespace WebSiteRestaurante.DataSet {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columndata = new global::System.Data.DataColumn("data", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columndata);
                 this.columnPagamento = new global::System.Data.DataColumn("Pagamento", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPagamento);
                 this.columnValor = new global::System.Data.DataColumn("Valor", typeof(decimal), null, global::System.Data.MappingType.Element);
@@ -565,22 +551,6 @@ namespace WebSiteRestaurante.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime data {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tablePAGAMENTO.dataColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'data\' na tabela \'PAGAMENTO\' é DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablePAGAMENTO.dataColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string Pagamento {
                 get {
                     try {
@@ -609,18 +579,6 @@ namespace WebSiteRestaurante.DataSet {
                 set {
                     this[this.tablePAGAMENTO.ValorColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsdataNull() {
-                return this.IsNull(this.tablePAGAMENTO.dataColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetdataNull() {
-                this[this.tablePAGAMENTO.dataColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -807,7 +765,6 @@ namespace WebSiteRestaurante.DataSet.DataSetFinanceiroTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "PAGAMENTO";
-            tableMapping.ColumnMappings.Add("data", "data");
             tableMapping.ColumnMappings.Add("Pagamento", "Pagamento");
             tableMapping.ColumnMappings.Add("Valor", "Valor");
             this._adapter.TableMappings.Add(tableMapping);
@@ -826,13 +783,13 @@ namespace WebSiteRestaurante.DataSet.DataSetFinanceiroTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT data,
+            this._commandCollection[0].CommandText = @"SELECT 
                                                              FORMA_PAGAMENTO.tipo_pagamento AS 'Pagamento',
 		                                                     SUM(Valor_recebido) AS 'Valor'         
                                                     FROM PAGAMENTO
                                                     INNER JOIN FORMA_PAGAMENTO ON FORMA_PAGAMENTO.id_formapagamento = PAGAMENTO.id_formapagamento
                                                     WHERE data BETWEEN @DATA_INICIO AND @DATA_FIM
-                                                    GROUP BY data, FORMA_PAGAMENTO.tipo_pagamento, Valor_recebido";
+                                                    GROUP BY  FORMA_PAGAMENTO.tipo_pagamento";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DATA_INICIO", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "data", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DATA_FIM", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "data", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

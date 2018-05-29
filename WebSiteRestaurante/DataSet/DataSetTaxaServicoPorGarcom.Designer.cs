@@ -20,17 +20,17 @@ namespace WebSiteRestaurante.DataSet {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("DataSetConsumo")]
+    [global::System.Xml.Serialization.XmlRootAttribute("DataSetTaxaServicoPorGarcom")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class DataSetConsumo : global::System.Data.DataSet {
+    public partial class DataSetTaxaServicoPorGarcom : global::System.Data.DataSet {
         
-        private CONSUMODataTable tableCONSUMO;
+        private TAXA_SERVICODataTable tableTAXA_SERVICO;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public DataSetConsumo() {
+        public DataSetTaxaServicoPorGarcom() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace WebSiteRestaurante.DataSet {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        protected DataSetConsumo(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected DataSetTaxaServicoPorGarcom(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace WebSiteRestaurante.DataSet {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["CONSUMO"] != null)) {
-                    base.Tables.Add(new CONSUMODataTable(ds.Tables["CONSUMO"]));
+                if ((ds.Tables["TAXA_SERVICO"] != null)) {
+                    base.Tables.Add(new TAXA_SERVICODataTable(ds.Tables["TAXA_SERVICO"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace WebSiteRestaurante.DataSet {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public CONSUMODataTable CONSUMO {
+        public TAXA_SERVICODataTable TAXA_SERVICO {
             get {
-                return this.tableCONSUMO;
+                return this.tableTAXA_SERVICO;
             }
         }
         
@@ -127,7 +127,7 @@ namespace WebSiteRestaurante.DataSet {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            DataSetConsumo cln = ((DataSetConsumo)(base.Clone()));
+            DataSetTaxaServicoPorGarcom cln = ((DataSetTaxaServicoPorGarcom)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace WebSiteRestaurante.DataSet {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["CONSUMO"] != null)) {
-                    base.Tables.Add(new CONSUMODataTable(ds.Tables["CONSUMO"]));
+                if ((ds.Tables["TAXA_SERVICO"] != null)) {
+                    base.Tables.Add(new TAXA_SERVICODataTable(ds.Tables["TAXA_SERVICO"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace WebSiteRestaurante.DataSet {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableCONSUMO = ((CONSUMODataTable)(base.Tables["CONSUMO"]));
+            this.tableTAXA_SERVICO = ((TAXA_SERVICODataTable)(base.Tables["TAXA_SERVICO"]));
             if ((initTable == true)) {
-                if ((this.tableCONSUMO != null)) {
-                    this.tableCONSUMO.InitVars();
+                if ((this.tableTAXA_SERVICO != null)) {
+                    this.tableTAXA_SERVICO.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace WebSiteRestaurante.DataSet {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "DataSetConsumo";
+            this.DataSetName = "DataSetTaxaServicoPorGarcom";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DataSetConsumo.xsd";
+            this.Namespace = "http://tempuri.org/DataSetTaxaServicoPorGarcom.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableCONSUMO = new CONSUMODataTable();
-            base.Tables.Add(this.tableCONSUMO);
+            this.tableTAXA_SERVICO = new TAXA_SERVICODataTable();
+            base.Tables.Add(this.tableTAXA_SERVICO);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private bool ShouldSerializeCONSUMO() {
+        private bool ShouldSerializeTAXA_SERVICO() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace WebSiteRestaurante.DataSet {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            DataSetConsumo ds = new DataSetConsumo();
+            DataSetTaxaServicoPorGarcom ds = new DataSetTaxaServicoPorGarcom();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,25 +270,25 @@ namespace WebSiteRestaurante.DataSet {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public delegate void CONSUMORowChangeEventHandler(object sender, CONSUMORowChangeEvent e);
+        public delegate void TAXA_SERVICORowChangeEventHandler(object sender, TAXA_SERVICORowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class CONSUMODataTable : global::System.Data.TypedTableBase<CONSUMORow> {
+        public partial class TAXA_SERVICODataTable : global::System.Data.TypedTableBase<TAXA_SERVICORow> {
             
-            private global::System.Data.DataColumn columnProduto;
+            private global::System.Data.DataColumn columnvalor;
             
-            private global::System.Data.DataColumn columnQuantidade;
+            private global::System.Data.DataColumn columndata;
             
-            private global::System.Data.DataColumn columnData;
+            private global::System.Data.DataColumn columnnome;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public CONSUMODataTable() {
-                this.TableName = "CONSUMO";
+            public TAXA_SERVICODataTable() {
+                this.TableName = "TAXA_SERVICO";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -296,7 +296,7 @@ namespace WebSiteRestaurante.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal CONSUMODataTable(global::System.Data.DataTable table) {
+            internal TAXA_SERVICODataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -313,32 +313,32 @@ namespace WebSiteRestaurante.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected CONSUMODataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected TAXA_SERVICODataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn ProdutoColumn {
+            public global::System.Data.DataColumn valorColumn {
                 get {
-                    return this.columnProduto;
+                    return this.columnvalor;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn QuantidadeColumn {
+            public global::System.Data.DataColumn dataColumn {
                 get {
-                    return this.columnQuantidade;
+                    return this.columndata;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn DataColumn {
+            public global::System.Data.DataColumn nomeColumn {
                 get {
-                    return this.columnData;
+                    return this.columnnome;
                 }
             }
             
@@ -353,47 +353,47 @@ namespace WebSiteRestaurante.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public CONSUMORow this[int index] {
+            public TAXA_SERVICORow this[int index] {
                 get {
-                    return ((CONSUMORow)(this.Rows[index]));
+                    return ((TAXA_SERVICORow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event CONSUMORowChangeEventHandler CONSUMORowChanging;
+            public event TAXA_SERVICORowChangeEventHandler TAXA_SERVICORowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event CONSUMORowChangeEventHandler CONSUMORowChanged;
+            public event TAXA_SERVICORowChangeEventHandler TAXA_SERVICORowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event CONSUMORowChangeEventHandler CONSUMORowDeleting;
+            public event TAXA_SERVICORowChangeEventHandler TAXA_SERVICORowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event CONSUMORowChangeEventHandler CONSUMORowDeleted;
+            public event TAXA_SERVICORowChangeEventHandler TAXA_SERVICORowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void AddCONSUMORow(CONSUMORow row) {
+            public void AddTAXA_SERVICORow(TAXA_SERVICORow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public CONSUMORow AddCONSUMORow(string Produto, int Quantidade, System.DateTime Data) {
-                CONSUMORow rowCONSUMORow = ((CONSUMORow)(this.NewRow()));
+            public TAXA_SERVICORow AddTAXA_SERVICORow(decimal valor, System.DateTime data, string nome) {
+                TAXA_SERVICORow rowTAXA_SERVICORow = ((TAXA_SERVICORow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Produto,
-                        Quantidade,
-                        Data};
-                rowCONSUMORow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowCONSUMORow);
-                return rowCONSUMORow;
+                        valor,
+                        data,
+                        nome};
+                rowTAXA_SERVICORow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowTAXA_SERVICORow);
+                return rowTAXA_SERVICORow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                CONSUMODataTable cln = ((CONSUMODataTable)(base.Clone()));
+                TAXA_SERVICODataTable cln = ((TAXA_SERVICODataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -401,54 +401,53 @@ namespace WebSiteRestaurante.DataSet {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new CONSUMODataTable();
+                return new TAXA_SERVICODataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
-                this.columnProduto = base.Columns["Produto"];
-                this.columnQuantidade = base.Columns["Quantidade"];
-                this.columnData = base.Columns["Data"];
+                this.columnvalor = base.Columns["valor"];
+                this.columndata = base.Columns["data"];
+                this.columnnome = base.Columns["nome"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnProduto = new global::System.Data.DataColumn("Produto", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnProduto);
-                this.columnQuantidade = new global::System.Data.DataColumn("Quantidade", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnQuantidade);
-                this.columnData = new global::System.Data.DataColumn("Data", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnData);
-                this.columnProduto.MaxLength = 200;
-                this.columnQuantidade.ReadOnly = true;
+                this.columnvalor = new global::System.Data.DataColumn("valor", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnvalor);
+                this.columndata = new global::System.Data.DataColumn("data", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndata);
+                this.columnnome = new global::System.Data.DataColumn("nome", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnome);
+                this.columnnome.MaxLength = 200;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public CONSUMORow NewCONSUMORow() {
-                return ((CONSUMORow)(this.NewRow()));
+            public TAXA_SERVICORow NewTAXA_SERVICORow() {
+                return ((TAXA_SERVICORow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new CONSUMORow(builder);
+                return new TAXA_SERVICORow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(CONSUMORow);
+                return typeof(TAXA_SERVICORow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.CONSUMORowChanged != null)) {
-                    this.CONSUMORowChanged(this, new CONSUMORowChangeEvent(((CONSUMORow)(e.Row)), e.Action));
+                if ((this.TAXA_SERVICORowChanged != null)) {
+                    this.TAXA_SERVICORowChanged(this, new TAXA_SERVICORowChangeEvent(((TAXA_SERVICORow)(e.Row)), e.Action));
                 }
             }
             
@@ -456,8 +455,8 @@ namespace WebSiteRestaurante.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.CONSUMORowChanging != null)) {
-                    this.CONSUMORowChanging(this, new CONSUMORowChangeEvent(((CONSUMORow)(e.Row)), e.Action));
+                if ((this.TAXA_SERVICORowChanging != null)) {
+                    this.TAXA_SERVICORowChanging(this, new TAXA_SERVICORowChangeEvent(((TAXA_SERVICORow)(e.Row)), e.Action));
                 }
             }
             
@@ -465,8 +464,8 @@ namespace WebSiteRestaurante.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.CONSUMORowDeleted != null)) {
-                    this.CONSUMORowDeleted(this, new CONSUMORowChangeEvent(((CONSUMORow)(e.Row)), e.Action));
+                if ((this.TAXA_SERVICORowDeleted != null)) {
+                    this.TAXA_SERVICORowDeleted(this, new TAXA_SERVICORowChangeEvent(((TAXA_SERVICORow)(e.Row)), e.Action));
                 }
             }
             
@@ -474,14 +473,14 @@ namespace WebSiteRestaurante.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.CONSUMORowDeleting != null)) {
-                    this.CONSUMORowDeleting(this, new CONSUMORowChangeEvent(((CONSUMORow)(e.Row)), e.Action));
+                if ((this.TAXA_SERVICORowDeleting != null)) {
+                    this.TAXA_SERVICORowDeleting(this, new TAXA_SERVICORowChangeEvent(((TAXA_SERVICORow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void RemoveCONSUMORow(CONSUMORow row) {
+            public void RemoveTAXA_SERVICORow(TAXA_SERVICORow row) {
                 this.Rows.Remove(row);
             }
             
@@ -490,7 +489,7 @@ namespace WebSiteRestaurante.DataSet {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DataSetConsumo ds = new DataSetConsumo();
+                DataSetTaxaServicoPorGarcom ds = new DataSetTaxaServicoPorGarcom();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -508,7 +507,7 @@ namespace WebSiteRestaurante.DataSet {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "CONSUMODataTable";
+                attribute2.FixedValue = "TAXA_SERVICODataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -552,99 +551,99 @@ namespace WebSiteRestaurante.DataSet {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class CONSUMORow : global::System.Data.DataRow {
+        public partial class TAXA_SERVICORow : global::System.Data.DataRow {
             
-            private CONSUMODataTable tableCONSUMO;
+            private TAXA_SERVICODataTable tableTAXA_SERVICO;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal CONSUMORow(global::System.Data.DataRowBuilder rb) : 
+            internal TAXA_SERVICORow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableCONSUMO = ((CONSUMODataTable)(this.Table));
+                this.tableTAXA_SERVICO = ((TAXA_SERVICODataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Produto {
+            public decimal valor {
                 get {
                     try {
-                        return ((string)(this[this.tableCONSUMO.ProdutoColumn]));
+                        return ((decimal)(this[this.tableTAXA_SERVICO.valorColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'Produto\' na tabela \'CONSUMO\' é DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'valor\' na tabela \'TAXA_SERVICO\' é DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableCONSUMO.ProdutoColumn] = value;
+                    this[this.tableTAXA_SERVICO.valorColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int Quantidade {
+            public System.DateTime data {
                 get {
                     try {
-                        return ((int)(this[this.tableCONSUMO.QuantidadeColumn]));
+                        return ((global::System.DateTime)(this[this.tableTAXA_SERVICO.dataColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'Quantidade\' na tabela \'CONSUMO\' é DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'data\' na tabela \'TAXA_SERVICO\' é DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableCONSUMO.QuantidadeColumn] = value;
+                    this[this.tableTAXA_SERVICO.dataColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime Data {
+            public string nome {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableCONSUMO.DataColumn]));
+                        return ((string)(this[this.tableTAXA_SERVICO.nomeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'Data\' na tabela \'CONSUMO\' é DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'nome\' na tabela \'TAXA_SERVICO\' é DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableCONSUMO.DataColumn] = value;
+                    this[this.tableTAXA_SERVICO.nomeColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsProdutoNull() {
-                return this.IsNull(this.tableCONSUMO.ProdutoColumn);
+            public bool IsvalorNull() {
+                return this.IsNull(this.tableTAXA_SERVICO.valorColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetProdutoNull() {
-                this[this.tableCONSUMO.ProdutoColumn] = global::System.Convert.DBNull;
+            public void SetvalorNull() {
+                this[this.tableTAXA_SERVICO.valorColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsQuantidadeNull() {
-                return this.IsNull(this.tableCONSUMO.QuantidadeColumn);
+            public bool IsdataNull() {
+                return this.IsNull(this.tableTAXA_SERVICO.dataColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetQuantidadeNull() {
-                this[this.tableCONSUMO.QuantidadeColumn] = global::System.Convert.DBNull;
+            public void SetdataNull() {
+                this[this.tableTAXA_SERVICO.dataColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsDataNull() {
-                return this.IsNull(this.tableCONSUMO.DataColumn);
+            public bool IsnomeNull() {
+                return this.IsNull(this.tableTAXA_SERVICO.nomeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetDataNull() {
-                this[this.tableCONSUMO.DataColumn] = global::System.Convert.DBNull;
+            public void SetnomeNull() {
+                this[this.tableTAXA_SERVICO.nomeColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -652,22 +651,22 @@ namespace WebSiteRestaurante.DataSet {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public class CONSUMORowChangeEvent : global::System.EventArgs {
+        public class TAXA_SERVICORowChangeEvent : global::System.EventArgs {
             
-            private CONSUMORow eventRow;
+            private TAXA_SERVICORow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public CONSUMORowChangeEvent(CONSUMORow row, global::System.Data.DataRowAction action) {
+            public TAXA_SERVICORowChangeEvent(TAXA_SERVICORow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public CONSUMORow Row {
+            public TAXA_SERVICORow Row {
                 get {
                     return this.eventRow;
                 }
@@ -683,7 +682,7 @@ namespace WebSiteRestaurante.DataSet {
         }
     }
 }
-namespace WebSiteRestaurante.DataSet.DataSetConsumoTableAdapters {
+namespace WebSiteRestaurante.DataSet.DataSetTaxaServicoPorGarcomTableAdapters {
     
     
     /// <summary>
@@ -695,7 +694,7 @@ namespace WebSiteRestaurante.DataSet.DataSetConsumoTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class CONSUMOTableAdapter : global::System.ComponentModel.Component {
+    public partial class TAXA_SERVICO1TableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -709,7 +708,7 @@ namespace WebSiteRestaurante.DataSet.DataSetConsumoTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public CONSUMOTableAdapter() {
+        public TAXA_SERVICO1TableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -806,10 +805,10 @@ namespace WebSiteRestaurante.DataSet.DataSetConsumoTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "CONSUMO";
-            tableMapping.ColumnMappings.Add("Produto", "Produto");
-            tableMapping.ColumnMappings.Add("Quantidade", "Quantidade");
-            tableMapping.ColumnMappings.Add("Data", "Data");
+            tableMapping.DataSetTable = "TAXA_SERVICO";
+            tableMapping.ColumnMappings.Add("valor", "valor");
+            tableMapping.ColumnMappings.Add("data", "data");
+            tableMapping.ColumnMappings.Add("nome", "nome");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -826,38 +825,36 @@ namespace WebSiteRestaurante.DataSet.DataSetConsumoTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT	CARDAPIO.nome_item AS 'Produto',
-	SUM(quantidade) AS 'Quantidade',
-                  VENDA.Data_entrada AS 'Data'
-from CONSUMO
-INNER JOIN CARDAPIO ON CARDAPIO.id_cardapio = CONSUMO.id_cardapio
-INNER JOIN VENDA ON VENDA.id_venda = CONSUMO.id_venda
-WHERE VENDA.Data_entrada BETWEEN @DATA_INICIO AND @DATA_FIM
-GROUP BY VENDA.Data_entrada, CARDAPIO.nome_item, quantidade
-ORDER BY VENDA.Data_entrada";
+            this._commandCollection[0].CommandText = "SELECT\tUSUARIO.nome,\r\n\t\tdata,\r\n\t\tvalor\r\nFROM  dbo.TAXA_SERVICO\r\nINNER JOIN USUARI" +
+                "O ON USUARIO.id_usuario = TAXA_SERVICO.id_usuario\r\nWHERE DATA BETWEEN @DATA_INIC" +
+                "IO AND @DATA_FIM\r\nAND (1 = @TODOS OR USUARIO.ID_USUARIO = @ID_USUARIO)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DATA_INICIO", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Data", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DATA_FIM", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Data", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DATA_INICIO", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "data", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DATA_FIM", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "data", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TODOS", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID_USUARIO", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_usuario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSetConsumo.CONSUMODataTable dataTable, global::System.Nullable<global::System.DateTime> DATA_INICIO, global::System.Nullable<global::System.DateTime> DATA_FIM) {
+        public virtual int Fill(DataSetTaxaServicoPorGarcom.TAXA_SERVICODataTable dataTable, string DATA_INICIO, string DATA_FIM, decimal TODOS, int ID_USUARIO) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((DATA_INICIO.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(DATA_INICIO.Value));
-            }
-            else {
+            if ((DATA_INICIO == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((DATA_FIM.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(DATA_FIM.Value));
-            }
             else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(DATA_INICIO));
+            }
+            if ((DATA_FIM == null)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(DATA_FIM));
+            }
+            this.Adapter.SelectCommand.Parameters[2].Value = ((decimal)(TODOS));
+            this.Adapter.SelectCommand.Parameters[3].Value = ((int)(ID_USUARIO));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -869,21 +866,23 @@ ORDER BY VENDA.Data_entrada";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSetConsumo.CONSUMODataTable GetData(global::System.Nullable<global::System.DateTime> DATA_INICIO, global::System.Nullable<global::System.DateTime> DATA_FIM) {
+        public virtual DataSetTaxaServicoPorGarcom.TAXA_SERVICODataTable GetData(string DATA_INICIO, string DATA_FIM, decimal TODOS, int ID_USUARIO) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((DATA_INICIO.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(DATA_INICIO.Value));
-            }
-            else {
+            if ((DATA_INICIO == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((DATA_FIM.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(DATA_FIM.Value));
-            }
             else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(DATA_INICIO));
+            }
+            if ((DATA_FIM == null)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            DataSetConsumo.CONSUMODataTable dataTable = new DataSetConsumo.CONSUMODataTable();
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(DATA_FIM));
+            }
+            this.Adapter.SelectCommand.Parameters[2].Value = ((decimal)(TODOS));
+            this.Adapter.SelectCommand.Parameters[3].Value = ((int)(ID_USUARIO));
+            DataSetTaxaServicoPorGarcom.TAXA_SERVICODataTable dataTable = new DataSetTaxaServicoPorGarcom.TAXA_SERVICODataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -957,7 +956,7 @@ ORDER BY VENDA.Data_entrada";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private int UpdateUpdatedRows(DataSetConsumo dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(DataSetTaxaServicoPorGarcom dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -967,7 +966,7 @@ ORDER BY VENDA.Data_entrada";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private int UpdateInsertedRows(DataSetConsumo dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(DataSetTaxaServicoPorGarcom dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -977,7 +976,7 @@ ORDER BY VENDA.Data_entrada";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private int UpdateDeletedRows(DataSetConsumo dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(DataSetTaxaServicoPorGarcom dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             return result;
         }
@@ -1011,7 +1010,7 @@ ORDER BY VENDA.Data_entrada";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public virtual int UpdateAll(DataSetConsumo dataSet) {
+        public virtual int UpdateAll(DataSetTaxaServicoPorGarcom dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

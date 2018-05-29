@@ -15,7 +15,7 @@ namespace WebSiteRestaurante.Models
         public ClasseVenda venda { get; set; }
 
 
-        public static List<TaxaServicoModel> RelatorioPorData(DateTime datainicial, DateTime datafinal, int id_usuario, bool todos)
+        public static List<TaxaServicoModel> RelatorioPorData(DateTime datainicial, DateTime datafinal)
         {
 
             {
@@ -28,16 +28,14 @@ namespace WebSiteRestaurante.Models
 
                     SqlDataReader Leitor = null;
                     SqlCommand cmd = new SqlCommand(@"SELECT	USUARIO.nome,
-                                                                SUM(valor) AS 'Total'
-                                                    FROM TAXA_SERVICO
-                                                    INNER JOIN USUARIO ON USUARIO.id_usuario = TAXA_SERVICO.id_usuario
-                                                    WHERE DATA BETWEEN @DATA_INICIO AND @DATA_FIM
-                                                    GROUP BY USUARIO.nome
-                                                    AND (1 = @TODOS OR USUARIO.ID_USUARIO = @ID_USUARIO)", obj.objCon);
+		                                                        SUM(valor) AS 'Total'
+                                                        FROM  dbo.TAXA_SERVICO
+                                                        INNER JOIN USUARIO ON USUARIO.id_usuario = TAXA_SERVICO.id_usuario
+                                                        WHERE data BETWEEN @DATA_INICIO AND @DATA_FIM
+                                                        GROUP BY USUARIO.nome", obj.objCon);
                     cmd.Parameters.AddWithValue("@DATA_INICIO", datainicial);
                     cmd.Parameters.AddWithValue("@DATA_FIM", datafinal);
-                    cmd.Parameters.AddWithValue("@TODOS", todos == true ? 1 : 0);
-                    cmd.Parameters.AddWithValue("@ID_USUARIO", id_usuario);
+
                     Leitor = cmd.ExecuteReader();
 
                     while (Leitor.Read())

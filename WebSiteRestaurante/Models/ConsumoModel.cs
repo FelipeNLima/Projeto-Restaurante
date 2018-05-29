@@ -17,7 +17,6 @@ namespace WebSiteRestaurante.Models
         public CardapioModel Cardapio { get; set; }
         public ClasseVenda Venda { get; set; }
 
-
         public static List<ConsumoModel> RelatorioEstoqueSaida(DateTime datainicial, DateTime datafinal)
         {
 
@@ -30,12 +29,13 @@ namespace WebSiteRestaurante.Models
                     obj.conectar();
 
                     SqlDataReader Leitor = null;
-                    SqlCommand cmd = new SqlCommand(@"SELECT	CARDAPIO.nome_item AS 'Produto',
-		                                                        SUM(quantidade) AS 'Quantidade'
-                                                    from CONSUMO
-                                                    INNER JOIN CARDAPIO ON CARDAPIO.id_cardapio = CONSUMO.id_cardapio
-                                                    WHERE Data_entrada BETWEEN @DATA_INICIO AND @DATA_FIM
-                                                    GROUP BY CARDAPIO.nome_item, quantidade", obj.objCon);
+                    SqlCommand cmd = new SqlCommand(@"SELECT	CARDAPIO.nome_item as 'Produto',
+		                                                        SUM(quantidade) as 'Quantidade'
+                                                        FROM CONSUMO
+                                                        INNER JOIN CARDAPIO ON CARDAPIO.id_cardapio = CONSUMO.id_cardapio
+                                                        INNER JOIN VENDA ON VENDA.id_venda = CONSUMO.id_venda
+                                                        WHERE VENDA.Data_entrada BETWEEN @DATA_INICIO AND @DATA_FIM
+                                                        GROUP BY CARDAPIO.nome_item", obj.objCon);
                     cmd.Parameters.AddWithValue("@DATA_INICIO", datainicial);
                     cmd.Parameters.AddWithValue("@DATA_FIM", datafinal);
                     Leitor = cmd.ExecuteReader();

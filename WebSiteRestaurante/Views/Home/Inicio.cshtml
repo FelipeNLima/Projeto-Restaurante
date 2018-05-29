@@ -1,17 +1,74 @@
-﻿
-@model DotNet.Highcharts.Highcharts
+﻿@using Highsoft.Web.Mvc.Charts
 @{
-    ViewBag.Title = "Highcharts";
+    ViewBag.Title = "Inicio";
     Layout = "~/Views/Home/Menu.cshtml";
-
-
 }
-<h1>Gráfico de Coluna : @ViewBag.Title</h1>
-<hr />
-<div class="row">
-    <div>
-        <div class="col-md-12 col-md-6">
-            @(Model)
-        </div>
-    </div>
-</div>
+
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+
+
+@(Html.Highsoft().Highcharts(
+                new Highcharts
+                {
+                    Title = new Title
+                    {
+                        Text = "Relátorio Financeiro Mensal"
+                    },
+                    Subtitle = new Subtitle
+                    {
+                        Text = "Faturamento por Mês"
+                    },
+
+                    XAxis = new List<XAxis>
+                {
+
+
+                    new XAxis
+                    {
+
+                        Categories = @ViewData["mes"] as List<string>
+
+                    }
+
+                },
+                    YAxis = new List<YAxis>
+                {
+                new YAxis
+                {
+                    Min = 0,
+                    Title = new YAxisTitle
+                    {
+                        Text = "Valores (R$)"
+                    }
+                }
+                                    },
+                    Tooltip = new Tooltip
+                    {
+                        HeaderFormat = "<span style='font-size:10px'>{point.key}</span><table style='font-size:12px'>",
+                        PointFormat = "<tr><td style='color:{series.color};padding:0'>{series.name}: </td><td style='padding:0'><b>{point.y:.2f}&nbsp;reais</b></td></tr>",
+                        FooterFormat = "</table>",
+                        Shared = true,
+                        UseHTML = true
+                    },
+                    PlotOptions = new PlotOptions
+                    {
+                        Column = new PlotOptionsColumn
+                        {
+                            PointPadding = 0.2,
+                            BorderWidth = 0
+                        }
+                    },
+                    Series = new List<Series>
+                                    {
+                new ColumnSeries
+                {
+                    Name = "Faturamento",
+                    Data = @ViewData["faturamento"] as List<ColumnSeriesData>
+                },
+                                    }
+                }
+                , "chart")
+)
+

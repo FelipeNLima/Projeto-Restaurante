@@ -32,13 +32,13 @@ namespace WebSiteRestaurante.Models
                     obj.conectar();
 
                     SqlDataReader Leitor = null;
-                    SqlCommand cmd = new SqlCommand(@"SELECT data,
+                    SqlCommand cmd = new SqlCommand(@"SELECT
                                                              FORMA_PAGAMENTO.tipo_pagamento AS 'Pagamento',
 		                                                     SUM(Valor_recebido) AS 'Valor'         
                                                     FROM PAGAMENTO
                                                     INNER JOIN FORMA_PAGAMENTO ON FORMA_PAGAMENTO.id_formapagamento = PAGAMENTO.id_formapagamento
                                                     WHERE data BETWEEN @DATA_INICIO AND @DATA_FIM
-                                                    GROUP BY data, FORMA_PAGAMENTO.tipo_pagamento, Valor_recebido", obj.objCon);
+                                                    GROUP BY FORMA_PAGAMENTO.tipo_pagamento", obj.objCon);
                     cmd.Parameters.AddWithValue("@DATA_INICIO", datainicial);
                     cmd.Parameters.AddWithValue("@DATA_FIM", datafinal);
                     Leitor = cmd.ExecuteReader();
@@ -46,8 +46,7 @@ namespace WebSiteRestaurante.Models
                     while (Leitor.Read())
                     {
                         FinanceiroModel financeiro = new FinanceiroModel();
-                        financeiro.FormaPagamento = new FormaPagamentoModel();
-                        financeiro.data = DateTime.Parse(Leitor["data"].ToString());
+                        financeiro.FormaPagamento = new FormaPagamentoModel();;
                         financeiro.FormaPagamento.tipo_pagamento = Leitor["Pagamento"].ToString();
                         financeiro.Valor_recebido = float.Parse(Leitor["Valor"].ToString());
 

@@ -8,42 +8,44 @@
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 
 <div class="panel panel-default">
-    <div class="panel-heading"><h4><b>Relatório Financeiro por Período De: @ViewBag.dataInicial.ToShortDateString() á @ViewBag.dataFinal.ToShortDateString() </b></h4></div>
-    <div class="panel-body">
+    <div class="panel-heading">
         <div class="row">
-            <div class="col-md-10">
-                <table class="table">
-                    <tr style="background-color:lightgray">
-                        <th>Data</th>
-                        <th>Forma de Pagamento</th>
-                        <th>Valor</th>
-                    </tr>
+            <div class="offset-1 col-md-10" style="margin-top: 10px; margin-bottom: 10px">
+                <h4><b>Relatório Financeiro por Período De: @ViewBag.dataInicial.ToShortDateString() á @ViewBag.dataFinal.ToShortDateString() </b></h4>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="offset-1 col-md-10">
+                    <table class="table">
+                        <tr style="background-color:lightgray">
+                            <th>Forma de Pagamento</th>
+                            <th>Valor</th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FormaPagamento.tipo_pagamento)
+                                </td>
+                                <td>
+                                    @item.Valor_recebido.ToString("N")
+                                </td>
+                            </tr>
+                        }
 
-                    @foreach (var item in Model)
-                    {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.data)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.FormaPagamento.tipo_pagamento)
-                        </td>
-                        <td>
-                            @item.Valor_recebido.ToString("N")
-                        </td>
-                    </tr>
-                    }
-                    <tr>
-                        <th></th>
-                        <th>Total Financeiro:</th>
-                        <th>@Model.Sum(t => t.Valor_recebido).ToString("N2")</th>
-                    </tr>
-                    <tr>
-                        <td><b>@Model.Count registos de @Model.TotalItemCount</b></td>
-                        <th></th>
-                        <td>@Html.ActionLink("GERAR PDF", "ReportViewerFinanceiro", new { gerarPDF = true, dataInicial = ViewBag.dataInicial, dataFinal = ViewBag.dataFinal }, new { target = "_blank" })</td>
-                    </tr>
-                </table>
+                        <tr>
+                            <th>Total Financeiro:</th>
+                            <th>@Model.Sum(t => t.Valor_recebido).ToString("N2")</th>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="offset-1 col-md-10">
+                    @Html.ActionLink("GERAR PDF", "ReportViewerFinanceiro", new { gerarPDF = true, dataInicial = ViewBag.dataInicial, dataFinal = ViewBag.dataFinal }, new { target = "_blank", type = "button", @class = "btn btn-primary btn-sm" })
+                </div>
             </div>
         </div>
     </div>

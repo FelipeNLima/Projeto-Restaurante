@@ -8,35 +8,39 @@
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 
 <div class="panel panel-default">
-    <div class="panel-heading"><h4><b>Relatório de saída no estoque por Período De: @ViewBag.dataInicial.ToShortDateString() á @ViewBag.dataFinal.ToShortDateString()</b></h4></div>
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-md-10">
-                <table class="table">
-                    <tr style="background-color:lightgray">
-                        <th>Produto</th>
-                        <th>Quantidade</th>
-                    </tr>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Cardapio.nome_item)
-                            </td>
-                            <td>
-                                @item.quantidade
-                            </td>
-                        </tr>
-                    }
+    <div class="offset-1 col-md-10" style="margin-top: 10px; margin-bottom: 10px">
+        <h4><b>Relatório de saída no estoque por Período De: @ViewBag.dataInicial.ToShortDateString() á @ViewBag.dataFinal.ToShortDateString()</b></h4>
+    </div>
+</div>
+
+<div class="panel-body">
+    <div class="row">
+        <div class="offset-1 col-md-10">
+            <table class="table">
+                <tr style="background-color:lightgray">
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                </tr>
+                @foreach (var item in Model)
+                {
                     <tr>
-                        <td><b>@Model.Count registos de @Model.TotalItemCount</b></td>
-                        <th></th>
-                        <td>@Html.ActionLink("GERAR PDF", "ReportViewerEstoqueSaida", new { gerarPDF = true, dataInicial = ViewBag.dataInicial, dataFinal = ViewBag.dataFinal }, new { target = "_blank" })</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cardapio.nome_item)
+                        </td>
+                        <td>
+                            @item.quantidade
+                        </td>
                     </tr>
-                </table>
-            </div>
+                }
+            </table>
         </div>
     </div>
+    <div class="row">
+        <div class="offset-1 col-md-10">
+            @Html.ActionLink("GERAR PDF", "ReportViewerEstoqueSaida", new { gerarPDF = true, dataInicial = ViewBag.dataInicial, dataFinal = ViewBag.dataFinal }, new { target = "_blank", type = "button", @class = "btn btn-primary btn-sm" })
+        </div>
+    </div>
+</div>
 </div>
 
 

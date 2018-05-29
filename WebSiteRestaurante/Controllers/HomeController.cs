@@ -1,7 +1,4 @@
-﻿using DotNet.Highcharts;
-using DotNet.Highcharts.Enums;
-using DotNet.Highcharts.Helpers;
-using DotNet.Highcharts.Options;
+﻿using Highsoft.Web.Mvc.Charts;
 using PagedList;
 using System;
 using System.Collections.Generic;
@@ -23,9 +20,10 @@ namespace WebSiteRestaurante.Controllers
     using WebSiteRestaurante.DataSet.DataSetEstoqueTableAdapters;
     using WebSiteRestaurante.DataSet.DataSetConsumoTableAdapters;
     using Models;
+    using WebSiteRestaurante.DataSet.DataSetTaxaServicoPorGarcomTableAdapters;
 
     public class HomeController : Controller
-    { 
+    {
 
         public ActionResult Principal()
         {
@@ -75,63 +73,21 @@ namespace WebSiteRestaurante.Controllers
 
         public ActionResult Inicio()
         {
-            Highcharts columnChart = new Highcharts("columnchart");
-            columnChart.InitChart(new Chart()
-            {
-                Type = ChartTypes.Column,
-                BackgroundColor = new BackColorOrGradient(Color.AliceBlue),
-                Style = "fontWeight: 'bold', fontSize: '17px'",
-                BorderColor = Color.LightBlue,
-                BorderRadius = 0,
-                BorderWidth = 2
-            });
-            columnChart.SetTitle(new Title()
-            {
-                Text = "Relatório Financeiro por Mês"
-            });
-            columnChart.SetSubtitle(new Subtitle()
-            {
-                Text = "Gráfico Por Mês"
-            });
-            columnChart.SetXAxis(new XAxis()
-            {
-                Type = AxisTypes.Category,
-                Title = new XAxisTitle() { Text = "Mêses", Style = "fontWeight: 'bold', fontSize: '17px'" },
-                //Categories = new[] { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" }
-                Categories = new[] { "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012" }
-            });
-            columnChart.SetYAxis(new YAxis()
-            {
-                Title = new YAxisTitle()
-                {
-                    Text = "Valor",
-                    Style = "fontWeight: 'bold', fontSize: '17px'"
-                },
-                ShowFirstLabel = true,
-                ShowLastLabel = true,
-                Min = 0
-            });
-            columnChart.SetLegend(new Legend
-            {
-                Enabled = true,
-                BorderColor = Color.CornflowerBlue,
-                BorderRadius = 6,
-                BackgroundColor = new BackColorOrGradient(ColorTranslator.FromHtml("#FFADD8E6"))
-            });
-            columnChart.SetSeries(new Series[]
-            {
-                 new Series{
-                    Name = "Santos",
-                    Data = new Data(new object[] { 89, 59, 64, 62, 45, 49, 53, 53, 57 })
-                },
-                new Series()
-                {
-                    Name = "São Paulo",
-                    Data = new Data(new object[] { 82, 58, 78, 77, 75, 65, 59, 66, 50 })
-                }
-            }
-            );
-            return View(columnChart);
+            var lista = PagamentoModel.faturamentoPorMes();
+            
+            List<ColumnSeriesData> faturamentoData = new List<ColumnSeriesData>();
+            List<XAxis> mes = new List<XAxis>();
+
+            lista.ForEach(p => faturamentoData.Add(new ColumnSeriesData { Y = p.Valor_total }));
+            ViewData["faturamento"] = faturamentoData;
+
+            var nomesDosMeses = new List<string>();
+            lista.ForEach(x => nomesDosMeses.Add(x.data));
+
+            ViewData["mes"] = nomesDosMeses;
+            
+
+            return View();
         }
 
         #endregion
@@ -157,7 +113,6 @@ namespace WebSiteRestaurante.Controllers
         [HttpPost]
         public ActionResult TaxaServico(DateTime dataInicial, DateTime dataFinal, int? pagina)
         {
-            var lista = UsuarioModel.CarregarGarcom();
             var id_usuario = int.Parse(Request.Params["nomegarcom"]);
 
             if (id_usuario != 0)
@@ -167,6 +122,7 @@ namespace WebSiteRestaurante.Controllers
                 relatorio = TaxaServicoModel.RelatorioPorDataUsuario(dataInicial, dataFinal, id_usuario, false);
                 ViewBag.dataInicial = dataInicial;
                 ViewBag.dataFinal = dataFinal;
+                ViewBag.idusuario = int.Parse(Request.Params["nomegarcom"]);
 
                 return View("TaxaServicoPorGarcom", relatorio);
 
@@ -175,26 +131,25 @@ namespace WebSiteRestaurante.Controllers
             {
                 List<TaxaServicoModel> relatorio = new List<TaxaServicoModel>();
 
-                relatorio = TaxaServicoModel.RelatorioPorData(dataInicial, dataFinal, id_usuario, true);
+                relatorio = TaxaServicoModel.RelatorioPorData(dataInicial, dataFinal);
                 ViewBag.dataInicial = dataInicial;
                 ViewBag.dataFinal = dataFinal;
-
+                ViewBag.idusuario = int.Parse(Request.Params["nomegarcom"]);
                 return View("TaxaServico", relatorio);
             }
 
 
         }
 
-        public ActionResult ReportViewerTaxaServico(DateTime dataInicial, DateTime dataFinal, int id_usuario)
+        public ActionResult ReportViewerTaxaServico(DateTime dataInicial, DateTime dataFinal)
         {
 
             var ds = new DataSetTaxaServico();
-            var ds1 = new DataSetTaxaServico();
             var dr = new DataSetRestaurante();
 
             var table = new TAXA_SERVICOTableAdapter();
             var table1 = new RESTAURANTETableAdapter();
-            var table2 = new TAXA_SERVICO1TableAdapter();
+
 
             var datasource = new ReportDataSource
             {
@@ -203,16 +158,6 @@ namespace WebSiteRestaurante.Controllers
                 {
                     DataMember = "TAXA_SERVICO",
                     DataSource = ds
-                }
-            };
-
-            var datasource2 = new ReportDataSource
-            {
-                Name = "DataSetTaxaServico",
-                Value = new BindingSource
-                {
-                    DataMember = "TAXA_SERVICO1",
-                    DataSource = ds1
                 }
             };
 
@@ -226,9 +171,8 @@ namespace WebSiteRestaurante.Controllers
                 }
             };
 
-            table.Fill(ds.TAXA_SERVICO, dataInicial.ToShortDateString(), dataFinal.ToShortDateString(), 0, id_usuario);
+            table.Fill(ds.TAXA_SERVICO, dataInicial.ToShortDateString(), dataFinal.ToShortDateString());
             table1.Fill(dr.RESTAURANTE);
-            table2.Fill(ds1.TAXA_SERVICO1, dataInicial.ToShortDateString(), dataFinal.ToShortDateString(), 1,id_usuario);
 
             var viewer = new ReportViewer();
 
@@ -236,7 +180,6 @@ namespace WebSiteRestaurante.Controllers
             viewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Relatorio\TaxaServico.rdlc";
             viewer.LocalReport.DataSources.Add(datasource);
             viewer.LocalReport.DataSources.Add(datasource1);
-            viewer.LocalReport.DataSources.Add(datasource2);
 
             viewer.ProcessingMode = ProcessingMode.Local;
             viewer.SizeToReportContent = true;
@@ -247,6 +190,56 @@ namespace WebSiteRestaurante.Controllers
             ViewBag.ReportViewer = viewer;
 
             return View();
+        }
+
+        public ActionResult ReportViewerTaxaServicoPorGarcom(DateTime dataInicial, DateTime dataFinal, int idusuario)
+        {
+            var ds1 = new DataSetTaxaServicoPorGarcom();
+            var dr = new DataSetRestaurante();
+
+            var table2 = new TAXA_SERVICO1TableAdapter();
+            var table1 = new RESTAURANTETableAdapter();
+
+            var datasource1 = new ReportDataSource
+            {
+                Name = "DataSetRestaurante",
+                Value = new BindingSource
+                {
+                    DataMember = "RESTAURANTE",
+                    DataSource = dr
+                }
+            };
+
+            var datasource2 = new ReportDataSource
+            {
+                Name = "DataSetTaxaServicoPorGarcom",
+                Value = new BindingSource
+                {
+                    DataMember = "TAXA_SERVICO",
+                    DataSource = ds1
+                }
+            };
+
+            table2.Fill(ds1.TAXA_SERVICO, dataInicial.ToShortDateString(), dataFinal.ToShortDateString(), 1, idusuario);
+            table1.Fill(dr.RESTAURANTE);
+
+            var viewer = new ReportViewer();
+
+            viewer.ProcessingMode = ProcessingMode.Local;
+            viewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Relatorio\TaxaServicoPorGarcom.rdlc";
+            viewer.LocalReport.DataSources.Add(datasource2);
+            viewer.LocalReport.DataSources.Add(datasource1);
+
+            viewer.ProcessingMode = ProcessingMode.Local;
+            viewer.SizeToReportContent = true;
+            viewer.ZoomMode = ZoomMode.FullPage;
+            viewer.Width = Unit.Percentage(100);
+            viewer.Height = Unit.Percentage(100);
+
+            ViewBag.ReportViewer = viewer;
+
+            return View();
+
         }
 
 
@@ -264,7 +257,7 @@ namespace WebSiteRestaurante.Controllers
             ViewBag.dataFinal = dataFinal;
 
             //Definindo a paginação      
-            int paginaQdteRegistros = 2;
+            int paginaQdteRegistros = 100;
             int paginaNumeroNavegacao = (pagina ?? 1);
 
             return View(relatorio.ToPagedList(paginaNumeroNavegacao, paginaQdteRegistros));
@@ -342,7 +335,7 @@ namespace WebSiteRestaurante.Controllers
             ViewBag.dataFinal = dataFinal;
 
             //Definindo a paginação      
-            int paginaQdteRegistros = 2;
+            int paginaQdteRegistros = 100;
             int paginaNumeroNavegacao = (pagina ?? 1);
 
             return View(relatorio.ToPagedList(paginaNumeroNavegacao, paginaQdteRegistros));
@@ -419,7 +412,7 @@ namespace WebSiteRestaurante.Controllers
             ViewBag.dataFinal = dataFinal;
 
             //Definindo a paginação      
-            int paginaQdteRegistros = 2;
+            int paginaQdteRegistros = 100;
             int paginaNumeroNavegacao = (pagina ?? 1);
 
             return View(relatorio.ToPagedList(paginaNumeroNavegacao, paginaQdteRegistros));
@@ -491,7 +484,7 @@ namespace WebSiteRestaurante.Controllers
             ViewBag.dataFinal = dataFinal;
 
             //Definindo a paginação      
-            int paginaQdteRegistros = 2;
+            int paginaQdteRegistros = 100;
             int paginaNumeroNavegacao = (pagina ?? 1);
 
             return View(relatorio.ToPagedList(paginaNumeroNavegacao, paginaQdteRegistros));
@@ -548,5 +541,7 @@ namespace WebSiteRestaurante.Controllers
         }
 
         #endregion
+
+
     }
 }
